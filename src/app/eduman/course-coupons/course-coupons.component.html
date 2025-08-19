@@ -1,0 +1,233 @@
+<nav class="navbar navbar-expand-sm px-4 py-0 sticky-top" style="background: #f3e0e0 !important">
+    <div class="header d-flex justify-content-between">
+        <button onclick="window.history.back()" class="arrow"><i class="fas fa-arrow-left"></i></button>
+        <div>
+            <h1 class="fw-bold">
+                <h4><span class="letter-style">C</span>oupons <span>{{data?.title}}</span></h4>
+            </h1>
+        </div>
+    </div>
+</nav>
+<div class="content-wrapper">
+    <div class="container-xxl flex-grow-1 ">
+        <div class="row mt-5">
+            <div class="col-xl-5 col-md-5 col-sm-12">
+                <!-- <div *ngIf="refresh" class="text-center mt-5">
+                <div class="spinner-border spinner-border-lg"></div>
+            </div> -->
+
+                <!-- <div *ngIf="!refresh" class="tab-content w-100 mb-5" id="v-pills-tabContent d-sm-block d-lg-flex"> -->
+                <div class="row">
+                    <div>
+                        <div class="d-flex">
+                            <h4 class="ps-3 mb-3">Course Coupons</h4>
+                        </div>
+                        <div class="card border p-3 mt-3 m-sm-0">
+                            <div class="mb-3" [formGroup]="couponForm">
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Coupon Code
+                                    </label>
+                                    <div class="d-flex">
+                                        <input class="form-control" type="text" formControlName="couponCode"
+                                            placeholder="Enter Discount Percentage">
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('couponCode')?.touched && couponForm.get('couponCode')?.hasError('required')">
+                                        Coupon Code is required.</small>
+                                </div>
+                                <div class="mt-4" style="float: right;">
+                                    <button class="btn btn-primary" (click)="getCheckCode()"
+                                        [disabled]="!couponForm.value.couponCode">Check</button>
+                                </div>
+                                <br />
+                                <div [ngClass]="errorMessageClass">
+                                    {{ message }}
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Is the coupon applicable to all courses?
+                                    </label>
+                                    <div class="d-flex">
+                                        <select class="form-select" formControlName="isapplyToAllCourses"
+                                            (change)="onCouponApplyChanges($event)">
+                                            <option selected value="null">Select Option</option>
+                                            <option value="true">Yes</option>
+                                            <option value="false">No</option>
+                                        </select>
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('isapplyToAllCourses')?.touched && couponForm.get('isapplyToAllCourses')?.hasError('required')">
+                                        Select the option..</small>
+                                </div>
+                                <div class="mt-4"
+                                    [style.display]="(!couponForm?.value?.courseCouponSno && (couponForm?.value?.isapplyToAllCourses === 'true'||couponForm?.value?.isapplyToAllCourses === true || couponForm?.value?.isapplyToAllCourses === null)) ? 'none' : 'block'">
+                                    <div>
+                                        <label for="title" class="form-label fw-bold">Select Course</label>
+                                        <ng-multiselect-dropdown name="language" formControlName="courseMasterSno"
+                                            [placeholder]="'Select Course'" [data]="myCourseList"
+                                            [settings]="courseSettings">
+                                        </ng-multiselect-dropdown>
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('courseMasterSno')?.touched && couponForm.get('courseMasterSno')?.hasError('required')">
+                                        Select The Course</small>
+                                </div>
+
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Coupon Type
+                                    </label>
+                                    <div class="d-flex">
+                                        <select id="cat" class="select2 form-select" formControlName="couponValueType"
+                                            (change)="selectedCodeType($event)">
+                                            <option selected value="null">Select Value Type</option>
+                                            <option *ngFor="let couponValueType of couponValueTypeList;let i =index;"
+                                                [value]="couponValueType?.codesDtlSno">
+                                                {{couponValueType.cdValue}}</option>
+                                        </select>
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('couponValueType')?.touched && couponForm.get('couponValueType')?.hasError('required')">
+                                        Select the Coupon Value Type</small>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Coupon Value <span
+                                            *ngIf="selectedType == 'Absolute'">(₹)</span>
+                                        <span *ngIf="selectedType == 'Flat'">(%)</span>
+                                    </label>
+                                    <div class="d-flex">
+                                        <input class="form-control" type="number" formControlName="couponValue"
+                                            placeholder="Enter Discount Percentage">
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('couponValue')?.touched && couponForm.get('couponValue')?.hasError('required')">
+                                        Enter The Discount</small>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Expiry Type
+                                    </label>
+                                    <div class="d-flex">
+                                        <select id="cat" class="select2 form-select" formControlName="expiryType"
+                                            (change)="selectCouponExpiryType($event)">
+                                            <option selected value="null">Select Expiry Type</option>
+                                            <option *ngFor="let couponExpity of couponExpityTypeList;let i =index;"
+                                                [value]="couponExpity?.codesDtlSno">
+                                                {{couponExpity.cdValue}}</option>
+                                        </select>
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('expiryType')?.touched && couponForm.get('expiryType')?.hasError('required')">
+                                        Select The Expiry Type</small>
+                                </div>
+                                <div class="mt-4" *ngIf="selectedCouponType == 'Limited' || expiryType == 'Limited'">
+                                    <label class="form-label fw-bold me-2">Expiry Validity
+                                    </label>
+                                    <div class="d-flex">
+                                        <input class="form-control" type="date" formControlName="expiryTime"
+                                            [min]="minDate">
+                                    </div>
+                                    <small class="text-danger pl-2"
+                                        *ngIf="couponForm.get('expiryTime')?.touched && couponForm.get('expiryTime')?.hasError('required')">
+                                        Select The Expiry Date </small>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Description
+                                    </label>
+                                    <div class="d-flex">
+                                        <input class="form-control" type="text" formControlName="description">
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <label class="form-label fw-bold me-2">Status
+                                    </label>
+                                    <div class="d-flex">
+                                        <select class="form-select" formControlName="activeFlag">
+                                            <option value="true">Active</option>
+                                            <option value="false">InActive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="mt-4">
+                                    <button class="btn btn-md btn-primary float-end" (click)="saveCourseCoupon()"
+                                        [disabled]="couponForm.invalid" *ngIf="!couponForm?.value?.courseCouponSno">
+                                        Save
+                                    </button>
+                                    <button class="btn btn-md btn-primary float-end" (click)="updateCourseCoupon()"
+                                        *ngIf="couponForm?.value?.courseCouponSno">
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                    <!-- </div> -->
+                </div>
+            </div>
+            <div class="col-xl-7 col-md-7 col-sm-12">
+                <!-- <div class="card p-2 rounded-0 mb-4">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p>Course Coupon Details</p>
+                    </div>
+                </div>
+            </div> -->
+                <div class="d-flex">
+                    <h4 class="ps-3 mb-3">Course Coupon Details</h4>
+                </div>
+
+                <div class="card tableDiv table-responsive table-data">
+                    <table class="table table-borderless table-hover table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <!-- <th scope="col" class="text-left">Course Name</th> -->
+                                <th scope="col" class="text-left">Course Code</th>
+                                <th scope="col" class="text-left">Course Value</th>
+                                <th scope="col" class="text-left">Validity</th>
+                                <th scope="col" class="text-left">Status</th>
+                                <th scope="col" class="text-left">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let course of courseCouponList; let i = index;" role="button">
+                                <th scope="row">{{i+1}}</th>
+                                <!-- <td class="text-left">{{course.categoryName}}</td> -->
+                                <td class="text-left">{{course.couponCode}}</td>
+                                <td class="text-left">{{course.couponValue}}</td>
+                                <td class="text-left"> {{course.expiryTime | date: 'dd/MM/yyyy'}}</td>
+                                <td class="text-left">{{ course.activeFlag ? 'Active' : 'Inactive' }}</td>
+                                <td style="padding:5px;">
+                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                        <div class="btn-group mr-2 btn-group-sm text-center ms-4" role="group"
+                                            aria-label="First group">
+                                            <button type="button" class="btn btn-light" (click)="openDialog(i)">
+                                                <span class="menu-icon tf-icons iconify text-secondary"
+                                                    data-icon="bx:edit"></span>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <!-- <td style="padding:5px;">
+                            <div class="dropdown">
+
+                                <button type="button" class="btn btn-light" data-bs-toggle="dropdown">
+                                    <span class="menu-icon tf-icons iconify text-secondary"
+                                        data-icon="bx:dots-vertical-rounded"></span>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                    <a class="dropdown-item" (click)="gotoQuestionersPage(i)">Create Test</a>
+                                    <a class="dropdown-item" (click)="gotoDiscountPage(i)">Discount</a>
+                                </div>
+                            </div>
+                        </td> -->
+
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

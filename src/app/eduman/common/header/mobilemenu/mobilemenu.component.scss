@@ -1,0 +1,38 @@
+//mobile menu style
+@import '../../../../../custom-palettes.scss';
+
+@import '../../../../../custom-palettes.scss';
+
+.sidenav {
+    @apply mb-10 rounded-none;
+}
+.sidenav-nav-link {
+    @apply text-[16px] flex justify-between items-center cursor-pointer w-full py-2 px-0 text-heading border-0 border-t border-solid border-borderGray font-primary;
+    .sidenav-link-text {
+        @apply font-semibold;
+    }
+    .menu-collapse-icon {
+        @apply text-[24px] rounded-none;
+    }
+    &:hover {
+        @apply text-heading;
+    }
+}
+.sublevel-nav-link {
+    @apply text-[16px] flex justify-start items-center cursor-pointer w-full py-2 px-5 text-heading border-0 border-t border-solid border-borderGray font-primary;
+    &:hover {
+        @apply text-themeBlue;
+    }
+}
+.active-sublevel {
+    @apply text-themeBlue;
+}
+
+.header-search input{
+    border-width: 3px !important;
+}
+
+.header-search{
+    background: white !important;
+}
+

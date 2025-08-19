@@ -1,0 +1,40 @@
+// message style
+@import '../../../../custom-palettes.scss';
+
+.message-sticker {
+	img {
+		@apply pl-[22px] max-w-full maxMd:pl-0;
+	}
+}
+.message-profile-text {
+	@apply mb-10;
+	span {
+		@apply text-heading font-semibold text-[18px] mb-[27px] block;
+	}
+}
+.message-meta {
+	@apply flex items-center maxMd:mb-[50px];
+}
+.message-meta-link {
+	@apply ml-5;
+	h4 {
+		@apply leading-none mb-[3px] text-[18px];
+	}
+	p {
+		@apply mb-0;
+	}
+}
+.feedback-wrapper {
+	@apply pl-[60px] maxMd:pl-0 maxMd:mt-[25px];
+}
+.etablist-price {
+	@apply h-[160px] w-[160px] bg-[#2467ec] rounded-[50%] flex items-center justify-center absolute bottom-[2%] right-0 maxMd:left-[250px] maxXs:left-0;
+}
+.etablist-price {
+	p {
+		@apply text-white mb-0 text-center;
+		span {
+			@apply block text-center text-[40px] font-black py-[5px] px-[0] leading-none;
+		}
+	}
+}

@@ -1,0 +1,84 @@
+//faq details style
+@import '../../../../custom-palettes.scss';
+
+.faq-detalis-info {
+	h3 {
+		@apply text-[28px] mb-[25px] maxXs:text-[26px];
+	}
+}
+.faq-suppoert ul li::marker {
+	@apply text-[25px] bg-[#7a7878];
+}
+.faq-detalis-info {
+	p {
+		@apply mb-[35px];
+	}
+}
+.faq-suppoert {
+	p {
+		@apply mb-[23px];
+	}
+}
+.faq-suppoert {
+	h5 {
+		@apply text-[18px] mb-[15px];
+	}
+}
+.payment-method-info {
+	h5 {
+		@apply text-[18px] mb-[15px];
+	}
+}
+
+.faq-suppoert {
+	ul {
+		@apply pl-[60px] mb-[30px] maxXs:pl-5;
+		li {
+			@apply relative mb-5;
+			&:last-child {
+				@apply mb-0;
+			}
+			&:before {
+				content: "";
+				@apply absolute top-2.5 -left-5 bg-[#7a7878] h-2 w-2 rounded-lg;
+			}
+			a {
+				@apply text-themeBlue text-[16px] font-semibold underline;
+			}
+		}
+	}
+}
+.faq-sidebar-topc {
+	@apply rounded-lg bg-[#fcfdff] pt-[30px] px-[30px] pb-10 border border-solid border-borderGray;
+	h5 {
+		@apply mb-[25px] text-[20px];
+	}
+}
+.sidebar-topic-list .contact-btn {
+	@apply w-full;
+}
+.sidebar-topic-list {
+	ul {
+		@apply mb-[45px];
+		li {
+			@apply text-[16px] text-bodyText mb-2;
+			a {
+				&:hover {
+					@apply text-themeBlue;
+				}
+			}
+		}
+	}
+}
+.payment-method-info {
+	a {
+		@apply text-themeBlue font-semibold;
+	}
+}
+.contact-btn {
+	@apply bg-themeBlue rounded font-semibold inline-block text-center h-[54px] leading-[54px] text-white hover:text-heading hover:bg-themeOrange;
+}
+
+.faq-content-wrapper {
+	@apply mr-5 maxLg:mr-0;
+}

@@ -1,0 +1,197 @@
+<h2 mat-dialog-title>Course Detail</h2>
+<div mat-dialog-content>
+    <section class="course-detalis-area ">
+        <div class="container">
+            <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]" *ngIf="courseDetails">
+                <div class="col-span-12 xl:col-span-12">
+                    <div class="course-detalis-wrapper ">
+                        <div class="d-flex pb-3">
+                            <div class="d-block">
+                                <h4>Course Image</h4>
+                                <img [src]="courseDetails?.courseImage" alt="" width="300" height="200">
+                            </div>
+                            <div class="d-block ms-2">
+                                <h4>Promo video</h4>
+                                <video class="video-div" controls muted [src]="courseDetails?.promotionalVideo"
+                                    controlsList="nodownload" id="videoPlayer" width="300" height="200">
+                                </video>
+                                <!-- <div class="course-video-thumb w-img">
+                                    <img [src]="courseDetails?.courseImage" alt="image not found" width="300"
+                                        height="200">
+                                    <div class="sidber-video-btn">
+                                        <a class="popup-video" href="javascript:void(0)"><i class="fas fa-play"></i></a>
+                                    </div>
+                                </div> -->
+                            </div>
+                        </div>
+                        <h4>Title</h4>
+                        <div class="course-heading">
+                            <h2 style="font-size: 2rem !important;"> <span
+                                    class="text-secondary">{{courseDetails?.subCategoryName}}</span> :
+                                <span style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">
+                                    {{courseDetails?.title}} </span>
+                            </h2>
+                            <!-- <div class="course-star">
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <ul>
+                                    <li><i class="fas fa-star"></i></li>
+                                </ul>
+                                <ul>
+                                    <li><i class="fal fa-star"></i></li>
+                                </ul>
+                                <span>(254 reviews)</span>
+                            </div> -->
+                        </div>
+                        <!-- <div class="course-detelis-meta">
+                            <div class="course-meta-wrapper border-line-meta">
+                                <div class="course-meta-img">
+                                    <a [routerLink]="['/instructor-profile']"><img
+                                            src="assets/img/course/course-meta.png" alt="course-meta"></a>
+                                </div>
+                                <div class="course-meta-text">
+                                    <span>Created by</span>
+                                    <h6><a [routerLink]="['/instructor-profile']">{{
+                                            courseDetails?.instructor?.firstName }}
+                                            {{ courseDetails?.instructor?.lastName }}</a></h6>
+                                </div>
+                            </div>
+                            <div class="course-Enroll border-line-meta">
+                                <p>Total Enrolled</p>
+                                <span>5,420</span>
+                            </div>
+                            <div class="course-update border-line-meta">
+                                <p>Last Update</p>
+                                <span>01 January 2023 </span>
+                            </div>
+                            <div class="course-category">
+                                <p>01 January 2023 </p>
+                                <span><a [routerLink]="['/course']">{{courseDetails?.subCategoryName}}</a></span>
+                            </div>
+                        </div> -->
+                        <div class="course-description">
+                            <div class="course-Description">
+                                <h4>Description</h4>
+                            </div>
+                            <p [innerHTML]="courseDetails?.description"></p>
+                        </div>
+                        <div class="course-learn-wrapper">
+                            <div class="course-learn">
+                                <div class="course-leranm-tittle">
+                                    <h4 class="mb-[15px]">What you'll learn</h4>
+                                </div>
+                                <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                                    <div class="col-span-12 xl:col-span-6">
+                                        <div class="course-leran-text f-left">
+                                            <ul>
+                                                <li
+                                                    *ngFor="let learn of courseDetails?.courseIntended?.studentsLearn?.slice(0,3)">
+                                                    {{learn?.learn}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 xl:col-span-6">
+                                        <div class="course-leran-text">
+                                            <ul>
+                                                <li
+                                                    *ngFor="let learn of courseDetails?.courseIntended?.studentsLearn?.slice(3,6)">
+                                                    {{learn?.learn}}</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="course-requirements pt-[45px]">
+                            <h4>Who's it For?</h4>
+                            <div class="course-requirements-text">
+                                <ul>
+                                    <li *ngFor="let requirement of courseDetails?.courseIntended?.requirements">•
+                                        {{requirement?.prerequisites}}</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="course-curriculum pt-10 pb-[50px]">
+                            <div class="course-curriculam">
+                                <h4>Curriculum</h4>
+                            </div>
+                            <ul>
+                                <li> {{courseDetails?.curriculum?.length}} {{
+                                    courseDetails?.curriculum?.length === 1 ? 'Section' : 'Sections' }}
+                                    {{courseDetails?.lectureLength}} {{ courseDetails?.lectureLength === 1 ? 'Lecture' :
+                                    'Lectures' }}</li>
+                            </ul>
+                            <app-coursecurriculam [data]="courseDetails?.curriculum"></app-coursecurriculam>
+                        </div>
+                        <!-- <app-courseinstructor [data]="courseDetails?.instructor"></app-courseinstructor>
+                        <app-studentfeedback></app-studentfeedback>
+                        <app-coursereview></app-coursereview>
+                        <div class="course-review-btn">
+                            <a id="show-review-box" class="edu-btn" href="javascript:void(0)"
+                                (click)=writeReview()>Write a
+                                Review</a>
+
+                            <div id="review-box" class="review-comment mt-[45px]" [class.d-block]="writeReviewActive">
+                                <div class="comment-title mb-[20px]">
+                                    <p>Your email address will not be published. Required fields are marked *
+                                    </p>
+                                </div>
+                                <div class="comment-rating mb-[20px]">
+                                    <span>Overall ratings</span>
+                                    <ul>
+                                        <li><a><i class="fas fa-star"></i></a></li>
+                                        <li><a><i class="fas fa-star"></i></a></li>
+                                        <li><a><i class="fas fa-star"></i></a></li>
+                                        <li><a><i class="fas fa-star"></i></a></li>
+                                        <li><a><i class="fal fa-star"></i></a></li>
+                                    </ul>
+                                </div>
+                                <div class="comment-input-box mb-[15px]">
+                                    <form action="#">
+                                        <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                                            <div class="col-span-12">
+                                                <textarea placeholder="Your review"
+                                                    class="comment-input comment-textarea mb-[20px]"></textarea>
+                                            </div>
+                                            <div class="col-span-12 xxl:col-span-6">
+                                                <div class="comment-input mb-[20px]">
+                                                    <input type="text" placeholder="Your Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-span-12 xxl:col-span-6">
+                                                <div class="comment-input mb-[20px]">
+                                                    <input type="email" placeholder="Your Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-span-12">
+                                                <div class="comment-submit">
+                                                    <button type="submit" class="edu-btn">Submit</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div> -->
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center" *ngIf="isNoRecord && !courseDetails" style="text-align: center;min-width: 35vw">
+                <img src="assets/img/norecord.png" width="300" height="300" />
+                <p class="fs-5">No Records found</p>
+            </div>
+
+        </div>
+    </section>
+</div>
+<div mat-dialog-actions class="float-end">
+    <button mat-flat-button color="primary" mat-dialog-close>Close</button>
+</div>

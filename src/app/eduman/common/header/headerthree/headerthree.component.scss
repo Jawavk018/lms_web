@@ -1,0 +1,35 @@
+//mobile menu style
+@import '../../../../../custom-palettes.scss';
+
+.mobile-menus {
+    & ul {
+        & li {
+            & a {
+                @apply block w-full text-[16px] z-[1] relative py-2 px-0 text-heading border-t border-solid border-borderGray;
+            }
+            &:hover > a {
+                @apply text-black;
+            }
+            &.mm-active > .has-arrow[aria-expanded="true"] {
+                @apply text-black;
+            }
+            &.mm-active .mm-active > .has-arrow[aria-expanded="true"] {
+                @apply text-black bg-transparent;
+            }
+        }
+    }
+      .mm-active .mm-show {
+          @apply py-0 px-2.5;
+      }
+      .mm-active .mm-show .mm-active .mm-show {
+            @apply py-0 px-2.5;
+      }
+      .metismenu .has-arrow::after {
+        content: '\f067';
+        font-family: "Font Awesome 5 Pro";
+        @apply transform-none top-0.5 right-0 h-10 w-10 border-0 text-center bg-[#EDEEF2] leading-10;
+    }
+    .metismenu .has-arrow.mm-active::after {
+        content: '\f068';
+    }
+}

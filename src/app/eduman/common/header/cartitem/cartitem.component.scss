@@ -1,0 +1,8 @@
+@import '../../../../../custom-palettes.scss';
+
+.cartmini__viewcart {
+	@apply px-5;
+}
+.cartmini__viewcart a {
+    @apply mb-[15px] block;
+}

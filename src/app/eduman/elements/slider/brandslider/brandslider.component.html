@@ -1,0 +1,73 @@
+<!-- brand-area-start -->
+<div class="brand-area theme-bg pt-[90px] pb-[120px]">
+   <div class="container">
+      <div class="grid grid-cols-12">
+         <div class="col-span-12">
+            <div class="brand-wrapper text-center">
+               <div class="brand-wrapper text-center">
+                  <div class="swiper-container brand-active">
+                     <div class="swiper-wrapper">
+                        <swiper class="mySwiper" [slidesPerView]="1" [spaceBetween]="30" [loop]="true" [autoplay]="{
+                            delay: 2500,
+                            disableOnInteraction: false
+                        }" [breakpoints]="{
+                            '320': {
+                              slidesPerView: 1
+                            },
+                            '480': {
+                                slidesPerView: 2
+                              },
+                            '640': {
+                              slidesPerView: 3
+                            },
+                            '991': {
+                              slidesPerView: 4
+                            },
+                            '1200': {
+                              slidesPerView: 5
+                            },
+                            '1400': {
+                              slidesPerView: 6
+                            }
+                          }">
+
+                           <ng-template swiperSlide>
+                              <div class="singel-brand">
+                                 <img src="assets/img/brand/brand-01.png" alt="image not found">
+                              </div>
+                           </ng-template>
+                           <ng-template swiperSlide>
+                              <div class="singel-brand">
+                                 <img src="assets/img/brand/brand-02.png" alt="image not found">
+                              </div>
+                           </ng-template>
+                           <ng-template swiperSlide>
+                              <div class="singel-brand">
+                                 <img src="assets/img/brand/brand-03.png" alt="image not found">
+                              </div>
+                           </ng-template>
+                           <ng-template swiperSlide>
+                              <div class="singel-brand">
+                                 <img src="assets/img/brand/brand-04.png" alt="image not found">
+                              </div>
+                           </ng-template>
+                           <ng-template swiperSlide>
+                              <div class="singel-brand">
+                                 <img src="assets/img/brand/brand-05.png" alt="image not found">
+                              </div>
+                           </ng-template>
+                           <ng-template swiperSlide>
+                              <div class="singel-brand">
+                                 <img src="assets/img/brand/brand-06.png" alt="image not found">
+                              </div>
+                           </ng-template>
+                        </swiper>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- brand-area-end -->

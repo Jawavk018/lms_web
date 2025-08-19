@@ -1,0 +1,40 @@
+// skill style
+@import '../../../../custom-palettes.scss';
+
+.skill-background-img {
+	@apply bg-center bg-cover rounded-[5px];
+}
+.skill-wrapper {
+	padding: 65px 190px 65px 190px;
+	@apply px-[190px] py-[65px] minMaxTablet:px-[150px] minMaxTablet:py-[65px] minMaxTab:py-[65px] minMaxTab:px-[60px] minMaxTabSmall:py-[65px] minMaxTabSmall:px-[90px] maxSm:py-[65px] maxSm:px-[30px];
+}
+
+.skill-content {
+	span {
+		@apply text-white text-[18px] mb-[15px] block;
+	}
+	h3 {
+		@apply text-white text-[28px] mb-[35px] font-bold;
+		br {
+			@apply maxXs:hidden;
+		}
+	}
+	.edu-four-btn:hover {
+		@apply text-heading bg-white border-white;
+	}
+}
+.skill-thumb {
+	@apply ml-10 maxMd:ml-0 maxMd:mt-20;
+	img {
+		@apply max-w-full;
+	}
+}
+.course-price-start {
+	@apply bg-themeOrange text-white h-[100px] w-[100px] text-center rounded-[50%] -top-10 left-2.5 absolute pt-[22px] text-[14px];
+}
+.course-price-start .course-price {
+	@apply block text-[36px] font-bold;
+}
+.etablist-price p {
+	@apply text-center;
+}

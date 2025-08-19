@@ -1,0 +1,78 @@
+
+<!-- Button to Open the Modal -->
+<!-- <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#myModal">
+    Open Modal
+</button> -->
+  
+  <!-- The Modal -->
+   <div class="modal fade" id="myModal" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+      <div class="modal-content">
+  
+        <!-- Modal Header -->
+        <div class="modal-header">
+          <h4 class="modal-title">Choose Your Prefered Topics</h4>
+          <!-- <button type="button" class="btn-close" data-bs-dismiss="modal"></button> -->
+        </div>
+  
+        <!-- Modal Body -->
+      <div class="modal-body">
+          <div class="row g-3"> 
+            <div *ngFor="let preference of subCategoryList; let i = index;" class="col-6 col-md-4 col-lg-3">
+              <button type="button" class="btn btn-outline-primary w-100 selectbtn" 
+                      [ngClass]="{'active': preference?.selected}" 
+                      (click)="toggleSelection(preference)">
+                {{preference?.subCategoryName}}
+              </button>
+            </div>
+          </div>
+      </div>
+  
+  
+        <!-- Modal Footer -->
+        <div class="modal-footer">
+          <button #closepreference  class="btn btn-secondary" data-bs-dismiss="modal" (click)="closePreferenceModal()">Close</button>
+          <button type="button" class="btn btn-primary" (click)="update()" [disabled]="!anySelected">Save</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <span #mymodal type="button" class="btn btn-primary d-none" id="myModal" data-bs-toggle="modal" data-bs-target="#myModal"></span>
+
+  <!-- <div class="modal fade" id="myModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title">Choose Your Preferred Topics</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+  
+        <div class="modal-body">
+          <div class="list-group">
+            <div *ngFor="let preference of subCategoryList; let i = index;" class="list-group-item">
+              <div class="d-flex justify-content-between align-items-center">
+                <h5 class="mb-0">{{ preference?.subCategoryName }}</h5>
+                <div>
+                  <button type="button" class="btn btn-sm btn-outline-primary selectbtn me-2"
+                          [ngClass]="{'active': preference?.selected}" 
+                          (click)="toggleSelection(preference)">
+                    {{ preference?.selected ? 'Selected' : 'Select' }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary" (click)="update()" [disabled]="!anySelected">Save</button>
+        </div>
+      </div>
+    </div>
+  </div> -->
+  
+  

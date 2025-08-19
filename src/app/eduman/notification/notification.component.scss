@@ -1,0 +1,50 @@
+.card {
+    border: 1px solid #e3e6f0;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+.title p {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin: 0;
+    color: #4e73df;
+}
+.body {
+    margin-top: 1rem;
+}
+.body p {
+    margin: 0;
+    font-size: 1.1rem;
+    color: #858796;
+}
+.date {
+    text-align: right;
+    color: #6c757d;
+    font-size: 0.9rem;
+}
+
+.card-unread {
+    background-color: #f5f0be7d; /* Light yellow color for unread notifications */
+}
+
+.card-read {
+    background-color: #fff; /* Default white color for read notifications */
+}
+
+.centered {
+    // position: absolute;
+    // top: 30%;
+    // left: 50%;
+    // transform: translate(-50%, 15%);
+    text-align: center;
+  }
+  
+  @media(min-width:200px) and (max-width:768px) {
+    .centered {
+      // position: absolute;
+      // top: 50%;
+      // left: 50%;
+      // transform: translate(-50%, 50%);
+      text-align: center;
+    }
+  }

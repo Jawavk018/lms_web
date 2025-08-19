@@ -1,0 +1,9 @@
+// event-shape
+@import '../../../../custom-palettes.scss';
+
+.event-shape {
+	@apply absolute right-[13%] top-[325px] minMaxLaptop:right-[6%] minMaxTablet:right-[0%] minMaxTab:right-[4%] maxMd:hidden;
+}
+.event-area {
+	@apply bg-grayBg;
+}

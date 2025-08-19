@@ -1,0 +1,26 @@
+<nav>
+  <ul>
+    <li
+      *ngFor="let category of categoryList"
+      [routerLink]="['/course']"
+      [queryParams]="{ categorySno: category?.categorySno }"
+      [ngClass]="category.subCategories ? 'item-has-children' : ''"
+      class="category-item"
+    >
+      <a>{{ category.categoryName }}</a>
+      <ul class="category-submenu" *ngIf="category.subCategories">
+        <li
+          *ngFor="let subItem of category.subCategories"
+          [routerLink]="['/course']"
+          [queryParams]="{
+            categorySno: category?.categorySno,
+            subCategorySno: subItem?.subCategorySno
+          }"
+          class="subcategory-item"
+        >
+          <a>{{ subItem.subCategoryName }}</a>
+        </li>
+      </ul>
+    </li>
+  </ul>
+</nav>

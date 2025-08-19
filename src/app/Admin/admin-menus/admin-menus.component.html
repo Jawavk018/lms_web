@@ -1,0 +1,97 @@
+<!-- Menu -->
+<div class="row">
+    <div class="col-md-2 col-sm-12">
+        <div class="row">
+            <div class="col-md-12">
+                <div id="sidenav" class="d-none" (click)="open()"></div>
+                <mat-sidenav-container>
+                    <mat-sidenav #sidenav>
+                        <mat-nav-list class="sidenav-list">
+                            <div class="d-flex justify-content-evenly">
+                                <h5>L&T Admin</h5>
+                                <a type="button" class="btn-close text-dark btn-lg" (click)="sidenav.toggle();"></a>
+                            </div>
+                            <a mat-list-item [class]="selectedMenu == menu.menuName ? 'active':''"
+                                *ngFor="let menu of menus;let i = index;"
+                                (click)="navigateRouter(menu?.navigateUrl,i,null);sidenav.toggle();">
+                                <span class="menu-icon tf-icons iconify" [attr.data-icon]="menu?.icon"></span>
+                                <span>{{menu.menuName}}</span>
+                            </a>
+                            <a mat-list-item>
+                                <span class="menu-icon tf-icons iconify" data-icon="humbleicons:logout"></span>
+                                <span>LogOut</span>
+                            </a>
+                        </mat-nav-list>
+                    </mat-sidenav>
+                </mat-sidenav-container>
+            </div>
+        </div>
+
+        <aside class="layout-menu menu-vertical menu bg-menu-theme " style="height: 100%;margin: 0;">
+            <!-- <aside id="layout-menu" class="layout-menu menu-vertical menu bg-menu-theme"> -->
+            <div class="app-brand demo">
+                <a href="#" class="app-brand-link">
+                    <span class="app-brand-logo demo">
+                    </span>
+                    <img src="assets/img/favicon.png" />
+                </a>
+                <a href="#" class="layout-menu-toggle menu-link text-large ms-auto d-block d-xl-none">
+                    <i class="bx bx-chevron-left bx-sm align-middle"></i>
+                </a>
+            </div>
+
+            <div class="menu-inner-shadow"></div>
+            <ul class="menu-inner py-1">
+                <span *ngFor="let menu of menus;let i=index;">
+                    <li class="menu-item" *ngIf="!menu?.hasSubMenu" [ngClass]="selectedMenu == menu.menuName ? 'active':'null'"
+                        (click)="navigateRouter(menu?.navigateUrl,i,null)">
+                        <a href="javascript:void(0);" class="menu-link">
+                            <span class="menu-icon tf-icons iconify" [attr.data-icon]="menu?.icon"></span>
+                            <div>{{menu?.menuName}} </div>
+                        </a>
+
+                        
+                    </li>
+                    
+                   
+
+                    <li class="menu-item" *ngIf="menu?.hasSubMenu">
+                        <a href="javascript:void(0);" class="menu-link menu-toggle">
+                            <span class="menu-icon tf-icons  iconify" [attr.data-icon]="menu?.icon"></span>
+                            <div>{{menu?.menuName}}</div>
+                        </a>
+
+                        
+
+                        <!-- <ul class="menu-sub">
+                            <span>
+                                <li class="menu-item" [ngClass]="submenu?.isActive?'active':'null'"
+                                    *ngFor="let submenu of menu.subMenus;let j=index;"
+                                    (click)="navigateRouter(submenu?.navigateUrl,i,j)">
+                                    <a href="javascript:void(0);" class="menu-link">
+                                        <div>{{submenu?.menuName}}</div>
+                                    </a>
+                                </li>
+                            </span>
+                        </ul> -->
+                    </li>
+                </span>
+                <span>
+                    <li class="menu-item">
+                        <a href="javascript:void(0);" class="menu-link" (click)="logout()">
+                            <span class="menu-icon tf-icons iconify" data-icon="humbleicons:logout" ></span>
+                            <div>LogOut</div>
+                        </a>
+                    </li>
+                </span>
+                
+            </ul>
+        </aside>
+    </div>
+    <div class="col-md-9 col-sm-12">
+        <app-categories *ngIf="selectedMenu == 'Category'"></app-categories>
+        <app-sub-categories *ngIf="selectedMenu == 'Sub Categories'"></app-sub-categories>
+        <app-topics *ngIf="selectedMenu == 'Topics'"></app-topics>
+    </div>
+</div>
+<!-- </aside> -->

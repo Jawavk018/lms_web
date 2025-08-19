@@ -1,0 +1,50 @@
+<div class="course-curriculam-accodion mt-[30px]">
+    <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let curriculum of data;let i=index;" (opened)="panelOpenState = true"
+                    (closed)="panelOpenState = false">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            <span class="accordion-header">
+                                <span class="accordion-tittle">
+                                    <span>{{curriculum?.section}}</span>
+                                </span>
+                                <span class="accordion-tittle-inner">
+                                    <span>{{curriculum?.lecture?.length ?? 0}} {{curriculum?.lecture?.length === 1 ? 'lecture' :'lectures'}}  
+                                        <!-- • 47m -->
+                                    </span>
+                                </span>
+                            </span>
+                        </mat-panel-title>
+                    </mat-expansion-panel-header>
+                    <div class="accordion-body">
+                        <div class="course-curriculum-content sm:flex justify-between items-center"
+                            *ngFor="let lecture of curriculum?.lecture;">
+                            <div class="course-curriculum-info" >
+                                <i class="flaticon-youtube" [style.color]="getIconColor(lecture)"></i>
+                                <h4 [style.color]="getTitleColor(lecture)">{{lecture?.title}}</h4>
+                            </div>
+                            <div class="course-curriculum-meta" *ngIf="lecture?.isForFree">
+                                <a class="popup-video" href="javascript:void(0)"
+                                style="color: blue;text-decoration: underline;"
+                                (click)="openDialog(lecture)">Preview</a>
+                            </div>
+                            <div class="course-curriculum-meta">
+                                <!-- <span>5:30</span> -->
+                                <!-- <span class="time"> <i class="flaticon-lock"></i> {{lecture.duration ? lecture.duration :'0 secs'}}</span> -->
+                                <span class="time">
+                                    <i class="bi" [ngClass]="lecture?.isForFree ? 'bi-youtube' : 'flaticon-lock'"></i>
+                                    {{lecture.duration ? lecture.duration : '0 secs'}}
+                                </span>
+                            </div>
+                        </div>
+                        <div class="course-curriculum-info ms-3 pointer" (click)="goToTest(i)" *ngIf="curriculum?.testAvailable">
+                            <span class="time"> <i class="bi bi-file-earmark"></i> <h4>Take a Test</h4></span>
+                        </div>
+                    </div>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </div>
+</div>

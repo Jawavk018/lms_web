@@ -1,0 +1,117 @@
+<!-- <app-headerfour></app-headerfour>
+
+<app-breadcrumb breadcrumbTitle="My Cart" breadcrumbSubTitle="Cart"></app-breadcrumb>
+ Cart Area Strat-->
+<section class="cart-area pt-[100px] pb-[100px]">
+    <div class="container">
+        <div class="grid grid-cols-12">
+            <div class="col-span-12">
+                <div class="table-content table-responsive">
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th class="product-thumbnail">Images</th>
+                                <th class="cart-product-name">Product</th>
+                                <th class="product-price">Unit Price</th>
+                                <th class="product-quantity">Quantity</th>
+                                <th class="product-subtotal">Total</th>
+                                <th class="product-remove">Remove</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td class="product-thumbnail"><a [routerLink]="['/course-details']"><img
+                                            src="assets/img/products/product-thumb-01.png" alt="img not found"></a></td>
+                                <td class="product-name"><a [routerLink]="['/course-details']">Turn Yourself</a></td>
+                                <td class="product-price"><span class="amount">$24.00</span></td>
+                                <td class="product-quantity text-center">
+                                    <div class="product-quantity mt-2.5">
+                                        <div class="product-quantity-form">
+                                            <form action="#">
+                                                <button class="cart-minus" (click)="counter('count', 'subtract')"><i
+                                                        class="far fa-minus"></i></button>
+                                                <p class="cart-input">{{ counters['count'] }}</p>
+                                                <button class="cart-plus" (click)="counter('count', 'add')"><i
+                                                        class="far fa-plus"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-subtotal"><span class="amount">$24.00</span></td>
+                                <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="product-thumbnail"><a [routerLink]="['/course-details']"><img
+                                            src="assets/img/products/product-thumb-02.png" alt="img not found"></a></td>
+                                <td class="product-name"><a [routerLink]="['/course-details']">Art of Not Giving</a>
+                                </td>
+                                <td class="product-price"><span class="amount">$12.00</span></td>
+                                <td class="product-quantity text-center">
+                                    <div class="product-quantity mt-2.5">
+                                        <div class="product-quantity-form">
+                                            <form action="#">
+                                                <button class="cart-minus" (click)="counter('count1', 'subtract')"><i
+                                                        class="far fa-minus"></i></button>
+                                                <p class="cart-input">{{ counters['count1'] }}</p>
+                                                <button class="cart-plus" (click)="counter('count1', 'add')"><i
+                                                        class="far fa-plus"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-subtotal"><span class="amount">$12.00</span></td>
+                                <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                            </tr>
+                            <tr>
+                                <td class="product-thumbnail"><a [routerLink]="['/course-details']"><img
+                                            src="assets/img/products/product-thumb-03.png" alt="img not found"></a></td>
+                                <td class="product-name"><a [routerLink]="['/course-details']">Attract Women</a></td>
+                                <td class="product-price"><span class="amount">$42.00</span></td>
+                                <td class="product-quantity text-center">
+                                    <div class="product-quantity mt-2.5">
+                                        <div class="product-quantity-form">
+                                            <form action="#">
+                                                <button class="cart-minus" (click)="counter('count2', 'subtract')"><i
+                                                        class="far fa-minus"></i></button>
+                                                <p class="cart-input">{{ counters['count2'] }}</p>
+                                                <button class="cart-plus" (click)="counter('count2', 'add')"><i
+                                                        class="far fa-plus"></i></button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td class="product-subtotal"><span class="amount">$42.00</span></td>
+                                <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="col-span-12">
+                <div class="coupon-all">
+                    <div class="coupon flex items-center">
+                        <input id="coupon_code" class="input-text" name="coupon_code" placeholder="Coupon code"
+                            type="text">
+                        <button class="edu-btn" name="apply_coupon" type="submit">Apply coupon</button>
+                    </div>
+                    <div class="coupon2">
+                        <button class="edu-btn" name="update_cart" type="submit">Clear cart</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 text-right">
+                <div class="cart-page-total inline-block text-left md:w-96 w-full">
+                    <h2>Cart totals</h2>
+                    <ul class="mb-[20px]">
+                        <li>Subtotal <span>$78.00</span></li>
+                        <li>Total <span>$78.00</span></li>
+                    </ul>
+                    <a class="edu-border-btn" [routerLink]="['/checkout']">Proceed to checkout</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+Cart Area End
+
+<app-footerone></app-footerone> -->

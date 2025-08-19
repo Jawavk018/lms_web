@@ -1,0 +1,60 @@
+<app-headerfour></app-headerfour>
+
+<app-breadcrumb breadcrumbTitle="My Wishlist" breadcrumbSubTitle="Wishlist"></app-breadcrumb>
+
+<!-- Cart Area Strat-->
+<div class="cart-area pt-[100px] pb-[100px]">
+    <div class="container">
+        <div class="grid grid-cols-12">
+            <div class="col-span-12">
+                <form action="#">
+                    <div class="table-content table-responsive">
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th class="product-thumbnail">Images</th>
+                                    <th class="cart-product-name">Product</th>
+                                    <th class="product-price">Unit Price</th>
+                                    <th class="product-quantity">Add to cart</th>
+                                    <th class="product-subtotal">Total</th>
+                                    <th class="product-remove">Remove</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="product-thumbnail"><a [routerLink]="['/course-details']"><img
+                                                src="assets/img/products/product-thumb-05.png" alt="img not found"></a>
+                                    </td>
+                                    <td class="product-name"><a [routerLink]="['/course-details']">Best
+                                            Inspirational</a></td>
+                                    <td class="product-price"><span class="amount">$20.00</span></td>
+                                    <td class="product-quantity">
+                                        <a [routerLink]="['/cart']" class="edu-border-btn">Add to Cart</a>
+                                    </td>
+                                    <td class="product-subtotal"><span class="amount">$20.00</span></td>
+                                    <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                </tr>
+                                <tr>
+                                    <td class="product-thumbnail"><a [routerLink]="['/course-details']"><img
+                                                src="assets/img/products/product-thumb-11.png" alt="img not found"></a>
+                                    </td>
+                                    <td class="product-name"><a [routerLink]="['/course-details']">Wealth & Happiness
+                                        </a></td>
+                                    <td class="product-price"><span class="amount">$24.00</span></td>
+                                    <td class="product-quantity">
+                                        <a [routerLink]="['/cart']" class="edu-border-btn">Add to Cart</a>
+                                    </td>
+                                    <td class="product-subtotal"><span class="amount">$24.00</span></td>
+                                    <td class="product-remove"><a href="#"><i class="fa fa-times"></i></a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Cart Area End -->
+
+<app-footerone></app-footerone>

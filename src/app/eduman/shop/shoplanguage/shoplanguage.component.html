@@ -1,0 +1,11 @@
+<div class="course-sidebar-info" [class.content-hidden]="shopLanguageActive">
+   <h3 class="drop-btn" (click)="shopLanguage()">Language</h3>
+   <ul *ngFor="let language of languageList; let i = index;">
+      <li>
+         <div class="course-sidebar-list">
+            <input class="edu-check-box"  (change)="onChange($event.target, language)" type="checkbox" id="language_{{i}}">
+            <label class="edu-check-label" for="language_{{i}}">{{language?.language}} ({{language?.count}})</label>
+         </div>
+      </li>
+   </ul>
+</div>

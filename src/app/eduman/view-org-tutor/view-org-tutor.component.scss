@@ -1,0 +1,134 @@
+.course-instructors-img {
+  img {
+    @apply max-w-full;
+  }
+}
+
+.course-detiles-tittle {
+  h3 {
+    @apply text-[28px] font-bold mb-0;
+  }
+}
+
+.total-course {
+  @apply relative;
+
+  span {
+    @apply block mb-[-5px];
+  }
+
+  &:before {
+    content: "";
+    @apply absolute w-[1px] h-[42px] bg-borderGray right-[-65%] top-[5px] minMaxTablet:right-[-40%] minMaxTab:right-[-35%] minMaxTabSmall:right-[-35%] maxXs:hidden;
+  }
+}
+
+.student.course {
+  @apply relative;
+
+  label {
+    @apply text-heading text-[18px] font-bold;
+  }
+
+  &:before {
+    content: "";
+    @apply absolute w-[1px] h-10 bg-borderGray right-[-90%] top-[5px] minMaxTablet:right-[-65%] minMaxTab:right-[-40%] minMaxTabSmall:right-[-40%] maxXs:hidden;
+  }
+}
+
+.share-btn {
+  i {
+    @apply text-heading;
+  }
+}
+
+.student.course {
+  span {
+    @apply block mb-[-5px];
+  }
+}
+
+.total-course label {
+  @apply text-heading text-[18px] font-bold;
+}
+
+.review-course-inner {
+  ul {
+    li {
+      i {
+        @apply text-themeOrange mr-1.5 text-[13px];
+      }
+    }
+  }
+}
+
+.review-course-inner {
+  p {
+    @apply text-heading text-[18px] font-bold mb-0;
+  }
+}
+
+.course-bio-text {
+  h3 {
+    @apply text-[20px] mb-[15px];
+  }
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .course-detalies-area {
+    padding-top: 20px;
+    padding-bottom: 10px;
+  }
+
+  .course-instructors-img {
+    margin-bottom: 5px;
+  }
+
+  .course-instructors-img,
+  .total-course,
+  .student,
+  .course-detiles-tittle {
+    text-align: center !important;
+  }
+
+  .course-detiles-meta {
+    justify-content: center !important;
+  }
+
+  .course-detelies-wrapper {
+    padding: 20px !important;
+  }
+
+  .course-instructors-img > img {
+    width: 100px !important;
+    height: 100px !important;
+    border-radius: 50%;
+  }
+
+  .course-detiles-tittle h3 {
+    font-size: 18px !important;
+    // color: #2467ec;
+  }
+  .total-course label,
+  .subscriptions {
+    color: #2467ec !important;
+  }
+
+  .course-bio-text {
+    padding-top: 5px !important;
+    padding-bottom: 5px !important;
+  }
+
+  .line {
+    display: block !important;
+    color: lightgray !important;
+    margin-top: 10px;
+    margin-bottom: 5px;
+  }
+}
+
+.course-instructors-img > img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}

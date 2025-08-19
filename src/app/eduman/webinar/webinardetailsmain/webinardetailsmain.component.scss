@@ -1,0 +1,108 @@
+@import '../../../../custom-palettes.scss';
+
+//for sidebar
+.event-contact-info {
+	h2 {
+		@apply mb-[30px] minMaxTabSmall:text-[32px] minMaxMobile:text-[24px] box-border;
+	}
+}
+.introduction-info {
+	h4 {
+		@apply text-[18px] mb-[15px] box-border;
+	}
+}
+.introduction-info {
+	p {
+        @apply mb-[25px] box-border;
+	}
+}
+.even-point-tittle {
+	h4 {
+		@apply text-[18px] mb-[15px] box-border;
+	}
+}
+.event-speaker-info {
+	h4 {
+        @apply text-[20px] mb-[35px] box-border;
+	}
+}
+.event-speaker-wrapper {
+	box-shadow: 0px 10px 30px rgba(28, 51, 84, 0.08);
+	@apply border border-solid border-borderGray py-7 px-[29px] rounded-[5px] relative bg-white;
+}
+.event-speaker-content {
+	transform: translateX(-50%);
+    @apply absolute bottom-[50px] left-[50%] pt-[13px] pb-[20px] rounded-[3px] min-w-[240px] px-5 bg-white;
+	span {
+		@apply text-heading text-[16px] mb-[5px] font-bold block;
+	}
+	p {
+        @apply mb-0 leading-none;
+	}
+}
+.event-price-info {
+	@apply flex justify-between;
+}
+.event-price {
+	@apply flex;
+}
+.event-information-wrapper {
+	box-shadow: 0px 10px 30px rgba(28, 51, 84, 0.08);
+	@apply rounded-[5px] p-[30px] bg-white maxXs:px-5;
+	@apply border border-solid border-borderGray;
+}
+.event-information-list {
+	@apply py-[30px] px-0;
+	ul {
+		li {
+			@apply border-b border-solid border-borderGray flex justify-between py-2.5 px-0 flex-wrap;
+			&:last-child {
+                @apply pb-[5px] border-none;
+			}
+		}
+		i {
+            @apply mr-[15px] leading-none;
+		}
+	}
+}
+.information-list {
+    @apply flex items-center;
+	&:first-child {
+		span {
+			@apply font-semibold;
+		}
+	}
+}
+.old-price {
+	@apply ml-2.5
+}
+.event-price {
+	span {
+		@apply text-heading text-[28px] maxXs:text-[20px] font-bold;
+	}
+}
+.event-ticket-cost {
+	span {
+		@apply font-semibold;
+	}
+}
+.event-sponsor-wrapper {
+	@apply border border-solid p-[30px] rounded-[5px] border-borderGray;
+	box-shadow: 0px 10px 30px rgba(28, 51, 84, 0.08);
+	@apply bg-white;
+}
+.sopnsor-tittle {
+	h4 {
+        @apply mb-[35px] box-border;
+	}
+}
+.sponsor-thumb {
+    @apply flex flex-wrap justify-between gap-5;
+}
+// google-map
+.event-map {
+	@apply maxMd:mb-[30px] rounded-none;
+	iframe {
+        @apply h-[330px] w-full;
+	}
+}

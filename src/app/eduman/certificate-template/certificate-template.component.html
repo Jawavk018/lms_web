@@ -1,0 +1,42 @@
+<h2 mat-dialog-title>
+  <h3>{{data?.courseName}}</h3>
+</h2>
+<mat-dialog-content *ngIf="!noCertificateFound">
+  <pdf-viewer
+    *ngIf="pdf ?? false"
+    [src]="pdf"
+    [rotation]="0"
+    [original-size]="false"
+    [show-all]="true"
+    [fit-to-page]="false"
+    [zoom]="1"
+    [zoom-scale]="'page-width'"
+    [stick-to-page]="false"
+    [render-text]="true"
+    [external-link-target]="'blank'"
+    [autoresize]="true"
+    [show-borders]="false"
+    class="w-100 h-[475px]"
+  ></pdf-viewer>
+  <div *ngIf="!pdf" class="text-center">
+    <div class="spinner-border m-5 mb-3" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+    <p class="fs-5 text-secondary">Waiting for some moment</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-content *ngIf="noCertificateFound">
+  <div class="text-center">
+    <img src="assets/img/nodata.jpeg" />
+    <p class="fs-5 text-secondary pt-2">No Certificate Found</p>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" *ngIf="!noCertificateFound">
+  <button [disabled]="!pdf"
+    class="btn btn-primary my-5"
+    (click)="downloadPDF()"
+    style="padding: 10px"
+  >
+    Download Certificate as PDF
+  </button>
+</mat-dialog-actions>

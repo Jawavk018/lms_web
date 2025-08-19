@@ -1,0 +1,51 @@
+<mat-dialog-content class="mat-typography">
+  <div class="row">
+    <div class="col-4 scrollable">
+      <h1>Certificates</h1>
+      <ul *ngIf="certificateList?.length">
+        <li
+          *ngFor="let certificate of certificateList; let i = index"
+          class="p-3"
+        >
+          <div class="d-flex">
+            <input
+              type="checkbox"
+              class="me-3 w-[22px] certificate-checkbox"
+              [(ngModel)]="certificate.selected"
+              [value]="certificate?.certificateSno"
+            />
+            <div
+              class="p-2 flex-fill rounded-3"
+              role="button"
+              [ngClass]="selectedIndex == i ? 'btn-primary' : ''"
+              (click)="selectCertificate(i)"
+            >
+              <h1 class="my-auto">{{ certificate.certificateName }}</h1>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div
+      *ngIf="certificateList?.length"
+      class="col-8 scrollable d-flex justify-content-center"
+    >
+      <img [src]="certificateList[selectedIndex]?.certificate" />
+    </div>
+    <div *ngIf="!certificateList?.length" class="text-center">
+      <img src="assets/img/norecord.png" class="w-[300px]" />
+      <h2>No Certificates Found</h2>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end" *ngIf="certificateList?.length">
+  <button mat-button [disabled]="isUpload" mat-dialog-close>Cancel</button>
+  <button [disabled]="isUpload" class="btn btn-primary d-flex" (click)="insertCertificate()"> 
+    <div *ngIf="isUpload" >
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    Save
+  </button>
+</mat-dialog-actions>

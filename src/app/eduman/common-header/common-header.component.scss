@@ -1,0 +1,15 @@
+//header style
+
+.header {
+	position: sticky;
+	top: 0;
+	background: #fff;
+	z-index: 100;
+  }
+  
+  .header.sticky {
+	z-index: 100;
+	background: #fff;
+	transition: background 0.3s ease;
+	box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  } 

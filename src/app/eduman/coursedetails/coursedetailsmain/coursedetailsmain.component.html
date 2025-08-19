@@ -1,0 +1,376 @@
+<app-headerone></app-headerone>
+
+<app-breadcrumb breadcrumbTitle="Courses"
+    breadcrumbSubTitle="{{courseDetails?.categoryName}} > {{courseDetails?.subCategoryName}} : {{courseDetails?.title}}">
+</app-breadcrumb>
+
+<section class="course-detalis-area pb-[90px]">
+    <div class="container">
+        <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+            <div class="col-span-12 xl:col-span-8">
+                <div class="course-detalis-wrapper mb-[30px]">
+                    <div class="d-flex mb-4">
+                        <button class="btn">
+                            <i class="fa fa-language" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn" [ngClass]="language?.isDefault ? 'btn-primary' : ''"
+                            *ngFor="let language of courseDetails?.languageTypeList;let i =index;"
+                            (click)="changeCourseLanguage(i)">
+                            {{language?.languageTypeCdValue}}
+                        </button>
+                    </div>
+                    <div class="course-heading mb-[20px]">
+                        <div class="row">
+                            <div class="col-md-9">
+                                <h2 class="course-detail-title"><span
+                                        class="text-secondary">{{courseDetails?.subCategoryName}}
+                                        :</span>{{courseDetails?.title}}</h2>
+                            </div>
+                            <div class="col-md-3 text-right text-end syllabus-btn">
+                                <a class="video-cart-btn" role="button" (click)="viewSyllabus(courseDetails?.uploadSyllabus)">
+                                    <i class="fa fa-download" aria-hidden="true"></i>Syllabus
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-description pt-[45px] pb-[30px]">
+                        <div class="course-Description">
+                            <h4>Description</h4>
+                        </div>
+                        <p [innerHTML]="courseDetails?.description" [style]="courseDetails?.description.length >= 500 ? 'height:200px !important;overflow-y: scroll !important;':'' "></p>
+                    </div>
+                    <div class="course-learn-wrapper">
+                        <div class="course-learn">
+                            <div class="course-leranm-tittle">
+                                <h4 class="mb-[15px]">What you'll learn</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                                <div class="col-span-12 xl:col-span-6">
+                                    <div class="course-leran-text f-left">
+                                        <ul>
+                                            <li
+                                                *ngFor="let learn of courseDetails?.courseIntended?.studentsLearn?.slice(0,3)">
+                                                {{learn?.learn}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 xl:col-span-6">
+                                    <div class="course-leran-text">
+                                        <ul>
+                                            <li *ngFor="let learn of courseDetails?.courseIntended?.studentsLearn?.slice(3,6)">
+                                                {{learn?.learn}}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="course-requirements pt-[45px]">
+                        <h4>Who's it For?</h4>
+                        <div class="course-requirements-text">
+                            <ul>
+                                <li *ngFor="let requirement of courseDetails?.courseIntended?.requirements">
+                                    • {{requirement?.prerequisites}}</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="course-curriculum pt-10 pb-[50px]">
+                        <div class="course-curriculam">
+                            <h4>Curriculum</h4>
+                        </div>
+                        <ul>
+                            <li *ngIf="courseDetails?.curriculum?.length">{{courseDetails?.curriculum?.length}} {{
+                                courseDetails?.curriculum?.length === 1 ? 'Section' : 'Sections' }}
+                                {{courseDetails?.lectureLength}} {{ courseDetails?.lectureLength === 1 ? 'Lecture' :
+                                'Lectures' }}
+                            </li>
+                        </ul>
+                        <app-coursecurriculam [data]="courseDetails?.curriculum" [courseDetails]="courseDetails"></app-coursecurriculam>
+                    </div>
+                </div>
+                <div class="mb-[30px]">
+                    <app-courseinstructor [data]="courseDetails?.instructor" ></app-courseinstructor>
+                </div>
+                <div class="card p-3">
+                    <div class="row">
+                        <div class="col-xl-3">
+                            <div class="mb-30">
+                                <div class="rating-point-wrapper text-center">
+                                    <h2>{{courseDetails?.ratingReview?.rating?.overAllRating ?? 0}}</h2>
+                                    <span class="d-flex justify-content-center">
+                                        <ngx-stars [initialStars]="5" [size]="1" [maxStars]="5" color="#ffb013" [readonly]="true"></ngx-stars>
+                                    </span>
+                                    <span>{{courseDetails?.ratingReview?.rating?.totalRating ?? 0}} Rating</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-9">
+                            <div class="d-flex w-100 justify-content-between flex-column-reverse">
+                                <button class="btn rating_progress" *ngFor="let rating of courseDetails?.ratingReview?.rating?.startWiseRating;">
+                                    <span>
+                                        <ngx-stars
+                                        [initialStars]="rating?.rating ?? 0"
+                                        [size]="1"
+                                        [maxStars]="5"
+                                        color="#ffb013"
+                                        [readonly]="true"
+                                        ></ngx-stars>
+                                    </span>
+                                    <span class="review_summary px-3">
+                                        <span class="review_summary_rate">
+                                        <span class="review_summary_rate_fill" [style.width]="rating?.percentage + '%'"></span>
+                                        </span>
+                                    </span>
+                                    <span class="ps-3 w-[8%]">
+                                        {{rating?.percentage}}%  
+                                    </span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-3 card p-3">
+                    <mat-tab-group>
+                        <mat-tab label="Collaboration">
+                            <div class="p-2">
+                                <div class="d-flex mt-4">
+                                    <div class="logo">{{ getFirstAndLastCharacters(appUser?.firstName + ' ' + appUser?.lastName) }}</div>
+                                    <div class="d-flex flex-column w-100">
+                                        <textarea rows="3" #myTextarea placeholder="Enter your comment" class="form-control" 
+                                            (keydown.enter)="handleEnterKeyPress(myTextarea)" (keydown.escape)="handleEscKeyPress()"></textarea>
+                                        <p>Press Enter to post, Esc to cancel, Shift + Enter to go a new line</p>
+                                    </div>
+                                </div>
+                                <div class="d-flex mt-4 flex-column">
+                                    <div *ngFor="let comment of commentsList?.slice(0, 4); let i = index;" class="py-3">
+                                        <div class="d-flex w-100">
+                                            <div class="logo">{{ getFirstAndLastCharacters(comment?.name) }}</div>
+                                            <div class="d-flex flex-column w-100">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex">
+                                                        <span>{{ comment?.name }}</span> &nbsp;&nbsp;.&nbsp;&nbsp;
+                                                        <span>{{ formatTimestamp(comment?.createdOn) }}</span>
+                                                    </div>
+                                                    <div *ngIf="appUser?.appUserSno == comment?.appUserSno">
+                                                        <button class="btn" (click)="editedHandleEscKeyPress(i)">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                        <button class="btn" (click)="deleteAlert(i)">
+                                                            <i class="bi bi-trash-fill"></i>
+                                                        </button>
+                                                    </div>
+                                                    <div *ngIf="appUser?.appUserSno != comment?.appUserSno">
+                                                        <button class="btn" (click)="replayTextArea(i)">
+                                                            <i class="bi bi-arrow-return-left"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                
+                                                <textarea #editedTextarea  class="w-100 form-control" placeholder="Enter your comment" [disabled]="!comment?.isEdit" (keydown.enter)="handleEnterKeyPress(editedTextarea,comment?.commentSno)" 
+                                                    (keydown.escape)="editedHandleEscKeyPress(i)">{{ comment?.comment }}</textarea>
+                                                <p *ngIf="comment?.isEdit">Press Enter to replay the post, Esc to cancel, Shift + Enter to go a new line</p>
+
+                                                <div *ngIf="comment?.repliesCount" class="my-2 font-weight-bold" role="button" (click)="getReplayComment(i)">
+                                                    Load more ({{comment?.repliesCount ?? 0}})
+                                                </div>
+                                                <div *ngIf="comment?.replay" class="mt-3">
+                                                    <textarea #replyTextarea class="w-100 form-control" placeholder="Enter your comment"  class="w-100 form-control" (keydown.enter)="handleEnterKeyPress(replyTextarea,null,true,comment?.commentSno)" 
+                                                    (keydown.escape)="replayTextArea(i)"
+                                                    ></textarea>
+                                                    <p>Press Enter to replay the post, Esc to cancel, Shift + Enter to go a new line</p>
+                                                </div>
+                                                
+                                                <div class="d-flex flex-column ms-4 mt-2" *ngIf="comment.replies?.length">
+                                                    <div *ngFor="let reply of comment.replies; let j = index;" class="py-3">
+                                                        <div class="d-flex w-100">
+                                                            <div class="logo">{{ getFirstAndLastCharacters(reply?.name) }}</div>
+                                                            <div class="d-flex flex-column w-100">
+                                                                <div class="d-flex justify-content-between">
+                                                                    <div class="d-flex">
+                                                                        <span>{{ reply?.name }}</span> &nbsp;&nbsp;.&nbsp;&nbsp;
+                                                                        <span>{{ formatTimestamp(reply?.createdOn) }}</span>
+                                                                    </div>
+                                                                    <div *ngIf="appUser?.appUserSno == reply?.appUserSno">
+                                                                        <button class="btn" (click)="editedHandleEscKeyPress(i, j)">
+                                                                            <i class="bi bi-pencil-square"></i>
+                                                                        </button>
+                                                                        <button class="btn" (click)="deleteAlertReply(i, j)">
+                                                                            <i class="bi bi-trash-fill"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                                <textarea #editedTextarea class="w-100 form-control" placeholder="Enter your comment" [disabled]="!reply?.isEdit" (keydown.enter)="handleEnterKeyPress(editedTextarea,reply?.commentSno,true,comment?.commentSno)" 
+                                                                    (keydown.escape)="editedHandleEscKeyPress(i,j)">{{ reply?.comment }}</textarea>
+                                                                <p *ngIf="reply?.isEdit">Press Enter to replay the post, Esc to cancel, Shift + Enter to go a new line</p>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div *ngIf="!commentsList?.length">
+                                        <div class="w-100 text-center my-5">
+                                            <img src="assets/img/comments.png" width="30%" />
+                                            <p class="h3"> No comments found </p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100 text-center mt-4" *ngIf="commentsList?.length > 3">
+                                    <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#comment" (click)="isFinish = false;">
+                                        Show all comments
+                                    </button>
+                                </div>
+                            </div>
+                        </mat-tab>
+                        <mat-tab label="Reviews"> 
+                            <div *ngIf="courseDetails?.ratingReview?.review?.length" class="p-2">
+                                <h3 class="my-3"><i class="fa fa-star rating" aria-hidden="true"></i> {{courseDetails?.ratingReview?.rating?.overAllRating ?? 0}} course rating</h3>
+                                <hr>
+                                <div class="row">
+                                    <div class="col-6" *ngFor="let review of courseDetails?.ratingReview?.review;let i = index">
+                                        <app-review [review]="review"></app-review>
+                                        <hr *ngIf="courseDetails?.ratingReview?.review?.length > 3 && ((i == 0) || (i == 1))">
+                                    </div>
+                                </div>
+                                <div class="w-100 text-center mt-4" *ngIf="courseDetails?.ratingReview?.rating?.totalRating > 3">
+                                    <button class="btn btn-outline-dark" (click)="reviewList = [];loadMoreReviews()" data-bs-toggle="modal" data-bs-target="#review">
+                                        Show all reviews
+                                    </button>
+                                </div>
+                            </div>
+                            <div *ngIf="!courseDetails?.ratingReview?.review?.length" class="p-2">
+                                <div class="w-100 text-center my-5">
+                                    <img src="assets/img/review.png" width="30%" />
+                                    <p class="h3"> No reviews found </p>
+                                </div>  
+                            </div>
+                        </mat-tab>
+                      </mat-tab-group>
+                </div>
+            </div>
+            <div class="col-span-12 xl:col-span-4 md:col-span-8">
+                <app-coursevideo [data]="courseDetails"></app-coursevideo>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footerone></app-footerone>
+
+<div class="modal fade" id="review" tabindex="-1" aria-labelledby="review" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">{{courseDetails?.ratingReview?.rating?.overAllRating ?? 0}} course rating</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            <div class="modal-body">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="row">
+                            <div class="col-12" *ngFor="let review of reviewList;let i = index">
+                                <app-review [review]="review"></app-review>
+                                <hr>
+                            </div>
+                        </div>
+                        <button class="btn btn-outline-dark w-100 mt-4" *ngIf="courseDetails?.ratingReview?.rating?.totalRating > 9 && reviewList?.length != courseDetails?.ratingReview?.rating?.totalRating" (click)="loadMoreReviews()">
+                            Show more reviews
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="comment" tabindex="-1" aria-labelledby="comment" aria-hidden="true">
+    <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-scrollable">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title">Comments</h3>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+              </div>
+            <div class="modal-body">
+                <div class="d-flex mt-4 flex-column">
+                    <div class="d-flex py-3" *ngFor="let comment of commentsList;let i = index;">
+                        <div class="d-flex w-100">
+                            <div class="logo">{{ getFirstAndLastCharacters(comment?.name) }}</div>
+                            <div class="d-flex flex-column w-100">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <span>{{ comment?.name }}</span> &nbsp;&nbsp;.&nbsp;&nbsp;
+                                        <span>{{ formatTimestamp(comment?.createdOn) }}</span>
+                                    </div>
+                                    <div *ngIf="appUser?.appUserSno == comment?.appUserSno">
+                                        <button class="btn" (click)="editedHandleEscKeyPress(i)">
+                                            <i class="bi bi-pencil-square"></i>
+                                        </button>
+                                        <button class="btn" (click)="deleteAlert(i)">
+                                            <i class="bi bi-trash-fill"></i>
+                                        </button>
+                                    </div>
+                                    <div *ngIf="appUser?.appUserSno != comment?.appUserSno">
+                                        <button class="btn" (click)="replayTextArea(i)">
+                                            <i class="bi bi-arrow-return-left"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <textarea #editedTextarea  class="w-100 form-control" placeholder="Enter your comment" [disabled]="!comment?.isEdit" (keydown.enter)="handleEnterKeyPress(editedTextarea,comment?.commentSno)" 
+                                    (keydown.escape)="editedHandleEscKeyPress(i)">{{ comment?.comment }}</textarea>
+                                <p *ngIf="comment?.isEdit">Press Enter to replay the post, Esc to cancel, Shift + Enter to go a new line</p>
+
+                                <div *ngIf="comment?.repliesCount" class="my-2 font-weight-bold" role="button" (click)="getReplayComment(i)">
+                                    Load more ({{comment?.repliesCount ?? 0}})
+                                </div>
+
+                                <div *ngIf="comment?.replay" class="mt-3">
+                                    <textarea #replyTextarea class="w-100 form-control" placeholder="Enter your comment"  class="w-100 form-control" (keydown.enter)="handleEnterKeyPress(replyTextarea,null,true,comment?.commentSno)" 
+                                    (keydown.escape)="replayTextArea(i)"
+                                    ></textarea>
+                                    <p>Press Enter to replay the post, Esc to cancel, Shift + Enter to go a new line</p>
+                                </div>
+                                
+                                <div class="d-flex flex-column ms-4 mt-2" *ngIf="comment.replies?.length">
+                                    <div *ngFor="let reply of comment.replies; let j = index;" class="py-3">
+                                        <div class="d-flex w-100">
+                                            <div class="logo">{{ getFirstAndLastCharacters(reply?.name) }}</div>
+                                            <div class="d-flex flex-column w-100">
+                                                <div class="d-flex justify-content-between">
+                                                    <div class="d-flex">
+                                                        <span>{{ reply?.name }}</span> &nbsp;&nbsp;.&nbsp;&nbsp;
+                                                        <span>{{ formatTimestamp(reply?.createdOn) }}</span>
+                                                    </div>
+                                                    <div *ngIf="appUser?.appUserSno == reply?.appUserSno">
+                                                        <button class="btn" (click)="editedHandleEscKeyPress(i, j)">
+                                                            <i class="bi bi-pencil-square"></i>
+                                                        </button>
+                                                        <button class="btn" (click)="deleteAlertReply(i, j)">
+                                                            <i class="bi bi-trash-fill"></i>
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                                <textarea #editedTextarea class="w-100 form-control" placeholder="Enter your comment" [disabled]="!reply?.isEdit" (keydown.enter)="handleEnterKeyPress(editedTextarea,reply?.commentSno,true,comment?.commentSno)" 
+                                                    (keydown.escape)="editedHandleEscKeyPress(i,j)">{{ reply?.comment }}</textarea>
+                                                <p *ngIf="reply?.isEdit">Press Enter to replay the post, Esc to cancel, Shift + Enter to go a new line</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-outline-dark w-100 mt-4" *ngIf="!isFinish" (click)="loadMoreComments()">
+                    Show more reviews
+                </button>
+            </div>
+        </div>
+    </div>
+</div>

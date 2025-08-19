@@ -1,0 +1,236 @@
+<app-common-header></app-common-header>
+<app-trainer-dialog-model></app-trainer-dialog-model>
+<section *ngIf="invitationList?.length">
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 ">
+            <h4 class="fw-bold py-3 "><span class="text-muted fw-light"></span>Invitation</h4>
+            <div class="row">
+                <div class="col-4" *ngFor="let invitation of invitationList;let i = index;">
+                    <div class="card shadow p-3">
+                        <div class="d-flex">
+                            <img
+                            [src]="
+                            invitation?.photo ?? 'https://mdbcdn.b-cdn.net/img/new/avatars/2.webp'
+                            "
+                            class="rounded-circle shadow-4 w-[75px] h-[75px] me-3"
+                            alt="Avatar" />
+                            <div class="d-flex flex-column flex-fill">
+                                <h5 class="mt-[5px]">{{ invitation?.orgName }}</h5>
+                                <p class="my-auto">The organization invites you to join as a tutor.</p>
+                                <div class="d-flex flex-row justify-content-end my-3">
+                                    <button class="btn btn-outline-primary" (click)="addOrg(i)">
+                                        Yes
+                                    </button>
+                                    <button class="btn btn-outline-secondary ms-2" (click)="rejOrg(i)">
+                                        No
+                                    </button>
+                                </div>
+                                <p class="text-end text-warning my-auto">Exp On : {{invitation?.expiryDate | date: 'dd-MM-yyyy' }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 ">
+            <h4 class="fw-bold py-3 "><span class="text-muted fw-light"></span>Courses</h4>
+            <div class="card p-4 rounded-0 mb-4">
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <p>Jump Into Course Creation</p>
+                    </div>
+                    <div>
+                        <div>
+                            <a class="btn btn-primary px-5 py-2 rounded-0" data-bs-toggle="modal"
+                                href="#exampleModalToggle" role="button" (click)="createCourse()">Create Course</a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="card-header d-flex justify-content-between pb-0">
+                    <h5>Your Courses</h5>
+                </div>
+                <hr class="my-0" />
+                <section class="container-xxl flex-grow-1">
+                    <div *ngIf="isShowLoad" style="text-align: center">
+                        <div class="spinner-border spinner-border-lg"></div>
+                    </div>
+                    <div style="text-align: center" *ngIf="courseList?.length == 0 || courseList == null">
+                        <img src="assets/img/norecord.png" style="width: auto;" />
+                        <p class="fs-5">No Courses found</p>
+                    </div>
+                </section>
+                <div class="card tableDiv table-responsive table-data"
+                    *ngIf="courseList?.length != 0 && courseList != null">
+                    <table class="table table-borderless table-hover table align-middle">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col" class="text-left">Category</th>
+                                <th scope="col" class="text-left">Subcategory</th>
+                                <th scope="col" class="text-left">Topic</th>
+                                <th scope="col" class="text-left">Course Title</th>
+                                <th scope="col" class="text-left">Price</th>
+                                <th scope="col" class="text-left">Preview</th>
+                                <th scope="col" class="text-left">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let course of courseList; let i = index;" role="button">
+                                <th scope="row">{{i+1}}</th>
+                                <td class="text-left">{{course.categoryName}}</td>
+                                <td class="text-left">{{course.subCategoryName}}</td>
+                                <td class="text-left">{{course.topicName}}</td>
+                                <td class="text-left"> {{course.title}}</td>
+                                <td class="text-left">{{course.currencySymbol}}{{course.price}}</td>
+                                <td style="padding:5px;">
+                                    <div class="btn-toolbar" role="toolbar" aria-label="Toolbar with button groups">
+                                        <div class="btn-group mr-2 btn-group-sm text-center ms-4" role="group"
+                                            aria-label="First group">
+                                            <button type="button" class="btn btn-light" (click)="openDialog(i)">
+                                                <span class="menu-icon tf-icons iconify text-secondary"
+                                                    data-icon="bx:show"></span>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                </td>
+                                <td style="padding:5px;">
+                                    <div class="dropdown">
+                                        <button type="button" class="btn btn-light" data-bs-toggle="dropdown">
+                                            <span class="menu-icon tf-icons iconify text-secondary"
+                                                data-icon="bx:dots-vertical-rounded"></span>
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" (click)="gotoQuestionersPage(i)">Create Test</a>
+                                            <a class="dropdown-item" (click)="gotoDiscountPage(i)">Discount</a>
+                                            <a class="dropdown-item" data-bs-target="#createCertificate" (click)="changeCertificate(i)" data-bs-toggle="modal"
+                                            data-bs-dismiss="modal">Add Certificate</a>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="modal fade" id="createCertificate" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+tabindex="-1">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalToggleLabel">Select Certificate</h5>
+                <button type="button" id="close" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+                    <i class="bi bi-x-lg"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div *ngIf="certificateList?.length">
+                    <select class="form-control" [(ngModel)]="selectedTutorCertificateSno">
+                        <option *ngFor="let certificate of certificateList;let i = index" [value]="certificate?.tutorCertificateSno">
+                            {{certificate?.certificateName}} <span *ngIf="certificate?.isOrg">(Organization)</span>
+                        </option>
+                    </select>
+                </div>
+                <div *ngIf="!certificateList?.length" class="text-center">
+                    <img src="assets/img/norecord.png" class="w-[250px]" />
+                    <h3>No Certificates Found</h3>
+                    <button class="btn btn-primary" (click)="navigateCertificateCreate()">
+                        Create Certificate
+                    </button>
+                </div>
+            </div>
+            <div class="modal-footer" *ngIf="certificateList?.length">
+                <button class="btn btn-secondary"  data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-primary" *ngIf="!courseList[selectedCourseIndex]?.courseCertificateMappingSno" [disabled]="!selectedTutorCertificateSno" (click)="updateCertificate()">Save</button>
+                <button class="btn btn-primary" *ngIf="courseList[selectedCourseIndex]?.courseCertificateMappingSno" [disabled]="!selectedTutorCertificateSno" (click)="updateCertificate()">Update</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<form [formGroup]="form">
+    <div class="modal fade" id="exampleModalToggle" aria-hidden="true" aria-labelledby="exampleModalToggleLabel"
+        tabindex="-1">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel">Enter Your Course Title</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <label>Enter Course Title <span class="text-danger">*</span></label>
+                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                        placeholder="" formControlName="courseControl">
+
+                </div>
+                <div class="modal-footer">
+                    <button class="btn btn-primary" [disabled]="getCourseControl().invalid"
+                        data-bs-target="#exampleModalToggle2" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">Next</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="exampleModalToggle2" aria-hidden="true" aria-labelledby="exampleModalToggleLabel2"
+        tabindex="-1" data-bs-backdrop="static">
+
+        <div class="modal-dialog modal-dialog-centered">
+
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalToggleLabel2">Choose Your Languages</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+
+                <div class="modal-body">
+                    <div>
+                        <label>Languages <span class="text-danger">*</span></label>
+                        <ng-multiselect-dropdown name="language" (onSelect)="onItemSelect()"
+                            (onSelectAll)="onItemSelect()" formControlName="languageTypeCd"
+                            [placeholder]="'Select Language'" [data]="languageList" [settings]="settings">
+                        </ng-multiselect-dropdown>
+                    </div>
+
+                    <div class="mt-2">
+                        <label>Set Default Language <span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="defaultLanguageSno">
+                            <option *ngFor="let language of form.value.languageTypeCd;" [value]="language?.cdValue">
+                                {{language?.cdValue}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="mt-2" *ngIf="appUser?.orgTrainer">
+                        <label>Create For<span class="text-danger">*</span></label>
+                        <select class="form-control" formControlName="entityUsersSno">
+                            <option value="">Own - Course</option>
+                            <option *ngFor="let orgTrainer of appUser?.orgTrainer;" [value]="orgTrainer?.entityUsersSno">{{orgTrainer?.orgName}} - Organization</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button class="btn btn-primary" data-bs-target="#exampleModalToggle" data-bs-toggle="modal"
+                        data-bs-dismiss="modal">Previous</button>
+                    <button class="btn btn-primary" data-bs-dismiss="modal" (click)="navigateCourse()"
+                        [disabled]="!form.valid">Create</button>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</form>

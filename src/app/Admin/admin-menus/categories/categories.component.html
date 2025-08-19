@@ -1,0 +1,256 @@
+<section class="py-3 mx-5">
+    <app-header></app-header>
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold my-3"><span class="text-muted fw-light"></span>Categories</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <h5 class="card-header text-start">Add Category</h5>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <form id="categories" method="POST" onsubmit="return false" [formGroup]="categoryForm">
+                                <div class="row">
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="categoryName" class="form-label">Category Name <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input pattern="[a-zA-Z ]*" class="form-control" type="text" id="categoryName"
+                                            [class.is-invalid]="(categoryForm.get('categoryName').invalid && categoryForm.get('categoryName').touched) || (categoryForm.get('categoryName').invalid && categoryForm.get('categoryName').dirty)"
+                                            formControlName="categoryName" required />
+                                        <div
+                                            *ngIf="categoryForm.get('categoryName').invalid && categoryForm.get('categoryName').touched || (categoryForm.get('categoryName')?.dirty)">
+                                            <small class="text-danger"
+                                                *ngIf="categoryForm.get('categoryName').errors?.required ">Category Name
+                                                is
+                                                Required</small>
+                                            <small class="text-danger"
+                                                *ngIf="categoryForm.get('categoryName').errors?.pattern">Category Name
+                                                should be
+                                                character
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="description" class="form-label">Description <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input type="text" class="form-control" type="text" id="description" 
+                                            formControlName="description" required />
+                                    </div>
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="status" class="form-label">Status
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <select id="status" class="col-3 select2 form-select" formControlName="status">
+                                            <option value="true">Active</option>
+                                            <option value="false">InActive</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button type="submit" class="btn btn-primary me-2" (click)="save()"
+                                            *ngIf="categoryForm.value?.categorySno == null"
+                                            [disabled]="categoryForm.invalid || isLoad">
+                                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                                            &nbsp;&nbsp;Save
+                                        </button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="update()"
+                                            [disabled]="categoryForm.invalid || isLoad"
+                                            *ngIf="categoryForm.value?.categorySno != null">
+                                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad">
+                                            </span>&nbsp;&nbsp;Update
+                                        </button>
+                                        <button class="btn border" style="box-shadow: none;" (click)="clear()"
+                                            [disabled]="isLoad">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Categories</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <h5 class="card-header text-start">Add Category</h5>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <form id="categories" method="POST" onsubmit="return false" [formGroup]="categoryForm">
+                                <div class="row">
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="categoryName" class="form-label">Category Name <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input pattern="[a-zA-Z ]*" class="form-control" type="text" id="categoryName"
+                                            [class.is-invalid]="(categoryForm.get('categoryName').invalid && categoryForm.get('categoryName').touched) || (categoryForm.get('categoryName').invalid && categoryForm.get('categoryName').dirty)"
+                                            formControlName="categoryName" required />
+                                        <div
+                                            *ngIf="categoryForm.get('categoryName').invalid && categoryForm.get('categoryName').touched || (categoryForm.get('categoryName')?.dirty)">
+                                            <small class="text-danger"
+                                                *ngIf="categoryForm.get('categoryName').errors?.required ">Category Name
+                                                is
+                                                Required</small>
+                                            <small class="text-danger"
+                                                *ngIf="categoryForm.get('categoryName').errors?.pattern">Category Name
+                                                should be
+                                                character
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="status" class="form-label">Status
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <select id="status" class="col-3 select2 form-select" formControlName="status">
+                                            <option value="true">Active</option>
+                                            <option value="false">InActive</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button type="submit" class="btn btn-primary me-2" (click)="save()"
+                                            *ngIf="categoryForm.value?.categorySno == null"
+                                            [disabled]="categoryForm.invalid || isLoad">
+                                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                                            &nbsp;&nbsp;Save
+                                        </button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="update()"
+                                            [disabled]="categoryForm.invalid || isLoad"
+                                            *ngIf="categoryForm.value?.categorySno != null">
+                                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad">
+                                            </span>&nbsp;&nbsp;Update
+                                        </button>
+                                        <button class="btn border" style="box-shadow: none;" (click)="clear()"
+                                            [disabled]="isLoad">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between pb-0">
+                            <h5>Category Details</h5>
+                        </div>
+                        <hr class="my-0" />
+                        <section class="container-xxl flex-grow-1">
+                            <div *ngIf="isShowLoad" style="text-align: center">
+                                <div class="spinner-border spinner-border-lg"></div>
+                            </div>
+                            <div *ngIf="isNoRecord && categoryList.length == 0 && !isShowLoad"
+                                style="text-align: center">
+                                <img src="assets/img/norecord.png" width="200" height="200" />
+                                <p class="fs-5">No Records found</p>
+                            </div>
+                        </section>
+                        <div class="card tableDiv table-responsive table-data" *ngIf="categoryList.length != 0">
+                            <table class="table table-borderless table-hover table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" class="text-left">Category Name</th>
+                                        <th scope="col" class="text-left">Status</th>
+                                        <th scope="col" class="text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let category of categoryList;let i = index;">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td class="text-left">
+                                            {{category.categoryName}}</td>
+                                        <td>
+                                            <span class="text-primary" *ngIf="category?.status">Active</span>
+                                            <span class="text-danger" *ngIf="!category?.status">InActive</span>
+                                        </td>
+                                        <td style="padding:5px;">
+                                            <div class="btn-toolbar" role="toolbar"
+                                                aria-label="Toolbar with button groups">
+                                                <div class="btn-group mr-2 btn-group-sm text-center ms-4" role="group"
+                                                    aria-label="First group">
+                                                    <button type="button" class="btn btn-light " (click)="edit(i)">
+                                                        <span class="menu-icon tf-icons iconify text-secondary"
+                                                            data-icon="bx:edit"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between pb-0">
+                            <h5>Category Details</h5>
+                        </div>
+                        <hr class="my-0" />
+                        <section class="container-xxl flex-grow-1">
+                            <div *ngIf="isShowLoad" style="text-align: center">
+                                <div class="spinner-border spinner-border-lg"></div>
+                            </div>
+                            <div *ngIf="isNoRecord && categoryList.length == 0 && !isShowLoad"
+                                style="text-align: center">
+                                <img src="assets/img/norecord.png" width="200" height="200" />
+                                <p class="fs-5">No Records found</p>
+                            </div>
+                        </section>
+                        <div class="card tableDiv table-responsive table-data" *ngIf="categoryList.length != 0">
+                            <table class="table table-borderless table-hover table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" class="text-left">Category Name</th>
+                                        <th scope="col" class="text-left">Status</th>
+                                        <th scope="col" class="text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let category of categoryList;let i = index;">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td class="text-left">
+                                            {{category.categoryName}}</td>
+                                        <td>
+                                            <span class="text-primary" *ngIf="category?.status">Active</span>
+                                            <span class="text-danger" *ngIf="!category?.status">InActive</span>
+                                        </td>
+                                        <td style="padding:5px;">
+                                            <div class="btn-toolbar" role="toolbar"
+                                                aria-label="Toolbar with button groups">
+                                                <div class="btn-group mr-2 btn-group-sm text-center ms-4" role="group"
+                                                    aria-label="First group">
+                                                    <button type="button" class="btn btn-light " (click)="edit(i)">
+                                                        <span class="menu-icon tf-icons iconify text-secondary"
+                                                            data-icon="bx:edit"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
+</section>

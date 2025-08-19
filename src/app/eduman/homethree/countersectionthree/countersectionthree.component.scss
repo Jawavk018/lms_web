@@ -1,0 +1,18 @@
+// university-couner
+@import '../../../../custom-palettes.scss';
+
+.counter-img {
+	svg {
+		@apply mb-[25px];
+	}
+}
+.university-couner-text {
+	span {
+		@apply text-white text-[36px] font-bold mb-[15px] inline-block;
+	}
+}
+.university-couner-text {
+	p {
+		@apply text-white text-[18px] font-semibold;
+	}
+}

@@ -1,0 +1,178 @@
+<section class="py-3">
+    <app-header></app-header>
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1 container-p-y">
+            <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"></span>Topics</h4>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <h5 class="card-header text-start">Add Topics</h5>
+                        <hr class="my-0" />
+                        <div class="card-body">
+                            <form id="sub-categories" method="POST" onsubmit="return false" [formGroup]="topicForm">
+                                <div class="row">
+                                    <div class="mb-3 col-md-6">
+                                        <label for="cat" class="form-label">Select Category
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <select id="cat" class="select2 form-select" formControlName="categorySno" (change)="getSubCategoryList()"
+                                            [class.is-invalid]="topicForm.get('categorySno')?.invalid && topicForm.get('categorySno')?.touched">
+                                            <option *ngFor="let category of categoryList;let i =index;"
+                                                [value]="category?.categorySno">
+                                                {{category.categoryName}}</option>
+                                        </select>
+                                        <div
+                                            *ngIf="topicForm.get('categorySno')?.invalid && topicForm.get('categorySno')?.touched || topicForm.get('categorySno')?.dirty">
+                                            <small class="text-danger"
+                                                *ngIf="topicForm.get('categorySno')?.errors?.required ">Category
+                                                Is Required</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="mb-3 col-md-6">
+                                        <label for="subcat" class="form-label">Select Sub Category
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <select id="subcat" class="select2 form-select" formControlName="subCategorySno" (change)="getTopics()"
+                                            [class.is-invalid]="topicForm.get('subCategorySno')?.invalid && topicForm.get('subCategorySno')?.touched">
+                                            <option *ngFor="let sub of subCategoryList;let i =index;"
+                                                [value]="sub?.subCategorySno">
+                                                {{sub.subCategoryName}}</option>
+                                        </select>
+                                        <div
+                                            *ngIf="topicForm.get('subCategorySno')?.invalid && topicForm.get('subCategorySno')?.touched || topicForm.get('subCategorySno')?.dirty">
+                                            <small class="text-danger"
+                                                *ngIf="topicForm.get('subCategorySno')?.errors?.required ">Sub Category
+                                                Is Required</small>
+                                        </div>
+                                    </div>
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="topicName" class="form-label">Topic Name <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <input class="form-control" type="text" id="topicName"
+                                            [class.is-invalid]="(topicForm.get('topicName')?.invalid && topicForm.get('topicName')?.touched) || (topicForm.get('topicName')?.invalid && topicForm.get('topicName')?.dirty)"
+                                            formControlName="topicName" required />
+                                        <div
+                                            *ngIf="topicForm.get('topicName')?.invalid && topicForm.get('topicName')?.touched || (topicForm.get('topicName')?.dirty)">
+                                            <small class="text-danger"
+                                                *ngIf="topicForm.get('topicName')?.errors?.required ">Topic Name
+                                                is
+                                                Required</small>
+                                            <small class="text-danger"
+                                                *ngIf="topicForm.get('topicName')?.errors?.pattern">Topic Name
+                                                should be
+                                                character
+                                            </small>
+                                        </div>
+                                    </div>
+                                    <div class=" mb-3 col-md-6">
+                                        <label for="status" class="form-label">Status
+                                            <span class="text-danger">*</span>
+                                        </label>
+                                        <select id="status" class="col-3 select2 form-select" formControlName="status">
+                                            <option value="true">Active</option>
+                                            <option value="false">InActive</option>
+                                        </select>
+                                    </div>
+                                    <div class="mt-2">
+                                        <button type="submit" class="btn btn-primary me-2" (click)="save()"
+                                            *ngIf="topicForm.value.topicSno == null"
+                                            [disabled]="topicForm.invalid || isLoad">
+                                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                                            &nbsp;&nbsp;Save
+                                        </button>
+                                        <button type="submit" class="btn btn-primary me-2" (click)="update()"
+                                            [disabled]="topicForm.invalid || isLoad"
+                                            *ngIf="topicForm.value.topicSno != null">
+                                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad">
+                                            </span>&nbsp;&nbsp;Update
+                                        </button>
+                                        <button class="btn border" style="box-shadow: none;" (click)="clear()" [disabled]="isLoad">Reset</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="content-wrapper">
+        <div class="container-xxl flex-grow-1">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="card mb-4">
+                        <div class="card-header d-flex justify-content-between pb-0">
+                            <h5>Topics Details</h5>
+                            <!-- <div class="d-flex" *ngIf="topicsList.length > 0">
+                                <p class="text-secondary me-5" *ngIf="topicsList.length != 1 || topicsList.length > 1">
+                                    Total Topics: <span class="text-dark">{{topicsList.length}}</span></p>
+                                <p class="text-secondary me-5" *ngIf="topicsList.length == 1">Total Topic: <span
+                                        class="text-dark">{{topicsList.length}}</span></p>
+                                <p class="text-secondary" *ngIf="topicsList.length != 1 || topicsList.length > 1">
+                                    Available Topics: <span class="text-dark">{{topicsActiveCount}}</span></p>
+                                <p class="text-secondary" *ngIf="topicsList.length == 1">Available Topic: <span
+                                        class="text-dark">{{topicsActiveCount}}</span></p>
+                            </div> -->
+                        </div>
+                        <hr class="my-0" />
+                        <section class="container-xxl flex-grow-1">
+                            <div *ngIf="isShowLoad" style="text-align: center">
+                                <div class="spinner-border spinner-border-lg"></div>
+                            </div>
+                            <div *ngIf="isNoRecord && topicsList.length == 0 && !isShowLoad" style="text-align: center">
+                                <img src="assets/img/norecord.png" width="200" height="200" />
+                                <p class="fs-5">No Records found</p>
+                            </div>
+                        </section>
+                        <div class="card tableDiv table-responsive table-data" *ngIf="topicsList.length!=0">
+                            <table class="table table-borderless table-hover table align-middle">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col" class="text-left">Category Name</th>
+                                        <th scope="col" class="text-left">Sub Category Name</th>
+                                        <th scope="col" class="text-left">Topic Name</th>
+                                        <th scope="col" class="text-left">Status</th>
+                                        <th scope="col" class="text-left">Actions</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr *ngFor="let topics of topicsList;let i = index;">
+                                        <th scope="row">{{i+1}}</th>
+                                        <td class="text-left">
+                                            {{topics?.categoryName}}</td>
+                                        <td class="text-left">
+                                            {{topics?.subCategoryName}}
+                                        </td>
+                                        <td class="text-left">
+                                            {{topics?.topicName}}
+                                        </td>
+                                        <td>
+                                            <span class="text-primary" *ngIf="topics?.status">Active</span>
+                                            <span class="text-danger" *ngIf="!topics?.status">InActive</span>
+                                        </td>
+                                        <td style="padding:5px;">
+                                            <div class="btn-toolbar" role="toolbar"
+                                                aria-label="Toolbar with button groups">
+                                                <div class="btn-group mr-2 btn-group-sm text-center ms-4" role="group"
+                                                    aria-label="First group">
+                                                    <button type="button" class="btn btn-light" (click)="edit(i)">
+                                                        <span class="menu-icon tf-icons iconify text-secondary"
+                                                            data-icon="bx:edit"></span>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

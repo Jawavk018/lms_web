@@ -1,0 +1,786 @@
+    <div class="row">
+        <div class="col-md-12 align-items-start">
+            <div class="row">
+                <div class="col-md-2 col-sm-12 nav flex-column nav-pills mb-4" id="v-pills-tab" role="tablist"
+                    aria-orientation="vertical">
+                    <h6 class="text-dark fw-bold">Plan your course</h6>
+                    <a class="nav-link active mb-4" id="intended-learners" data-bs-toggle="pill"
+                        data-bs-target="#intended-learners-pill"
+                        [ngClass]="intendedLearnerForm.valid ? 'border_left': ''" type="a" role="tab"
+                        aria-controls="intended-learners-pill" aria-selected="true"><i
+                            class="bi bi-check2-circle"></i>&nbsp; Intended learners </a>
+
+                    <hr class="text-muted">
+
+                    <h6 class="text-dark fw-bold mt-3">Create your content</h6>
+                    <a class="nav-link mb-4" id="curriculum" data-bs-toggle="pill"
+                        [attr.data-bs-target]="intendedLearnerForm.valid ? '#curriculum-pill' : ''"
+                        [ngClass]="curriculum.valid && isCurriculum ? 'border_left': ''" type="a" role="tab"
+                        aria-controls="curriculum-pill" aria-selected="false">
+                        <i class="bi bi-check2-circle"></i>&nbsp;Curriculum
+                    </a>
+
+                    <hr class="text-muted">
+
+                    <h6 class="text-dark fw-bold mt-3">Publish your course</h6>
+                    <a class="nav-link" id="landing" data-bs-toggle="pill"
+                        [attr.data-bs-target]="curriculum.valid ? '#landing-pill' : ''"
+                        [ngClass]="courseForm.valid ? 'border_left': ''" type="a" role="tab"
+                        aria-controls="landing-pill" aria-selected="true"><i
+                            class="bi bi-check2-circle"></i>&nbsp;Course landing
+                        page</a>
+
+                    <a class="nav-link" id="pricing" data-bs-toggle="pill"
+                        [attr.data-bs-target]="courseForm.valid ? '#pricing-pill' : ''"
+                        [ngClass]="priceForm.valid ? 'border_left': ''" type="a" role="tab" aria-controls="pricing-pill"
+                        aria-selected="false"><i class="bi bi-check2-circle"></i>&nbsp;Pricing</a>
+
+                    <a class="nav-link" id="message" data-bs-toggle="pill"
+                        [attr.data-bs-target]="priceForm.valid ? '#message-pill' : ''"
+                        [ngClass]="msgForm.valid ? 'border_left': ''" type="a" role="tab" aria-controls="message-pill"
+                        aria-selected="false"><i class="bi bi-check2-circle"></i>&nbsp;Course
+                        messages</a>
+
+                    <button type="submit" class="btn btn-primary rounded-0 mt-5 col-md-12" (click)="save()"
+                        [disabled]="this.form.invalid || !courseImage || !courseVideo || !courseFile || isLoading || (isLast ? disabled : false)"><span
+                            class="spinner-border spinner-border-sm" *ngIf="isLoading"></span>&nbsp;&nbsp; {{isLast ? 'Create Course' : 'Next'}}</button>
+
+                </div>
+                <div class="tab-content col-md-10 card p-0" id="v-pills-tabContent">
+                    <div class="tab-pane fade show active" id="intended-learners-pill" role="tabpanel"
+                        aria-labelledby="intended-learners">
+                        <form [formGroup]="intendedLearnerForm">
+                            <h4 class="border border-bottom py-4 px-5">Intended Learners</h4>
+                            <div class="py-3 px-5 col-md-12">
+                                <div>
+                                    <p class="fs-6">The following descriptions will be publicly visible on your <a
+                                            href="#" class="text-decoration-underline" style="color: #566a7f;">Course
+                                            Landing
+                                            Page</a> and will
+                                        have a direct impact on your course performance. These descriptions will help
+                                        learners
+                                        decide if your course is right for them.</p>
+                                </div>
+                                <div class="py-3">
+                                    <div>
+                                        <h6 style="font-weight: 600;color: black;"> What will students learn in your
+                                            course? <span class="text-danger" style="font-size: 20px;">*</span>
+                                        </h6>
+                                        <p class="fs-6">You must enter at least 4 <a href="#"
+                                                class="text-decoration-underline" style="color: #566a7f;">learning
+                                                objectives or outcomes</a> that learners can expect to achieve after
+                                            completing your course.</p>
+                                    </div>
+
+                                    <form [formGroup]="intendedLearnerForm">
+                                        <div formArrayName="studentsLearn" class="row">
+                                            <div *ngFor="let learnDetails of getLearnerDetails().controls; let i = index"
+                                                [formGroupName]="i" class="col-md-6">
+                                                <div class="input-group mb-3">
+                                                    <input type="text" maxlength="160" class="form-control"
+                                                         formControlName="learn"
+                                                        placeholder="Example: Define the roles and responsibilities of a project manager">
+                                                    <span class="input-group-text">{{ 160 -
+                                                        (learnDetails?.value?.learn?.length ?? 0) }} </span>
+                                                    <div *ngIf="i>=4" class="input-group-append">
+                                                        <button type="button" title="remove"
+                                                            class="btn btn-light border rounded-0"
+                                                            (click)="removeLearners(i)"><i
+                                                                class="bi bi-trash-fill text-danger"></i></button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="color: #566a7f;font-weight: 500;" class="add-link"
+                                            (click)="addLearnersInfo()"> <i class="bi bi-plus"></i> Add more to
+                                            your response</a>
+                                    </form>
+                                </div>
+
+                                <div class="py-3">
+                                    <div>
+                                        <h6 style="font-weight: 600;color: black;"> What are the requirements or
+                                            prerequisites for taking your course? <span class="text-danger"
+                                                style="font-size: 20px;">*</span>
+                                        </h6>
+                                        <p class="fs-6">List the required skills, experience, tools or equipment
+                                            learners
+                                            should have prior to taking your course.
+                                            If there are no requirements, use this space as an opportunity to lower the
+                                            barrier for beginners.</p>
+                                    </div>
+                                    <form [formGroup]="intendedLearnerForm">
+                                        <div formArrayName="requirements" class="row">
+                                            <div *ngFor="let requirement of getRequirementsDetails().controls;let i = index;"
+                                                class="col-md-6">
+                                                <div [formGroupName]="i">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" maxlength="160" class="form-control prerequisites"
+                                                            formControlName="prerequisites" 
+                                                            placeholder="Example: No programming experience needed. You will learn everything you need to know">
+                                                            <span class="input-group-text">{{ 160 -
+                                                                (requirement?.value?.prerequisites?.length ?? 0) }} </span>
+                                                        <div *ngIf="i>=1" class="input-group-append">
+                                                            <button type="button" title="remove"
+                                                                class="btn btn-light border rounded-0"
+                                                                (click)="removeRequirements(i)"><i
+                                                                    class="bi bi-trash-fill text-danger"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="color: #566a7f;font-weight: 500;" class="add-link"
+                                            (click)="addRequirementsInfo()"> <i class="bi bi-plus"></i> Add more to your
+                                            response</a>
+                                    </form>
+                                </div>
+                                <div class="py-3">
+                                    <div>
+                                        <h6 style="font-weight: 600;color: black;"> Who is this course for? <span
+                                                class="text-danger" style="font-size: 20px;">*</span>
+                                        </h6>
+                                        <p class="fs-6">Write a clear description of the<a href="#"
+                                                class="text-decoration-underline" style="color: #566a7f;"> intended
+                                                learners
+                                            </a> your course who will find your course content valuable.
+                                            This will help you attract the right learners to your course.</p>
+                                    </div>
+                                    <form [formGroup]="intendedLearnerForm">
+                                        <div formArrayName="courseFor" class="row">
+                                            <div *ngFor="let course of getCourseForDetails().controls;let i = index;"
+                                                class="col-md-6">
+                                                <div [formGroupName]="i">
+                                                    <div class="input-group mb-3">
+                                                        <input type="text" maxlength="160" class="form-control prerequisites"
+                                                            formControlName="courseFor"
+                                                            placeholder="Example: Beginner Python developers curious about data science">
+                                                            <span class="input-group-text">{{ 160 -
+                                                                (course?.value?.courseFor?.length ?? 0) }} </span>
+                                                        <div *ngIf="i>=1" class="input-group-append">
+                                                            <button type="button" title="remove"
+                                                                class="btn btn-light border rounded-0"
+                                                                (click)="removeCourse(i)"><i
+                                                                    class="bi bi-trash-fill text-danger"></i></button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <a style="color: #566a7f;font-weight: 500;" class="add-link"
+                                            (click)="addCourseForInfo()"> <i class="bi bi-plus"></i> Add more to your
+                                            response</a>
+                                    </form>
+                                </div>
+                                <button type="button" [disabled]="intendedLearnerForm.invalid"
+                                    class="btn btn-primary rounded-0 mt-3" (click)="next('curriculum')">Next</button>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="curriculum-pill" role="tabpanel" aria-labelledby="curriculum">
+                        <form [formGroup]="form">
+                            <h4 class="border border-bottom py-4 px-5">Curriculum</h4>
+                            <div class="py-3 px-5 col-md-10" formArrayName="curriculum">
+                                <div>
+                                    <p class="fs-6">Start putting together your course by creating sections, lectures
+                                        and practice (quizzes, coding exercises and assignments).
+
+                                        Start putting together your course by creating sections, lectures and practice
+                                        activities <a href="#" class="text-decoration-underline"
+                                            style="color: #566a7f;">(quizzes, coding exercises
+                                            and assignments).</a> Use
+                                        your <a href="#" class="text-decoration-underline"
+                                            style="color: #566a7f;">course outline </a> structure
+                                        your content and label
+                                        your sections and lectures clearly. If you’re intending to offer your course for
+                                        free, the total length of video content must be less than 2 hours.</p>
+
+                                </div>
+
+                                <div class="card shadow p-3 rounded-0 mt-5"
+                                    *ngFor="let curriculums of curriculum.controls; let i = index" [formGroupName]="i">
+                                    <div class="card_title mt-4 mx-4">
+                                        <div class="row">
+                                            <div class="d-flex">
+                                                <div class="d-flex">
+                                                    <h4>Section {{i+1}}:</h4>
+                                                    <div class="mt-1 ms-2 intro"><i class="bi bi-file-earmark"></i>
+                                                    </div>
+                                                    <div class="mt-1 ms-2 intro">{{curriculums.value.section}}</div>
+                                                    <div class="mt-1 ms-2 intro"><i class="bi bi-pencil-fill"
+                                                            (click)="showSectionTab(i)"></i></div>
+                                                    <div class="mt-1 ms-2 intro"><i class="bi bi-trash-fill"></i></div>
+                                                </div>
+                                                <div *ngIf="curriculum.value?.length > 1" (click)="removeCurriculum(i)"
+                                                    class="mt-1 ms-auto intro" role="button"><i
+                                                        class="bi bi-trash-fill"></i></div>
+                                            </div>
+                                        </div>
+                                        <div *ngIf="curriculums.value.isEdit">
+                                            <div style="border: 1px solid #000; padding: 10px;" class="p-3">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-12">
+                                                        <h4>Section {{i}}:</h4>
+                                                    </div>
+                                                    <div class="col-md-10 col-sm-12">
+                                                        <input class="form-control border" type="text" id="section"
+                                                            formControlName="section" placeholder="Enter a Title" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-12"></div>
+                                                    <div class="col-md-10 col-sm-12 mt-4">
+                                                        <h4>What will students be able to do at the end of this section?
+                                                        </h4>
+                                                        <input class="form-control border" type="text" id="endOfSection"
+                                                            formControlName="endOfSection"
+                                                            placeholder="Enter a Title" />
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-md-12 col-sm-12 d-flex justify-content-end">
+                                                        <button type="button" class="btn btn-primary rounded-0 mt-3 ms-3"
+                                                            (click)="showSectionTab(i)">Save
+                                                            Section</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div formArrayName="curriculumItem">
+                                        <div class="card_body"
+                                            *ngFor="let curriculumItem of getCurriculumItem(i).controls;let j = index;"
+                                            [formGroupName]="j">
+                                            <div class="ms-4 mt-4" style="border: 1px solid #000; padding: 10px;">
+                                                <div class="row">
+                                                    <div class="col-md-2 col-sm-12">
+                                                        <h4>Lecture {{j+1}}:</h4>
+                                                    </div>
+                                                    <div class="col-md-6 col-sm-12 d-flex">
+                                                        <div class="mt-1 intro"><i class="bi bi-file-earmark"></i></div>
+                                                        <div class="mt-1 ms-2 intro">{{curriculumItem.value.lecture}}
+                                                        </div>
+                                                        <div class="mt-1 ms-2 intro" role="button"
+                                                            (click)="showCurriculumTab(i,j)"><i
+                                                                class="bi bi-pencil-fill"></i>
+                                                        </div>
+                                                        <div class="mt-1 ms-2 intro" (click)="removeLec(i,j)"><i
+                                                                class="bi bi-trash-fill"></i>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-12 d-flex justify-content-end"
+                                                        *ngIf="!curriculumItem.value.isShowContent && !curriculumItem.value.video && !curriculumItem.value.articale">
+                                                        <div style="border: 1px solid #000; padding: 8px;" type="button"
+                                                            (click)="showContentType(i,j)">
+                                                            <span><i class="bi bi-plus-lg"></i></span>&nbsp;Content
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 col-sm-12 d-flex justify-content-end"
+                                                        *ngIf="curriculumItem.value.isShowContent && !curriculumItem.value.video && !curriculumItem.value.resources">
+                                                        <div style="border: 1px solid #000; padding: 8px;" type="button"
+                                                            (click)="showContentType(i,j)">Select
+                                                            content type
+                                                            <span><i class="bi bi-x-lg"></i></span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="curriculumItem.value.video">
+                                                    <div style="border: 1px solid #000; padding: 10px;"
+                                                        class="mt-2 p-2">
+                                                        <div class="row">
+                                                            <div class="col-md-10 col-sm-12">
+                                                                <h5>Video</h5>
+                                                                <h6>{{curriculumItem.value.video?.name}}</h6>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-12">
+                                                                <div class="mt-1 ms-2 intro" role="button"
+                                                                    (click)="removeVideoLec(i,j)"><i
+                                                                        class="bi bi-trash-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="!curriculumItem.value.resources"
+                                                        class="p-2 border w-25 mt-2" role="button"
+                                                        (click)="addResource(i,j)">
+                                                        <div class="d-flex">
+                                                            <div class="mt-1 ms-2 intro"><i class="bi bi-plus"></i>
+                                                            </div>
+                                                            <h6 class="my-auto">Resources</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div
+                                                    *ngIf="curriculumItem.value.articale && !curriculumItem.value.isShowArticale">
+                                                    <div style="border: 1px solid #000; padding: 10px;"
+                                                        class="mt-2 p-2">
+                                                        <div class="row">
+                                                            <div class="col-md-10 col-sm-12">
+                                                                <h5>Articale</h5>
+                                                                <h6 [innerHTML]="curriculumItem.value.articale"></h6>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-12">
+                                                                <div class="mt-1 ms-2 intro" role="button"
+                                                                    (click)="removeVideoArc(i,j)"><i
+                                                                        class="bi bi-trash-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div *ngIf="!curriculumItem.value.resources"
+                                                        class="p-2 border w-25 mt-2" role="button"
+                                                        (click)="addResource(i,j)">
+                                                        <div class="d-flex">
+                                                            <div class="mt-1 ms-2 intro"><i class="bi bi-plus"></i>
+                                                            </div>
+                                                            <h6 class="my-auto">Resources</h6>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div *ngIf="curriculumItem.value.resources">
+                                                    <div style="border: 1px solid #000; padding: 10px;"
+                                                        class="mt-2 p-2">
+                                                        <div class="row">
+                                                            <div class="col-md-10 col-sm-12">
+                                                                <h5>Resources</h5>
+                                                                <h6>{{curriculumItem.value.resources?.name}}</h6>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-12">
+                                                                <div class="mt-1 ms-2 intro" role="button"
+                                                                    (click)="removeResourceLec(i,j)"><i
+                                                                        class="bi bi-trash-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="curriculumItem.value.isEdit" class="mt-2">
+                                                    <div style="border: 1px solid #000; padding: 10px;" class="p-3">
+                                                        <div class="row">
+                                                            <div class="col-md-2 col-sm-12">
+                                                                <h4>Lecture {{j+1}}:</h4>
+                                                            </div>
+                                                            <div class="col-md-10 col-sm-12">
+                                                                <input class="form-control border" type="text"
+                                                                    id="lecture" formControlName="lecture"
+                                                                    placeholder="Enter a Title" />
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-sm-12 d-flex justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-primary rounded-0 mt-3 ms-3"
+                                                                    (click)="showCurriculumTab(i,j)">Save
+                                                                    Lecture</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div *ngIf="curriculumItem.value.isShowArticale" class="mt-2">
+                                                    <div style="border: 1px solid #000; padding: 10px;" class="p-3">
+                                                        <div class="row ">
+                                                            <div class="col-md-10 col-sm-12">
+                                                                <div class="NgxEditor__Wrapper">
+                                                                    <ngx-editor-menu [editor]="getEditor(i,j)"> </ngx-editor-menu>
+                                                                    <ngx-editor [editor]="getEditor(i,j)" formControlName="articale" [placeholder]="'Type here...'"></ngx-editor>
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-md-2 col-sm-12">
+                                                                <div class="mt-1 ms-2 intro" role="button"
+                                                                    (click)="removeVideoArc(i,j)"><i
+                                                                        class="bi bi-trash-fill"></i>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="row">
+                                                            <div class="col-md-12 col-sm-12 d-flex justify-content-end">
+                                                                <button type="button"
+                                                                    class="btn btn-primary rounded-0 mt-3 ms-3"
+                                                                    (click)="saveArticale(i,j)">Save
+                                                                    Articale</button>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="ms-4" [ngClass]="{'border-top': extensionVisible}"
+                                                *ngIf="curriculumItem.value.isShowContent"
+                                                style="border: 1px solid #000; padding: 10px">
+                                                <p *ngIf="!curriculumItem.value.video && !curriculumItem.value.articale && !curriculumItem.value.resources"
+                                                    class="text-center">Select the main type of content. Files and links
+                                                    can
+                                                    be added as resources.
+                                                    Learn about content types.</p>
+                                                    <div class="text-center text-dark mb-3">
+                                                        <p *ngIf="!curriculumItem.value.video">
+                                                          <mat-checkbox class="example-margin" formControlName="isForFree">
+                                                            Is this video available for free?
+                                                          </mat-checkbox>
+                                                        </p>
+                                                      </div>
+                                                <div class="d-flex justify-content-center">
+                                                    <ul class="list-inline">
+                                                        <li class="list-inline-item me-4" role="button"
+                                                            (click)="addVideo(i,j)"
+                                                            *ngIf="!curriculumItem.value.video && !curriculumItem.value.articale">
+                                                            <div class="form-group col-md-3">
+                                                                <div style="width: 5rem; height: 5rem; border: 1px solid lavender; background-color: lightgray; display: flex; justify-content: center; align-items: center"
+                                                                    role="button">
+                                                                    <img [src]="'assets/img/videoupload.png'" alt="" />
+                                                                </div>
+                                                                <div
+                                                                    style="position: absolute; font-size: 15px; top: 10px; right: 30px;">
+                                                                    <i class="fa fa-times delete-file text-black"></i>
+                                                                </div>
+                                                            </div>
+                                                            <h6 style="font-weight: 600;color: black;"> Video</h6>
+                                                        </li>
+                                                        <li class="list-inline-item me-4" role="button"
+                                                            *ngIf="!curriculumItem.value.articale && !curriculumItem.value.video"
+                                                            (click)="showArticale(i,j)">
+                                                            <div class="form-group col-md-3">
+                                                                <div style="width: 5rem; height: 5rem; border: 1px solid lavender; background-color: lightgray; display: flex; justify-content: center; align-items: center"
+                                                                    role="button" (click)="addArticle()">
+                                                                    <img [src]="'assets/img/videoupload.png'" alt="" />
+                                                                </div>
+                                                                <div
+                                                                    style="position: absolute; font-size: 15px; top: 10px; right: 30px;">
+                                                                    <i class="fa fa-times delete-file text-black"></i>
+                                                                </div>
+                                                            </div>
+                                                            <h6 style="font-weight: 600;color: black;"> Article</h6>
+                                                        </li>
+
+                                                        <li class="list-inline-item me-4" role="button"
+                                                            *ngIf="!curriculumItem.value.resources"
+                                                            (click)="addResource(i,j)">
+                                                            <div class="form-group col-md-3">
+                                                                <div style="width: 5rem; height: 5rem; border: 1px solid lavender; background-color: lightgray; display: flex; justify-content: center; align-items: center"
+                                                                    role="button">
+                                                                    <img [src]="'assets/img/videoupload.png'" alt="" />
+                                                                </div>
+                                                                <div
+                                                                    style="position: absolute; font-size: 15px; top: 10px; right: 30px;">
+                                                                    <i class="fa fa-times delete-file text-black"></i>
+                                                                </div>
+                                                            </div>
+                                                            <h6 style="font-weight: 600;color: black;">Resources</h6>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="btn btn-outline-dark mt-4" (click)="addCurriculumItem(i)">
+                                            Add Lecture
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="btn btn-outline-dark mt-4" (click)="addCurriculum()">
+                                    Add Section
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 align-self-end">
+                                        <button type="button" [disabled]="curriculum.invalid"
+                                            class="btn btn-primary rounded-0 mt-3" (click)="next('landing')">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="tab-pane fade show" id="landing-pill" role="tabpanel" aria-labelledby="landing">
+                        <h4 class="border border-bottom py-4 px-5">Course landing page</h4>
+                        <div class="py-3 px-5">
+                            <div>
+                                <p class="fs-6 col-md-10">
+                                    Your course landing page is crucial to your success on Udemy. If it’s done right, it
+                                    can also help you gain visibility in search engines like Google. As you complete
+                                    this section, think about creating a compelling Course Landing Page that
+                                    demonstrates why someone would want to enroll in your course. Learn more about
+                                    <a href="#" class="text-decoration-underline" style="color: #566a7f;">creating your
+                                        course landing page </a> and <a href="#" class="text-decoration-underline"
+                                        style="color: #566a7f;"> course title standards.</a>
+                                </p>
+                            </div>
+                            <form [formGroup]="courseForm">
+                                <div class="py-3">
+                                    <div class="row">
+                                        <div class="col-xl-8 col-md-8 col-sm-12">
+                                            <div class="mb-4">
+                                                <h6 style="font-weight: 600;color: black;"> Course title <span
+                                                        class="text-danger" style="font-size: 20px;">*</span></h6>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control " #titleInput maxlength="60"
+                                                        formControlName="title" placeholder="Insert your course title">
+                                                    <span
+                                                        class="input-group-text">{{titleInput?.value?.length}}/60</span>
+                                                </div>
+                                                <span style="font-size: 12px;">Your title should be a mix of
+                                                    attention-grabbing,
+                                                    informative, and optimized for search</span>
+                                            </div>
+                                            <div class="mb-4">
+                                                <h6 style="font-weight: 600;color: black;"> Course subtitle <span
+                                                        class="text-danger" style="font-size: 20px;">*</span>
+                                                </h6>
+                                                <div class="input-group">
+                                                    <input type="text" class="form-control" #subtitleInput
+                                                        maxlength="120" formControlName="subtitle"
+                                                        placeholder="Insert your course subtitle">
+                                                    <span
+                                                        class="input-group-text">{{subtitleInput?.value?.length}}/120</span>
+                                                </div>
+                                                <span style="font-size: 12px;">Use 1 or 2 related keywords, and mention
+                                                    3-4
+                                                    of the most important areas that you've covered during your
+                                                    course.</span>
+                                            </div>
+                                            <div class="blog__comment-input mb-4">
+                                                <h6 style="font-weight: 600;color: black;"> Course description <span
+                                                        class="text-danger" style="font-size: 20px;">*</span>
+                                                </h6>
+                                                <div class="NgxEditor__Wrapper">
+                                                    <ngx-editor-menu [editor]="editorFour"> </ngx-editor-menu>
+                                                    <ngx-editor [editor]="editorFour" formControlName="description"
+                                                        [placeholder]="'Type here...'"></ngx-editor>
+                                                </div>
+                                                <span style="font-size: 12px;">Description should have minimum 200
+                                                    words.</span>
+                                            </div>
+                                            <div>
+                                                <div formGroupName="basicInfo" class="row g-3">
+                                                    <h6 style="font-weight: 600;color: black;"> Basic info <span
+                                                            class="text-danger" style="font-size: 20px;">*</span>
+                                                    </h6>
+                                                    <div class="col-md-3">
+                                                        <label>language</label>
+                                                        <select class="form-control form-select rounded-0"
+                                                            formControlName="languageTypeCd">
+                                                            <option value="" disabled>select language</option>
+                                                            <option [value]="language?.codesDtlSno"
+                                                                *ngFor="let language of languageList;let i =index;">
+                                                                {{ language.cdValue }}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label>Experience Level</label>
+                                                        <select class="form-control form-select rounded-0"
+                                                            formControlName="expLevelTypeCd">
+                                                            <option value="" disabled>select experience level
+                                                            </option>
+                                                            <option [value]="exp?.codesDtlSno"
+                                                                *ngFor="let exp of expLevelTypeList;let i =index;">
+                                                                {{ exp.cdValue }}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label>Category</label>
+                                                        <select class="form-control form-select rounded-0"
+                                                            formControlName="categorySno" (change)="getSubCategoryList()">
+                                                            <option value="" disabled>select category</option>
+                                                            <option *ngFor="let category of categoryList;let i =index;"
+                                                                [value]="category?.categorySno">
+                                                                {{category.categoryName}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-3">
+                                                        <label>Sub Category</label>
+                                                        <select id="subCategory"
+                                                            class="form-control form-select rounded-0"
+                                                            formControlName="subCategorySno">
+                                                            <option value="" disabled>select subcategory</option>
+                                                            <option *ngFor="let sub of subCategoryList;let i =index;"
+                                                                [value]="sub?.subCategorySno">
+                                                                {{sub.subCategoryName}}</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-12">
+                                                        <label>Topics</label>
+                                                        <ng-multiselect-dropdown name="topics"
+                                                            [placeholder]="'Select topics'" [data]="topicsList"
+                                                            formControlName="topicsSno" [settings]="settings">
+                                                        </ng-multiselect-dropdown>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xl-4 col-md-4 col-sm-12">
+                                            <div class="d-block">
+                                                <div class="mb-3">
+                                                    <h6 style="font-weight: 600;color: black;"> Course image
+                                                    </h6>
+                                                    <div class="form-group col-md-3">
+                                                        <div style="width: 18rem;height: 16rem;border: 1px solid lavender;background-color: lightgray;display: flex;justify-content: center;align-items: center"
+                                                            (click)="selectImage('courseImage')" role="button">
+                                                            <img [style]="courseImgUrl!=null ? 'width:100%;height:100%;object-fit: fill':'width:30%;height:30%;'"
+                                                                [src]="courseImgUrl != null ? courseImgUrl:'assets/img/uploadimg.png'"
+                                                                alt="" />
+                                                        </div>
+
+                                                        <div
+                                                            style="position: absolute;font-size:15px;top:10px;right:30px;">
+                                                            <i class="fa fa-times delete-file text-black"
+                                                                (click)="removeFile('courseImage')"
+                                                                *ngIf="courseImage?.fileName"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+                                                <div class="mb-3">
+                                                    <h6 style="font-weight: 600;color: black;"> Promotional video
+                                                    </h6>
+                                                    <div class="form-group col-md-3">
+                                                        <div style="width: 18rem;height: 16rem;border: 1px solid lavender;background-color: lightgray;display: flex;justify-content: center;align-items: center"
+                                                            role="button" (click)="selectVideo('courseVideo')">
+                                                            <img *ngIf="!courseVideoUrl"
+                                                                [style]="courseVideoUrl!=null ? 'width:100%;height:13rem;object-fit: fill':'width:60%;height:60%;'"
+                                                                src="assets/img/videoupload.png" alt="" />
+                                                            <video *ngIf="courseVideoUrl"
+                                                                [style]="courseVideoUrl!=null ? 'width:100%;height:13rem;object-fit: fill':'width:60%;height:60%;'"
+                                                                [src]="courseVideoUrl">
+                                                            </video>
+                                                        </div>
+
+                                                        <div
+                                                            style="position: absolute;font-size:15px;top:10px;right:30px;">
+                                                            <i class="fa fa-times delete-file text-black"
+                                                                (click)="removeVideo('courseVideo')"
+                                                                *ngIf="courseVideo?.fileName"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div>
+                                                    <h6 style="font-weight: 600;color: black;"> Add Document
+                                                    </h6>
+                                                    <div class="form-group col-md-3">
+                                                        <div style="width: 18rem;height: 16rem;border: 1px solid lavender;background-color: lightgray;display: flex;justify-content: center;align-items: center"
+                                                            role="button" (click)="selectFile('courseFile')">
+                                                            <img *ngIf="!courseFileUrl"
+                                                                [style]="courseFileUrl!=null ? 'width:100%;height:13rem;object-fit: fill':'width:60%;height:60%;'"
+                                                                src="assets/img/documentupload.png" alt="" />
+
+                                                            <img *ngIf="courseFileUrl"
+                                                                [style]="courseFileUrl!=null ? 'width:100%;height:13rem;object-fit: fill':'width:60%;height:60%;'"
+                                                                [src]="courseFileUrl"
+                                                                onerror="this.src='/assets/img/pdf.png';" />
+                                                        </div>
+
+                                                        <div
+                                                            style="position: absolute;font-size:15px;top:10px;right:30px;">
+                                                            <i class="fa fa-times delete-file text-black"
+                                                                (click)="removePdf('courseFile')"
+                                                                *ngIf="courseFile?.fileName"></i>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-12 align-self-end">
+                                            <button type="button"
+                                                [disabled]="courseForm.invalid || !courseImage || !courseVideo || !courseFile"
+                                                class="btn btn-primary rounded-0 mt-3"
+                                                (click)="next('pricing')">Next</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="tab-pane fade" id="pricing-pill" role="tabpanel" aria-labelledby="pricing">
+                        <form [formGroup]="priceForm">
+                            <h4 class="border border-bottom py-4 px-5">Pricing</h4>
+                            <div class="py-3 px-5 col-md-10">
+                                <div>
+                                    <h6 style="font-weight: 600;color: black;"> Set a price for your course
+                                    </h6>
+                                    <p class="fs-6 col-md-10">
+                                        Please select the currency and the price tier for your course. If you’d like to
+                                        offer your course for free, it must have a total video length of less than 2
+                                        hours.
+                                        Also, courses with practice tests can not be free.
+                                    </p>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h6 style="font-weight: 600;color: black;">Currency</h6>
+                                        <select class="form-control form-select rounded-0"
+                                            formControlName="currencySno">
+                                            <option [value]="currency?.currencySno"
+                                                *ngFor="let currency of currencyList;let i =index;">
+                                                {{ currency.currencyCode }}</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h6 style="font-weight: 600;color: black;">Price Tier</h6>
+                                        <input type="number" class="form-control price" formControlName="price"
+                                            placeholder="0">
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-12 align-self-end">
+                                        <button type="button" [disabled]="priceForm.invalid"
+                                            class="btn btn-primary rounded-0 mt-3" (click)="next('message')">Next</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="tab-pane fade" id="message-pill" role="tabpanel" aria-labelledby="message">
+                        <form [formGroup]="msgForm">
+                            <h4 class="border border-bottom py-4 px-5">Course messages</h4>
+                            <div class="py-3 px-5">
+                                <div>
+                                    <p class="fs-6 col-md-10">
+                                        Write messages to your students (optional) that will be sent automatically when
+                                        they
+                                        join or complete your course to encourage students to engage with course
+                                        content. If
+                                        you do not wish to send a welcome or congratulations message, leave the text box
+                                        blank.
+                                    </p>
+                                </div>
+                                <div class="py-3">
+                                    <div class="row">
+                                        <div class="col-xl-8 col-md-8 col-sm-12">
+                                            <div class="mb-3">
+                                                <h6 style="font-weight: 600;color: black;"> Welcome Message
+                                                </h6>
+                                                <div class="NgxEditor__Wrapper">
+                                                    <ngx-editor-menu [editor]="editorTwo"> </ngx-editor-menu>
+                                                    <ngx-editor [editor]="editorTwo" formControlName="welcomeMsg"
+                                                        [placeholder]="'Type here...'"></ngx-editor>
+                                                </div>
+                                            </div>
+                                            <div>
+                                                <h6 style="font-weight: 600;color: black;"> Congratulations Message
+                                                </h6>
+                                                <div class="NgxEditor__Wrapper">
+                                                    <ngx-editor-menu [editor]="editorThree"> </ngx-editor-menu>
+                                                    <ngx-editor [editor]="editorThree"
+                                                        formControlName="congratulationsMsg"
+                                                        [placeholder]="'Type here...'"></ngx-editor>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<input type="file" id="selectImage" accept="image/*" class="d-none"
+    (change)="changePhoto1Img($event.target,['png', 'jpeg', 'jpg'],'courseImage')" placeholder="Your Title" #images>
+
+<input type="file" id="selectVideo" accept="video/*" class="d-none"
+    (change)="changeVideo($event.target, ['mp4', 'avi', 'mov'], 'courseVideo')" placeholder="Your Title" #videos>
+
+<input type="file" id="selectFile" accept="application/pdf" class="d-none"
+    (change)="changeFile($event.target, ['pdf', 'docx'], 'courseFile')" placeholder="Your Title" #pdf>

@@ -1,0 +1,66 @@
+// contact-style
+@import '../../../../custom-palettes.scss';
+
+.contact-from-input input,
+.contact-select select,
+.contact-from-input textarea {
+	@apply h-[60px] w-full bg-[#f8f8f9] border-0 py-[15px] px-5 rounded outline-0;
+}
+.contact-from-input textarea {
+	@apply h-[170px];
+}
+.support-item {
+	&:last-child {
+		@apply mb-0;
+	}
+	@apply flex items-start gap-5 mb-[30px] maxXs:gap-3;
+}
+.support-contact {
+	@apply py-[25px] px-[30px] bg-[#f8f8f9] rounded-[5px] border border-solid border-borderGray maxXs:px-5;
+}
+.support-tittle {
+	h4 {
+		@apply mb-[30px];
+	}
+}
+.support-info-phone {
+	span {
+		@apply text-heading text-[18px] font-bold mb-2.5 block;
+	}
+	p {
+		@apply mb-[3px];
+		a {
+			@apply text-heading font-bold;
+		}
+	}
+}
+.support-info-email {
+	span {
+		@apply text-heading text-[18px] font-bold mb-2.5 block;
+	}
+}
+.support-info-email {
+	a {
+		@apply block mb-0.5;
+	}
+}
+.support-info-location {
+	span {
+		@apply text-heading text-[18px] font-bold mb-2.5 block;
+	}
+}
+.contact-map iframe {
+	@apply h-[380px] w-full rounded;
+}
+
+.contact-select select {
+    color: rgba(87, 87, 87, 0.9);
+	@apply appearance-none relative;
+}
+.contact-select {
+	@apply relative;
+    &:after {
+		@apply absolute w-2 h-2 right-5 top-[25px] rotate-45 border-r-2 border-b-2 border-solid border-[#999];
+        content: '';
+    }
+}

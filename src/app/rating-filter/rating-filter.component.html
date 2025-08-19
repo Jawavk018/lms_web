@@ -1,0 +1,11 @@
+<div class="course-sidebar-info" [class.content-hidden]="ratingActive">
+    <h3 class="drop-btn" (click)="showRating()">Rating</h3>
+    <ul *ngFor="let rating of ratingList; let i = index;">
+       <li>
+          <div class="course-sidebar-list">
+             <input class="edu-check-box"  (change)="onChange($event.target, rating)" type="checkbox" id="rating_{{i}}">
+             <label class="edu-check-label" for="rating_{{i}}">{{rating?.ratingRange}} <i class="bi bi-star-fill"></i> & above ({{rating?.numberOfRatings}})</label>
+          </div>
+       </li>
+    </ul>
+ </div>

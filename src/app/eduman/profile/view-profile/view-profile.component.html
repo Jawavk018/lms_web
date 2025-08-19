@@ -1,0 +1,75 @@
+<div class="row mx-4 p-5" >
+    <div class="col-md-3">
+        <div class="card shadow-sm align-items-center">
+            <img class="card-img-top" src="assets/img/avatar.jpg" alt="Card image" style="width:50%">
+            <div class="card-body">
+                <h4 class="card-title">{{profile.firstName}} {{profile.lastName}}</h4>
+                <p class="card-text text-center">{{profile.specialization}}</p>
+            </div>
+            <div class="d-flex mb-3">
+                <i class="bi bi-twitter fontsize icon-hover " role="button"></i>
+                <i class="bi bi-facebook ms-3 fontsize icon-hover" role="button"></i>
+                <i class="bi bi-instagram ms-3 fontsize icon-hover" role="button"></i>
+                <i class="bi bi-linkedin ms-3 fontsize icon-hover" role="button"></i>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-9 ">
+        <div class="card shadow-sm p-3">
+            <div class="p-3">
+                <h4 style="color:#4154f1;">ABOUT</h4>
+                <p style="font-size: large;">{{profile.about != null  ? profile.about: 'sssssssss--'}}</p>
+            </div>
+
+            <div class="d-flex ">
+                <h4 class="p-3" style="color:  #4154f1;">Personal Details</h4>
+                <div class="p-3" (click)="goToEditProfile()">
+                    <i class="bi bi-pencil-fill" role="button" style="color:  #4154f1;" ></i>
+                </div>
+            </div>
+
+            <table class="table table-borderless">
+
+                <tbody>
+                    <tr>
+                        <th scope="row">FIRST NAME</th>
+                        <td>{{profile.firstName != null? profile.firstName:'--'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">LAST NAME</th>
+                        <td>{{profile.lastName != null? profile.lastName:'--'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">GENDER</th>
+                        <td>{{profile.genderCdValue != null?profile.genderCdValue:'--'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">MOBILE NUMBER</th>
+                        <td>{{profile.mobileNumber != null? profile.mobileNumber:'--'}}</td>
+                    </tr>
+                    <tr>
+                        <th scope="row">DATE OF BIRTH</th>
+                        <td>{{profile.dob != null? profile.dob:'--'}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">SPECIALIZATION</th>
+                        <td>{{profile.specialization != null? profile.specialization:'--'}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">LANGUAGES KNOWN</th>
+                        <td>{{profile.languageCdValue != null? profile.languageCdValue:'--'}}
+                        </td>
+                    </tr>
+                    <tr>
+                        <th scope="row">ALTERNATE NUMBER</th>
+                        <td>{{profile.alternateMobileNumber != null? profile.alternateMobileNumber:'--'}}
+                        </td>
+                    </tr>
+
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

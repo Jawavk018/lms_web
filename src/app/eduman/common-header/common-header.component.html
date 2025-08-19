@@ -1,0 +1,109 @@
+<header class="pt-2 header">
+    <div class="header-area">
+        <div class="container-fluid py-3">
+            <div class="header-main-wrapper">
+                <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px] items-center">
+                    <div class="col-span-5 md:col-span-5 lg:col-span-5">
+                        <div class="header-left flex items-center" (click)="goToHome()">
+                            <div class="header-logo">
+                                <a><img src="assets/img/logo/image.png" alt="logo" style="height: 100px;"></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-7 md:col-span-7 lg:col-span-7">
+                        <div class="header-right flex items-center justify-end">
+                            <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div *ngIf="appUser?.appUserSno" class="user-btn-content ">
+                                        <!-- [routerLink]="['/trainer']" -->
+                                        <a  role="button" (click)="goToCourses()">Courses</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div *ngIf="appUser?.appUserSno" class="user-btn-content ">
+                                        <!-- [routerLink]="['/trainer']" -->
+                                        <a  role="button" (click)="goToCourseCoupon()">Coupons</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div *ngIf="appUser?.appUserSno" class="user-btn-content ">
+                                        <!-- [routerLink]="['/trainer']" -->
+                                        <a  role="button" (click)="toBecomeLearner()">Switch to Learner</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div *ngIf="appUser?.appUserSno" class="user-btn-content ">
+                                        <!-- [routerLink]="['/trainer']" -->
+                                        <a  role="button" (click)="gotoSurveyAndPolls()">Survey & Poll</a>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div *ngIf="appUser?.appUserSno" class="user-btn-content ">
+                                        <a  role="button" [routerLink]="['/certificateHome']">Certificate</a>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                          <!-- <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div *ngIf="appUser?.appUserSno" class="user-btn-content ">
+                                        <a  role="button" data-bs-toggle="dropdown">Settings</a>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                            <a class="dropdown-item" [routerLink]="['/certificateHome']">Certificate</a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div> -->
+
+                            <div class="user-btn-inner relative hidden md:block" *ngIf="!appUser?.appUserSno">
+                                <div class="user-btn-wrapper">
+                                    <div class="user-btn-content ">
+                                        <a class="user-btn-sign-in" (click)="SignIn()">Sign In</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block" *ngIf="!appUser?.appUserSno">
+                                <a class="user-btn-sign-up edu-btn" (click)="SignUp()">Sign Up</a>
+                            </div>
+                            <div class="user-btn-inner relative hidden md:block profile" *ngIf="appUser?.appUserSno">
+                                <div class="dropdown show">
+                                    <img class="rounded-circle" role="button" data-bs-toggle="dropdown"
+                                        data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-content="Bottom dropdown" id="dropdownMenuLink" [style]="appUser?.profileImage != null ? 'width: 50px; height: 50px;border-radius:50%;margin-right: 10px;object-fit: cover;object-position: center;':'width: 50px; height: 50px'"
+                                        [src]="appUser?.profileImage != null ? appUser?.profileImage : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrq8a6plyTZvi2bjCyHBnNKwahQzDOCze830QtQGD6jw&s'" />
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" role="button"  (click)="goToProfile()">View/Edit Profile</a>
+                                        <a class="dropdown-item" role="button" data-bs-toggle="modal" data-bs-target="#changePasswordModal">Change Password
+                                        </a>
+                                        <a class="dropdown-item" (click)="LoggedOut()" role="button">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-bar xl:hidden ml-5">
+                                <a class="side-toggle" href="javascript:void(0)" (click)="infoclick()">
+                                    <div class="bar-icon">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<app-change-password-modal></app-change-password-modal> 

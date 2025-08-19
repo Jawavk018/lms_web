@@ -1,0 +1,259 @@
+// .modal {
+//     display: block;
+//     background: rgba(0, 0, 0, 0.5);
+//   }
+  
+//   .modal-dialog {
+//     max-width: 500px;
+//     margin: 1.75rem auto;
+//   }
+  
+//   .text-danger {
+//     color: red;
+//     margin-top: 5px;
+//   }
+//   .modal-xl-custom {
+//     max-width: 80%;
+//     max-height: 70%;
+//   }
+//   .btn1{
+//     font-size: larger;
+
+//   }
+//   .modal-lg-custom {
+//     max-width: 40%;
+//     max-height: 50%;
+//     margin: auto;
+//   }
+  
+//   .certificate-view {
+//     position: fixed;
+//     top: 50%;
+//     left: 50%;
+//     transform: translate(-50%, -50%);
+//     z-index: 1050;
+//     background-color: white;
+//     padding: 20px;
+//     border: 1px solid #ccc;
+//     box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+//   }
+  
+// .thumbs-up-popup {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.8); /* semi-transparent black overlay */
+//     z-index: 1050;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+//     font-size: medium;
+//   }
+  
+//   .thumbs-up-content {
+//     text-align: center;
+//     background-color: white;
+//     padding: 20px;
+//     border-radius: 10px;
+//     box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+//   }
+  
+//   .thumbs-up-gif {
+//     width: 150px; /* Adjust size as needed */
+//     height: auto;
+//   }
+  
+// .input-field{
+//     font-size: 14px;
+//     font-weight: bold;
+// ;
+// }
+
+
+/* certificate.component.css */
+/* certificate.component.css */
+@import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Open+Sans:wght@400;700&display=swap');
+
+:host {
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+   
+    background-color: #f0f0f0;
+    margin: 0;
+    color: white;
+}
+
+.certificate-container {
+    width: 70%;
+    background: white;
+    padding: 40px;
+    position: relative;
+    margin: 45px;
+    margin-left: 300px;
+}
+
+.certificate-container:before {
+    content: "";
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    right: -10px;
+    bottom: -10px;
+    background: linear-gradient(45deg, #f3ec78, #af4261, #1fa2ff);
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(184, 46, 46, 0.1);
+    z-index: -1;
+    padding: 20px;
+}
+
+.inner-border {
+    border: 10px solid #f39c12;
+    border-radius: 2px;
+    margin-top: -12px;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 30px;
+    position: relative;
+    padding: 53px;
+}
+
+.header img {
+    max-width: 120px;
+    margin-right: 10px;
+    vertical-align: middle;
+}
+
+.logo-upload {
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+.logo-upload input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.logo-upload img {
+    max-width: 120px;
+    display: block;
+    margin-top: 40px;
+    margin-left: 30px;
+}
+
+.certificate-container h1 {
+    font-family: 'Great Vibes', cursive;
+    font-size: 48px;
+    margin: 0;
+    background: none;
+    color: rgb(5, 5, 5);
+    background-image: linear-gradient(45deg, #d4cc29, #e21b53, #0f68a7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    text-align: center;
+}
+
+.certificate-container .content {
+    text-align: center;
+    margin: 30px 0;
+    color: rgb(0, 0, 0);
+    font-size: x-large;
+}
+
+.certificate-container .content p {
+    font-size: 26px;
+    color: #052153;
+}
+
+.certificate-container .content input {
+    border: none;
+    border-bottom: 2px solid #ddd9d9;
+    text-align: center;
+    font-size: 28px;
+    width: 70%;
+    padding: 8px;
+    margin: 15px 0;
+    background: none;
+    color: rgb(5, 5, 5);
+    font-family: 'Arial Black', sans-serif;
+    background-image: linear-gradient(45deg, #d4cc29, #e21b53, #0f68a7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    // text-shadow: 1px 1px 1px rgba(211, 20, 20, 0.5);
+    color: transparent;
+}
+
+.signatures {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+    margin-top: 20px;
+    color: black;
+    padding: 20px;
+}
+.allocate-btn:hover {
+  background-color: #e68a00;
+}
+
+.signature-box {
+    position: relative;
+    color: blue;
+    text-decoration: underline;
+}
+
+.signature-box input[type="file"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+    z-index: 2;
+}
+
+.upload-text {
+    color: #f70e50;
+    position: absolute;
+    font-size: larger;
+    top: -11px;
+}
+
+.signature-box img {
+    max-width: 150px;
+    max-height: 100px;
+    display: none;
+    position: relative;
+    z-index: 0;
+}
+::placeholder {
+  font-size: larger; /* Adjust font size as needed */
+}
+.allocate-btn:hover {
+  background-color: #e68a00;
+}
+.allocate-btn{
+  background-color: #e68a00;
+  text-align: center;
+  margin: auto;
+  width: 235px;
+  height: 59px;
+  font-size: larger;
+  border-radius: 11px;
+}

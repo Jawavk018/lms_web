@@ -1,0 +1,5 @@
+@import '../../../../custom-palettes.scss';
+
+.affiliates-wrapper {
+	@apply flex justify-center flex-wrap gap-x-[140px] gap-y-[60px];
+}

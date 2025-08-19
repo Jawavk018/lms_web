@@ -1,0 +1,157 @@
+<div *ngIf="this.appUser.selectedRole == 'Learner'">
+  <app-headerone></app-headerone>
+</div>
+<div *ngIf="this.appUser.selectedRole == 'Trainer'">
+  <app-common-header></app-common-header>
+</div>
+<div class="container my-5 card">
+  <!-- style="background-image:url('assets/img/bg-profile.png'); backdrop-filter: blur(100px) !important; background-position: center;background-repeat: no-repeat;" -->
+  <div class="row">
+    <form class="col-12" [formGroup]="profileForm">
+      <div class="py-3 d-flex justify-content-center">
+        <div class="position-relative">
+          <img
+            [style]="profileForm.value.media!=null ? 'width:120px;height:120px;border-radius:50%;margin-right: 10px;object-fit: cover;object-position: center;':'width:120px;height:120px;'"
+            [src]="profileForm.value.media != null ? profileForm.value.media.mediaUrl:'assets/img/profile.png'"
+            alt="" />
+          <div style="position: absolute;width: 40px;height: 40px;background-color: #2467ec;border-radius: 50%;right: 10px;bottom: 0;text-align: center;color: white;
+          padding-top: 8px;" role="button" (click)="selectProfileImage('profileImage')"
+            *ngIf="profileForm.value.media != null">
+            <i class="bi bi-pencil"></i>
+          </div>
+          <div style="position: absolute;width: 30px;height: 30px;background-color: #504e4e;border-radius: 50%;right: 10px;bottom: 18px;text-align: center;color: white;
+          padding-top: 4px;" role="button" (click)="selectProfileImage('profileImage')"
+            *ngIf="profileForm.value.media == null">
+            <i class="bi bi-plus-lg"></i>
+          </div>
+        </div>
+        <!-- <img class="" style="width:120px;height:120px;margin-right: 10px;" src="assets/img/govt.png"/> -->
+        <div class="pt-4">
+          <h4 class="text-start">PROFILE</h4>
+          <p class="text-center pb-0">Add information about yourself</p>
+        </div>
+      </div>
+      <!-- <hr style="width: 10%;color: #2467ec;font-weight: 900;height: 3px;"> -->
+      <!-- class="text-secondary"  -->
+      <div class="row py-3 form-div">
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">First Name</label>
+          <input type="text" class="borderinput form-control form-control-lg form-group input " maxlength="16"
+            name="firstname" placeholder="FirstName" formControlName="firstName" />
+        </div>
+        <div class="col-md-6 col-sm-12">
+
+          <label class="fw-bold">Last Name</label>
+          <input type="text" class="borderinput form-group form-control form-control-lg input " maxlength="16"
+            name="lastName" placeholder="LastName" formControlName="lastName" />
+          <!-- <input type="text" class="borderinput form-control form-control-lg mt-4 input " maxlength="16" id="fname"
+            name="firstname" placeholder="Gender" formControlName="genderCd" /> -->
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">Gender</label>
+          <select formControlName="genderCd"
+            class="form-control form-group borderinput mt-2 form-control form-control-lg">
+            <option [value]="data.codesDtlSno" *ngFor="let data of genderList">
+              {{data.cdValue}}</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">Mobile Number</label>
+          <input type="text" class="borderinput form-group form-control form-control-lg mt-2 input " maxlength="10"
+            name="mobile" placeholder="Mobile Number" formControlName="mobile" />
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">Date of Birth</label>
+          <input type="text" class="borderinput form-control form-group form-control-lg mt-2 input " name="dob"
+            placeholder="DOB" type="date" formControlName="dob" />
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">Alternate MobileNumber</label>
+          <input type="text" class="borderinput form-control form-group form-control-lg mt-2 input " maxlength="10"
+            name="alternateMobileNumber" placeholder="Alternate MobileNumber" formControlName="alternateMobileNumber" />
+        </div>
+        <!-- 
+        <div class="col-md-6 col-sm-12">
+          <fieldset disabled>
+            <label class="fw-bold">Specialization</label>
+            <input type="text" class="borderinput form-control form-group form-control-lg mt-2 input"
+              style="background-color: lavender;" name="specialization" placeholder="Specialization"
+              formControlName="specialization" />
+          </fieldset>
+        </div> -->
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">Language</label>
+          <select formControlName="languageCd" class="borderinput mt-2 form-group form-control form-control-lg">
+            <option [value]="data.codesDtlSno" *ngFor="let data of languageList">
+              {{data.cdValue}}</option>
+          </select>
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">About</label>
+          <textarea class="form-control form-group borderinput bg-transparent rounded-0" rows="2"
+            formControlName="about"></textarea>
+        </div>
+        <!-- <div class="col-md-6 col-sm-12">
+          <label class="fw-bold">Website</label>
+          <input type="text" class="borderinput form-control form-group form-control-lg mt-2 input "
+            placeholder="www.google.com" formControlName="website" />
+        </div> -->
+        <div formGroupName="socialLinks">
+          <label class="fw-bold">Website</label>
+          <div class="input-group borderinput mb-3">
+            <span class="input-group-text rounded-0" id="basic-addon3">http://</span>
+            <input type="text" class="borderinput form-control form-control-lg" aria-describedby="basic-addon3"
+              id="basic-url" placeholder="www.google.com" formControlName="website" />
+          </div>
+
+          <label class="fw-bold">Twitter</label>
+          <div class="input-group borderinput mb-3">
+            <span class="input-group-text rounded-0" id="basic-addon3">http://www.twitter.com/</span>
+            <input type="text" class="form-control form-control-lg borderinput" id="basic-url"
+              aria-describedby="basic-addon3" placeholder="twitterdev" formControlName="twitter">
+          </div>
+          <label class="fw-bold">Facebook</label>
+          <div class="input-group borderinput mb-3">
+            <span class="input-group-text rounded-0" id="basic-addon3">http://www.facebook.com/</span>
+            <input type="text" class="form-control form-control-lg borderinput" id="basic-url"
+              aria-describedby="basic-addon3" placeholder="facebookdev" formControlName="facebook">
+          </div>
+          <label class="fw-bold">LinkedIn</label>
+          <div class="input-group borderinput mb-3">
+            <span class="input-group-text rounded-0" id="basic-addon3">http://www.linkedin.com/</span>
+            <input type="text" class="form-control form-control-lg borderinput" id="basic-url"
+              aria-describedby="basic-addon3" placeholder="linkedindev" formControlName="linkedIn">
+          </div>
+          <label class="fw-bold">Youtube</label>
+          <div class="input-group mb-3">
+            <span class="input-group-text rounded-0" id="basic-addon3">http://www.youtube.com/</span>
+            <input type="text" class="form-control form-control-lg borderinput" id="basic-url"
+              aria-describedby="basic-addon3" placeholder="youtube" formControlName="youtube">
+          </div>
+       
+
+        </div>
+        <div *ngIf="appUser?.selectedRole == 'Learner'">
+        <label class="fw-bold">Preferences</label>  
+        <div class="mb-3">
+          <ng-multiselect-dropdown name="preference" [placeholder]="'Select preference'"
+          [data]="subCategoryList" formControlName="preferences" [settings]="settings">
+        </ng-multiselect-dropdown>
+        </div>
+      </div>
+
+        <div class="mb-2 text-center">
+          <button type="button" class="btn btn-primary btn-lg rounded-0" *ngIf="profileForm?.value?.appUserSno"
+            [disabled]="profileForm.invalid || isLoad" (click)="update()">
+            <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>&nbsp;
+            Update</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<app-footerone></app-footerone>
+
+
+<input type="file" id="selectProfileImage" accept=".jpg,.jpeg,.png,.html" class="d-none"
+  (change)="changeProfileImg($event.target,['jpg', 'jpeg', 'png','html'],'profileImage')" placeholder="Your Title" #images>

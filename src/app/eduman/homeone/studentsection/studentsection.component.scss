@@ -1,0 +1,55 @@
+// student-choose
+@import '../../../../custom-palettes.scss';
+
+.student-choose-thumb {
+	@apply mt-[37px];
+	img {
+		@apply max-w-full;
+	}
+}
+.sitdent-choose-content {
+	@apply mb-[20px];
+	p {
+		@apply text-bodyText;
+	}
+}
+.student-choose-list {
+	@apply mb-10;
+	li {
+		@apply mb-[15px];
+		@apply text-heading;
+	}
+	i {
+		@apply mr-2.5 text-[#d0d9e9] text-[20px] translate-y-px;
+	}
+}
+.student-choose-list i.far {
+	@apply text-themeBlue;
+}
+.student-btn {
+	@apply maxMd:mb-[30px];
+}
+// shap-style
+
+.shap-01 {
+	@apply absolute h-[130px] w-[122px] bg-themeOrange rounded-lg top-[170px] left-[40%] xxl:top-[170px] xxl:left-[40%] xl:top-[120px] xl:left-[31%]
+	 lg:top-[120px] lg:left-[18%];
+}
+.shap-02 {
+	@apply absolute top-[-8%] left-[45%] h-[151px] w-[150px] bg-themeBlue rounded-lg z-[-1] maxXl:top-[-11%] maxXl:left-[48%] maxLg:top-[-20%] maxLg:left-[48%] maxMd:left-[34%] maxMd:top-[-8%] maxXs:left-[45%] maxXs:top-[1%];
+}
+.shap-03 {
+	@apply absolute top-[-7%] left-[-7%] z-[-1] maxMd:hidden;
+}
+.shap-04 {
+	@apply absolute bottom-[-9%] left-[33%] z-[-1];
+}
+.shap-05 {
+	@apply absolute bottom-[41%] right-[-35%] z-[-1] maxDesktop:right-0 maxMd:hidden;
+}
+.shap-06 {
+	@apply absolute top-[-160px] right-[-43%] z-[-2] maxMd:hidden;
+}
+.shap-07 {
+	@apply absolute bottom-[15%] right-[-20%] z-[-1] maxMd:hidden maxDesktop:right-[-6%] xl:right-0 lg:right-0;
+}

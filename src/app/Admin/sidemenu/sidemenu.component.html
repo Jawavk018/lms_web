@@ -1,0 +1,33 @@
+<mat-toolbar style="background-color: #ffb013;">
+    <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>LXP Admin</h1>
+    <span class="example-spacer"></span>
+    <button mat-icon-button (click)="LoggedOut()">
+        <mat-icon>logout</mat-icon>
+    </button>
+</mat-toolbar>
+<mat-sidenav-container autosize>
+    <mat-sidenav  [mode]="(isMobile$ | async) ? 'over' : 'side'">
+        <mat-nav-list>
+            <mat-list-item *ngFor="let menu of menuList; let i = index" (click)="toggleContent(i)" [ngClass]="{'selectedDiv': selectedMenuIndex === i}">
+                <span class="h5">
+                    <i class="bi me-3" [ngClass]="menu.icon"></i>
+                    <span class="text-dark" *ngIf="isCollapsed" [ngClass]="{'selectedTitle': selectedMenuIndex === i}">{{ menu.title }}</span>
+                </span>
+            </mat-list-item>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div *ngIf="selectedMenuIndex === 0">
+            <app-categories></app-categories>
+        </div>
+        <div *ngIf="selectedMenuIndex === 1">
+            <app-sub-categories></app-sub-categories>
+        </div>
+        <div *ngIf="selectedMenuIndex === 2">
+            <app-topics></app-topics>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

@@ -1,0 +1,31 @@
+.w-60 {
+    width: 60%;
+}
+
+.w-40 {
+    width: 40%;
+}
+
+
+
+@media (min-width:200px) and (max-width:768px) {
+    .res-mob {
+        display: none !important;
+    }
+
+    .header {
+        font-size: 18px !important;
+    }
+
+    .header-text-div {
+        width: 100% !important;  
+    }
+
+    .header-container{
+        margin: 15px !important;
+    }
+}
+
+ul>li{
+    list-style-type: none !important;
+}

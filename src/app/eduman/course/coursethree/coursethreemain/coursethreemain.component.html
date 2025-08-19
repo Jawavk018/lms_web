@@ -1,0 +1,658 @@
+<app-headerfour></app-headerfour>
+<app-breadcrumb breadcrumbTitle="Courses 03" breadcrumbSubTitle="Courses"></app-breadcrumb>
+<app-coursebar></app-coursebar>
+
+<!-- course-content-start -->
+<section class="course-content-area pb-[90px]">
+   <div class="container">
+      <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px] mb-2.5">
+         <div class="col-span-12 lg:col-span-4">
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shopcat></app-shopcat>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shoprating></app-shoprating>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shopprice></app-shopprice>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shoplevel></app-shoplevel>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shoplanguage></app-shoplanguage>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <!-- <app-shopduration></app-shopduration> -->
+            </div>
+         </div>
+
+         <div class="col-span-12 lg:col-span-8">
+            <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-01.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-1"><a
+                                    [routerLink]="['/course']">Development</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>WordPress Development Course for Plugins &amp;
+                                    Themes</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-1">Development</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">WordPress Development Course for Plugins &amp;
+                                 Themes</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-01.png" alt="tutor-img"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-2000" transform="translate(-0.008)">
+                                 <path id="Path_1684201" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-02.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-1"><a
+                                    [routerLink]="['/course']">Development</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Master Google Docs: Free online documents for
+                                    personal use</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-1">Development</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Master Google Docs: Free online documents for
+                                 personal use</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-02.png" alt="tutor"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-554" transform="translate(-0.008)">
+                                 <path id="Path_10115" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-03.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-3"><a
+                                    [routerLink]="['/course']">Business</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Write Better Emails: Tactics for Smarter Team
+                                    Communication</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-3">Business</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Write Better Emails: Tactics for Smarter Team
+                                 Communication</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-03.png" alt="tutor"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-454" transform="translate(-0.008)">
+                                 <path id="Path_10251" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-06.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-4"><a [routerLink]="['/course']">Life
+                                    Style</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Become a Super Human: Naturally & Safely Boost</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-4">Life Style</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Become a Super Human: Naturally & Safely Boost</a>
+                           </h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-02.png" alt="tutor-img"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-20024101" transform="translate(-0.008)">
+                                 <path id="Path_101200123" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-04.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-1"><a
+                                    [routerLink]="['/course']">Development</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Python and Django Full Stack Web Developer
+                                    Bootcamp</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-1">Development</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Python and Django Full Stack Web Developer
+                                 Bootcamp</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-03.png" alt="tutor"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-20410" transform="translate(-0.008)">
+                                 <path id="Path_10166415" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-05.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-5"><a [routerLink]="['/course']">Data
+                                    Science</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Data Science Real-Life Data Science Exercises
+                                    Included</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-5">Data Science</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Data Science Real-Life Data Science Exercises
+                                 Included</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-04.png" alt="tutor-img"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-320145" transform="translate(-0.008)">
+                                 <path id="Path_101422" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-08.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-1"><a
+                                    [routerLink]="['/course']">Development</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Python and Django Full Stack Web Developer
+                                    Bootcamp</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-1">Development</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Python and Django Full Stack Web Developer
+                                 Bootcamp</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-05.png" alt="tutor-img"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard" transform="translate(-0.008)">
+                                 <path id="Path_101" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="col-span-12 md:col-span-6">
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                     <div class="eduman-course-thumb w-img">
+                        <a [routerLink]="['/course-details']"><img src="assets/img/portfilo/course-img-04.jpg"
+                              alt="course-img"></a>
+                     </div>
+                     <div class="course-cart">
+                        <div class="course-info-wrapper">
+                           <div class="cart-info-body">
+                              <span class="category-color category-color-1"><a
+                                    [routerLink]="['/course']">Development</a></span>
+                              <a [routerLink]="['/course-details']">
+                                 <h3>Python and Django Full Stack Web Developer
+                                    Bootcamp</h3>
+                              </a>
+                              <div class="cart-lavel">
+                                 <h5>Level : <span>Beginner</span></h5>
+                                 <p>Knowledge is power. Information is liberating. Education is the premise of
+                                    progress, in every society, in every family</p>
+                              </div>
+                              <div class="info-cart-text">
+                                 <ul>
+                                    <li><i class="far fa-check"></i>Scratch to HTML</li>
+                                    <li><i class="far fa-check"></i>Learn how to code in Python</li>
+                                    <li><i class="far fa-check"></i>Unlimited backend database creation</li>
+                                    <li><i class="far fa-check"></i>Adobe XD Tutorials</li>
+                                 </ul>
+                              </div>
+                              <div class="course-action">
+                                 <a [routerLink]="['/course-details']" class="view-details-btn">View Details</a>
+                                 <button class="wishlist-btn"><i class="flaticon-like"></i></button>
+                                 <a [routerLink]="['/course-details']" class="c-share-btn"><i
+                                       class="flaticon-previous"></i></a>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-wraper">
+                        <div class="eduman-course-heading">
+                           <a [routerLink]="['/course']" class="course-link-color-1">Development</a>
+                           <span class="couse-star"><i class="fas fa-star"></i>4.9 (25)</span>
+                        </div>
+                        <div class="eduman-course-text">
+                           <h3><a [routerLink]="['/course-details']">Python and Django Full Stack Web Developer
+                                 Bootcamp</a></h3>
+                        </div>
+                        <div class="eduman-course-meta">
+                           <div class="eduman-course-price">
+                              <span class="price-now">$47.00 </span>
+                              <del class="price-old">$75.50</del>
+                           </div>
+                           <div class="eduman-course-tutor">
+                              <a [routerLink]="['/instructor-profile']"><img
+                                    src="assets/img/portfilo/course-tutor-06.png" alt="tutor-img"></a>
+                              <a [routerLink]="['/instructor-profile']"><span>Accolade-Ascend-LearnHub</span></a>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="eduman-course-footer">
+                        <div class="course-lessson-svg">
+                           <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                              viewBox="0 0 16.471 16.471">
+                              <g id="blackboard-32001" transform="translate(-0.008)">
+                                 <path id="Path_101696411" data-name="Path 101"
+                                    d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                    fill="#575757" />
+                              </g>
+                           </svg>
+                           <span class="ms-2">{{course.lectureCount}</span>
+                        </div>
+                        <div class="course-deteals-btn">
+                           <a [routerLink]="['/course-details']"><span class="me-2">View Details</span><i
+                                 class="far fa-arrow-right"></i></a>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="grid grid-cols-12">
+               <div class="col-span-12">
+                  <app-pagination></app-pagination>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- course-content-end -->
+
+<app-footerone></app-footerone>

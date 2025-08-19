@@ -1,0 +1,48 @@
+<div class="sidenav sidenav-collapsed xl:hidden overflow-hidden" [ngClass]="collapsed ? 'sidenav-collapsed': ''">
+   <div class="scrollwrap scrollwrap_delayed">
+      <ul class="sidenav-nav">
+         <!-- <li class="sidenav-nav-item">
+            <a [routerLink]="['/']" class="sidenav-nav-link">Home</a>
+         </li> -->
+         <!-- <li>
+            <a (click)="cartclick()" class="sidenav-nav-link">Cart 
+               <span class="item-number"
+               *ngIf="api.cartCount <= 0"
+               >(0)</span>
+               <span class="item-number"
+               *ngIf="api.cartCount && api.cartCount > 0">({{api.cartCount}})</span>
+            </a>
+         </li> -->
+         <li>
+            <div class="header-search">
+               <form action="#">
+                  <div class="search-icon relative">
+                     <input type="text" [matAutocomplete]="auto" [(ngModel)]="searchKey" style="width: 100%;"
+                        [ngModelOptions]="{standalone: true}" (ngModelChange)="searchkeys($event)" id="textInput"
+                        placeholder="Search courses...">
+                     <mat-autocomplete #auto="matAutocomplete" (optionSelected)="onSelectionChange($event)">
+                        <mat-option *ngFor="let key of searchList;" [value]="key?.key">{{key?.key}}
+                        </mat-option>
+                     </mat-autocomplete>
+                     <button type="submit"><i class="fas fa-search"></i></button>
+                  </div>
+               </form>
+            </div>
+         </li>
+         <li>
+            <a class="sidenav-nav-link" [routerLink]="['/create-profile']">View/Edit Profile</a>
+         </li>
+         <li>
+            <a class="sidenav-nav-link" *ngIf="appUser?.selectedRole == 'Learner'" [routerLink]="['/mylearning']">My
+               Learning</a>
+         </li>
+         <li>
+            <a *ngIf="appUser?.selectedRole == 'Learner'" (click)="generateTrainer()" class="sidenav-nav-link">To
+               become a Trainer</a>
+         </li>
+         <li>
+            <a class="sidenav-nav-link" (click)="LoggedOut()">Logout</a>
+         </li>
+      </ul>
+   </div>
+</div>

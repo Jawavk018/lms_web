@@ -1,0 +1,63 @@
+// banner
+@import '../../../../custom-palettes.scss';
+
+.banner-area {
+	@apply min-h-[450px] bg-[#edeff5] relative flex items-center;
+}
+.banner-img {
+	@apply absolute bottom-0 right-0;
+}
+.faq .banner-img {
+	@apply maxXs:hidden;
+}
+.banner-search-box {
+	@apply relative;
+}
+.banner-tittle {
+	h2 {
+		@apply mb-[45px] maxXs:text-[28px];
+	}
+}
+.slider-faq-search input {
+	@apply bg-white h-[70px] w-full rounded-[5px] py-0 px-5 relative text-[#707070] text-[14px] outline-none capitalize border border-solid border-borderGray;
+	box-shadow: 0px 5px 10px rgba(15, 32, 91, 0.07);
+	&::placeholder {
+		@apply text-[#a5a5a5];
+	}
+}
+.slider-faq-search button {
+	@apply absolute top-[50%] right-5 text-[16px] text-[#c1c5ce] translate-y-[-50%];
+}
+
+// breadcrumb-style
+.breadcrumb-item.active {
+	@apply text-white;
+}
+.breadcrumb-item {
+	a {
+		@apply text-white;
+
+		&:hover {
+			@apply text-white;
+		}
+	}
+}
+.breadcrumb-item+.breadcrumb-item::before {
+	content: "\f105";
+	@apply text-heading font-fontawesome pr-2 float-left;
+}
+.breadcrumb-item span {
+	@apply text-white;
+}
+.course-title-breadcrumb.breadcrumb-top {
+	@apply mt-[-90px];
+}
+.breadcrumb-item.white-color a {
+	@apply text-heading;
+}
+.breadcrumb-item.white-color::before {
+	@apply text-heading;
+}
+.banner-tiitle-wrapper {
+	@apply max-w-[650px] mr-auto ml-auto relative z-[1];
+}

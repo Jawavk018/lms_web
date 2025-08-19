@@ -1,0 +1,11 @@
+<app-headerone></app-headerone>
+<div class="bg-white">
+    <div class="centered text-center" *ngIf="data?.order_status == 'Success'">
+        <img src="assets/gif/payment.gif" class="w-35" id="gifImage" />
+        <h1 class="mt-5">Payment Success</h1>
+    </div>
+    <div class="centered text-center" *ngIf="data?.order_status != 'Success'">
+        <img src="assets/gif/failed.gif" class="w-35" />
+        <h1 class="mt-5">Payment Failed</h1>
+    </div>
+</div>

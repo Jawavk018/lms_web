@@ -1,0 +1,190 @@
+.edu-webinar {
+	@apply flex gap-[25px] p-[25px] rounded-[10px] bg-grayBg maxXl:flex-col minMaxTabSmall:flex;
+    &-img {
+		@apply min-w-[230px] w-[230px] relative maxXl:w-full minMaxTabSmall:w-[230px] minMaxTabSmall:flex;
+        img {
+			@apply w-full object-cover rounded-[10px];
+        }
+    }
+    &-text {
+        &-title {
+			@apply text-[24px] font-bold mb-[15px] leading-tight;
+            &:hover {
+                @apply text-themeBlue;
+            }
+        }
+        ul {
+			@apply flex mb-[5px] gap-5;
+            li {
+                @apply text-bodyText flex items-center text-[16px] font-semibold;
+                i {
+                    @apply text-themeBlue mr-[5px];
+                    transform: translateY(-1px);
+                }
+            }
+        }
+    }
+    .webinar-badge {
+        @apply bg-themeBlue absolute top-[15px] left-0 py-0 px-2.5 text-[12px] font-semibold inline-block;
+        @apply text-white;
+        border-top-right-radius: 5px;
+        border-bottom-right-radius: 5px;
+    }
+    .edu-btn {
+        @apply h-[42px] py-0 px-[25px] leading-10 bg-transparent text-themeBlue border border-solid border-themeBlue;
+        &:hover {
+            @apply bg-themeBlue;
+            @apply text-white;
+        }
+    }
+}
+
+.course-webinar-video {
+    .course-video-thumb {
+		@apply relative;
+        &::before {
+            @apply absolute;
+            content: "";
+			@apply h-full w-full top-0 left-0;
+            background: rgba(0,0,0,.7);
+        }
+    }
+}
+.member-social {
+	ul {
+		@apply flex gap-2.5 justify-center;
+		li {
+			@apply inline-block;
+			a {
+                @apply inline-block w-9 h-9 leading-9 text-[13px] text-center rounded text-[#a6b9cc] border border-solid border-borderGray;
+				@include transition(0.3s);
+				&:hover {
+					@apply bg-themeBlue;
+					@apply border-themeBlue;
+					@apply text-white;
+				}
+			}
+		}
+	}
+}
+.member-main-wrapper {
+	box-shadow: 0px 10px 40px rgba(28, 51, 84, 0.08);
+    @apply bg-transparent rounded-lg border border-solid border-borderGray;
+}
+.member-item .member-thumb {
+	@apply mb-5 w-[150px] h-[150px] ml-auto mr-auto rounded-[50%] overflow-hidden;
+}
+.member-thumb {
+	img {
+		transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+	}
+}
+.member-item:hover .member-thumb img {
+	transform: scale3d(1.1, 1.1, 1.1);
+}
+.member-content {
+	span {
+		@apply mb-5 block font-normal;
+	}
+	h4 {
+		@apply text-[22px] mb-[5px] font-bold;
+	}
+}
+.member-body {
+    @apply border-b border-solid border-borderGray;
+}
+.member-item {
+	@apply p-[30px] rounded-none minMaxTablet:px-5;
+}
+.member-meta {
+	@apply flex items-center py-2.5 px-[30px] justify-between minMaxTablet:px-[15px] minMaxTablet:py-2.5 minMaxTablet:flex-wrap;
+}
+.member-reating {
+	i {
+		@apply text-themeOrange text-[13px] mr-1.5;
+	}
+}
+.member-course {
+	i {
+		@apply text-[15px] mr-2.5;
+	}
+	a:hover {
+		@apply text-themeBlue;
+	}
+}
+
+
+// contact-style
+
+.contact-from-input input {
+	@apply h-[60px] w-full bg-[#f8f8f9] border-none py-[15px] px-5 rounded outline-none;
+}
+.contact-from-input textarea {
+	@apply h-[170px] w-full bg-[#f8f8f9] border-none py-[15px] px-5 rounded outline-none resize-none;
+}
+.support-item {
+	&:last-child {
+		@apply mb-0;
+	}
+	@apply flex items-start mb-[30px] gap-5 maxXs:gap-3;
+}
+.support-contact {
+	@apply py-[25px] px-[30px] bg-[#f8f8f9] rounded-[5px] border border-[#f8f8f9] border-solid maxXs:py-[25px] maxXs:px-5;
+}
+.support-tittle {
+	h4 {
+		@apply mb-[30px] rounded-none;
+	}
+}
+.support-info-phone {
+	span {
+		@apply text-heading text-[18px] font-bold mb-2.5 block;
+	}
+	p {
+		@apply mb-[3px] rounded-none;
+		a {
+			@apply text-heading font-bold;
+		}
+	}
+}
+.support-info-email {
+	span {
+		@apply text-heading text-[18px] font-bold mb-2.5 block;
+	}
+}
+.support-info-email {
+	a {
+		@apply mb-[2px] block;
+	}
+}
+.support-info-location {
+	span {
+		@apply text-heading text-[18px] font-bold mb-2.5 block;
+	}
+}
+
+// nice-select
+.contact-select select {
+	@apply h-[60px] w-full border-none bg-[#f8f8f9] leading-[30px] py-[15px] px-5;
+}
+.contact-select .nice-select .list {
+	@apply bg-[#f8f8f9] w-full;
+}
+.contact-select select {
+    color: rgba(87, 87, 87, 0.9);
+    @apply relative appearance-none;
+}
+.contact-select {
+    @apply relative;
+    &:after {
+        @apply absolute;
+        content: '';
+        border-bottom: 2px solid #999;
+        border-right: 2px solid #999;
+        transform: rotate(45deg);
+		@apply w-2 h-2 top-[25px] right-5;
+    }
+}
+.contact-map iframe {
+	@apply h-[380px] w-full rounded;
+}

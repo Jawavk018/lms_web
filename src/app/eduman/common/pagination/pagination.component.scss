@@ -1,0 +1,37 @@
+//pagination style
+@import '../../../../custom-palettes.scss';
+
+.edu-pagination {
+	ul {
+		display: flex;
+		align-items: center;
+	}
+	li {
+		margin-right: 15px;
+		&:hover {
+			a {
+				@apply text-themeBlue font-semibold;
+			}
+		}
+	}
+	i {
+		height: 45px;
+		width: 45px;
+		@apply bg-white;
+		line-height: 43px;
+		text-align: center;
+		border-radius: 50%;
+		@apply text-bodyText border border-solid border-borderGray;
+		font-size: 20px;
+		font-weight: 400;
+		@include transition(0.3s);
+		&:hover {
+			@apply border-themeBlue;
+			@apply bg-themeBlue;
+			@apply text-white;
+		}
+	}
+}
+.edu-pagination ul li.active a {
+	@apply text-themeBlue font-semibold;
+}

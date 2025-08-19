@@ -1,0 +1,17 @@
+.c-share-btn:hover{
+color: white !important;
+}
+
+.text_overflow {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 1;
+  }
+
+  .search-feild {
+    overflow-y: auto !important;
+    height: 100rem !important;
+    padding: 0 !important;
+    padding-bottom: 5% !important;
+  }

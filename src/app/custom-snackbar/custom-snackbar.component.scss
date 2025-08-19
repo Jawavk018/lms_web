@@ -1,0 +1,37 @@
+// .custom-snackbar {
+//     display: flex;
+//     align-items: center;
+//   }
+//   .icon {
+//     margin-right: 12px;
+//     font-size: 24px;
+//     color: #ff4081;
+//   }
+
+.custom-snackbar {
+    display: block;
+    align-items: center;
+    justify-content: space-between;
+    // background-color: #333;
+    color: black;
+    border-radius: 8px;
+    padding: 16px;
+    // box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    font-family: 'Arial', sans-serif;
+  }
+  .custom-snackbar div {
+    margin-right: 12px;
+  }
+  .close-button {
+    background: none;
+    border: none;
+    color: #fd246c;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 500;
+  }
+
+  ::ng-deep .mat-mdc-snack-bar-container .mdc-snackbar__surface {
+    /* background-color: var(--mdc-snackbar-container-color); */
+    background-color: #86aeff !important;
+}

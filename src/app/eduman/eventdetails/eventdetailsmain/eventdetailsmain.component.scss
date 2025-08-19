@@ -1,0 +1,105 @@
+// event-details
+@import '../../../../custom-palettes.scss';
+
+.event-contact-info {
+	h2 {
+		@apply mb-[30px] maxMd:text-[32px] maxSm:text-[24px];
+	}
+}
+.introduction-info {
+	h4 {
+		@apply text-[18px] mb-[15px];
+	}
+}
+.introduction-info {
+	p {
+		@apply mb-[25px];
+	}
+}
+.even-point-tittle {
+	h4 {
+		@apply text-[18px] mb-[15px];
+	}
+}
+.event-speaker-info {
+	h4 {
+		@apply text-[20px] mb-[35px];
+	}
+}
+.event-speaker-wrapper {
+	box-shadow: 0px 10px 30px rgba(28, 51, 84, 0.08);
+	@apply bg-white relative rounded-[5px] border border-solid border-borderGray py-7 px-[29px];
+}
+.event-speaker-content {
+	@apply absolute bottom-[50px] left-[50%] translate-x-[-50%] bg-white rounded-[3px] min-w-[240px] pt-[13px] pb-[19px] px-5;
+	span {
+		@apply text-heading block mb-[5px] font-bold text-[16px];
+	}
+	p {
+		@apply mb-0 leading-none;
+	}
+}
+.event-price-info {
+	@apply flex justify-between;
+}
+.event-price {
+	@apply flex;
+}
+.event-information-wrapper {
+	box-shadow: 0px 10px 30px rgba(28, 51, 84, 0.08);
+	@apply bg-white p-[30px] rounded-[5px] border border-solid border-borderGray py-[30px] px-5;
+}
+.event-information-list {
+	@apply py-[30px] px-0;
+	ul {
+		li {
+			@apply border-b border-solid border-borderGray flex-wrap justify-between flex py-2.5 px-0;
+			&:last-child {
+				@apply border-0 pb-[5px];
+			}
+		}
+		i {
+			@apply leading-none mr-[15px];
+		}
+	}
+}
+.information-list {
+	@apply flex items-center;
+	&:first-child {
+		span {
+			@apply font-semibold;
+		}
+	}
+}
+.old-price {
+	@apply ml-2.5;
+}
+.event-price {
+	span {
+		@apply text-heading font-black text-[28px];
+	}
+}
+.event-ticket-cost {
+	span {
+		@apply font-semibold;
+	}
+}
+.event-sponsor-wrapper {
+	box-shadow: 0px 10px 30px rgba(28, 51, 84, 0.08);
+	@apply bg-white rounded-[5px] p-[30px] border border-solid border-borderGray;
+}
+.sopnsor-tittle {
+	h4 {
+		@apply mb-[35px];
+	}
+}
+.sponsor-thumb {
+	@apply flex flex-wrap justify-between gap-5;
+}
+// google-map
+.event-map {
+	@apply maxMd:mb-[30px];
+	iframe {
+		@apply w-full h-[330px];
+	}
+}

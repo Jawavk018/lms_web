@@ -1,0 +1,10 @@
+mat-cell {
+  padding: 18px 16px;
+}
+
+.centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

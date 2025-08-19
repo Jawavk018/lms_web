@@ -1,0 +1,85 @@
+@import '../../../../custom-palettes.scss';
+
+
+.eduman-popup-inner {
+  width: 800px;
+
+  @media (min-width: 768px) and (max-width: 991px) {
+    width: 600px;
+  }
+
+  @media (min-width: 576px) and (max-width: 767px) {
+    width: 440px;
+  }
+
+  @media (min-width: 450px) and (max-width: 575px) {
+    width: 350px;
+  }
+
+  @media (max-width: 449px) {
+    width: 100%;
+  }
+}
+.product__modal-form {
+  .product-quantity-cart {
+    @apply flex gap-5 flex-wrap;
+  }
+  
+  .product-quantity-cart .cart-minus {
+    @apply h-[55px] w-[55px] border-transparent;
+  }
+  
+  .product-quantity-form .cart-plus {
+    @apply h-[55px] w-[55px] border-transparent;
+  }
+  
+  .product-quantity-cart .cart-input {
+    @apply h-[55px] w-[55px] m-0 leading-[53px] border-transparent;
+  }
+  
+  .product-quantity-cart .product-quantity-form {
+    @apply border border-solid border-borderGray rounded;
+  }
+}
+.popup-body {
+  overflow-x: hidden;
+}
+.product__modal-box {
+  @apply maxSm:mb-10;
+}
+.mat-dialog-container {
+  padding: 0px !important;
+  border-radius: 10px !important;
+  overflow: hidden !important;
+}
+.mdc-dialog .mdc-dialog__content {
+    padding: 20px 10px 10px 10px;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    &::-webkit-scrollbar {
+        display: none;
+    }
+}
+.cdk-overlay-dark-backdrop {
+  background: rgba(0, 0, 0, 0.5);
+}
+.mat-dialog-content {
+  max-height: 90vh;
+  max-width: 90vw;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.mat-mdc-dialog-container .mdc-dialog__content {
+	font-family: "Nunito Sans", sans-serif;
+}
+.cashier-popup-header-close a {
+  @apply h-9 w-9 leading-[35px] text-center inline-block rounded-[3px] border border-solid border-themeBlue;
+
+  & .material-icons {
+    @apply text-[20px] leading-[34px] text-themeBlue;
+    transform: translateX(-1px);
+  }
+}
+.product__modal-wrapper {
+  padding-bottom: 10px;
+}

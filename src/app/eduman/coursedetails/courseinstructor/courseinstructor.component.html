@@ -1,0 +1,29 @@
+<div class="course-instructors" [routerLink]="['/instructor-profile']" [queryParams]="{appUserSno:data?.appUserSno}">
+    <h3>Tutor</h3>
+    <div class="instructors-heading">
+        <div class="instructors-img w-img">
+            <a><img [src]="data?.media != null ? data?.media?.mediaUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrq8a6plyTZvi2bjCyHBnNKwahQzDOCze830QtQGD6jw&s'"
+                    class="img-fluid my-2 rounded-circle" alt="Avatar" style="width: 70px; height: 70px;"></a>
+        </div>
+        <div class="instructors-body">
+            <h5><a>{{data?.firstName ? data?.firstName:'--'}} {{data?.lastName ?
+                    data?.lastName:'--'}}</a></h5>
+            <!-- <span>Data Scientist, SWOMB Ltd.</span>
+            <div class="intructors-review">
+                <i class="fas fa-star"></i>
+                <span>4.7 (54 reviews)</span>
+            </div> -->
+            <div class="instructors-footer">
+                <i class="fas fa-desktop"></i>
+                <span>{{ data?.count ?? '--'}} {{data?.count === 1 ? 'Course':'Courses'}} </span>
+                <!-- <i class="far fa-user-friends"></i>
+                <span>78,742 Students</span> -->
+            </div>
+        </div>
+
+    </div>
+    <div class="intructors-content">
+        <p style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">{{data?.about ? data?.about : '--'}}
+        </p>
+    </div>
+</div>

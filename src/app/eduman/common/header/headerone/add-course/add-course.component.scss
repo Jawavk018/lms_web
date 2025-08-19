@@ -1,0 +1,31 @@
+.form-container {
+    max-width: 800px;
+}
+
+.mat-stepper{
+    padding: 50px;
+}
+
+@media(min-width:360px) and (max-width:768px){
+    .form-container{
+        padding: 0;
+        margin: 0;
+        max-width: 1000px;
+    }
+    .mat-stepper{
+        padding: 0px;
+    }
+}
+
+::ng-deep .mat-step-icon-selected{
+    background-color: #2467ec;
+}
+
+::ng-deep .mat-step-icon-state-edit{
+    background-color: #2467ec;
+}
+
+.form-check-input:checked {
+    background-color: black;
+    border-color: black;
+}

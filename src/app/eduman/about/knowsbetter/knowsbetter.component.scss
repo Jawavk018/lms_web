@@ -1,0 +1,41 @@
+@import '../../../../custom-palettes.scss';
+
+.know-us-border {
+	@apply border-t border-solid border-borderGray;
+}
+.know-us-wrapper {
+	@apply relative;
+}
+.know-us-better-thumb {
+	@apply relative;
+
+	a {
+		&::before {
+			content: "";
+			background: linear-gradient(
+				to top,
+				#020e26 0%,
+				rgba(9, 20, 43, 0) 100%
+			);
+			@apply absolute w-full h-full z-[1];
+		}
+	}
+}
+.know-us-text {
+	@apply absolute bottom-[20px] left-[50%] z-[2] mr-[-50%] translate-x-[-50%];
+}
+.know-us-text {
+	h3 {
+		@apply text-white relative text-[20px] z-[3];
+	}
+}
+.know-us-wrapper {
+	@apply overflow-hidden rounded-[5px];
+	img {
+		transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+		@apply w-full;
+	}
+}
+.know-us-wrapper:hover .know-us-better-thumb img {
+	transform: scale3d(1.1, 1.1, 1.1);
+}

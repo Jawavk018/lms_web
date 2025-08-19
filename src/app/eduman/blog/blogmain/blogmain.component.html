@@ -1,0 +1,134 @@
+<app-headerfour></app-headerfour>
+<app-breadcrumb breadcrumbTitle="Blog" breadcrumbSubTitle="Blog"></app-breadcrumb>
+
+<!-- blog-area-start -->
+
+<div class="blog-area pt-[120px] pb-[90px]">
+   <div class="container">
+      <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+         <div class="col-span-12 xl:col-span-8">
+            <div class="blog-main-wrapper mb-[30px]">
+               <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                  <div class="col-span-12 xl:col-span-12 lg:col-span-6">
+                     <div class="blog-wrapper relative mb-[30px]">
+                        <div class="blog-thumb ">
+                           <a [routerLink]="['/blog-details']"><img src="assets/img/blog/blog-01.jpg"
+                                 alt="blog-img"></a>
+                        </div>
+                        <a [routerLink]="['/blog']" class="blog-tag">
+                           <i class="fal fa-folder-open"></i>
+                           Development
+                        </a>
+                        <div class="blog-content-wrapper">
+                           <div class="blog-meta">
+                              <div class="blog-date">
+                                 <i class="flaticon-calendar"></i>
+                                 <span>23 Jan 2023</span>
+                              </div>
+                              <div class="blog-user">
+                                 <i class="flaticon-avatar"></i>
+                                 <span>Brian Hoff</span>
+                              </div>
+                           </div>
+                           <div class="blog-content">
+                              <a [routerLink]="['/blog-details']">
+                                 <h3>Ask the Expert: Typography Talk with Brian Hoff</h3>
+                              </a>
+                              <p>There are so many websites out there that have not considered the overall
+                                 usability of their visually impaired users.
+                                 When it comes to designing better links and sending better emails, Slava
+                                 Shestopalov has a few tips on how to improve
+                                 your website’s experience while accessibility in mind. The participants ...</p>
+                              <a class="blog-btn" [routerLink]="['/blog-details']">Read more</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-span-12 xl:col-span-12 lg:col-span-6">
+                     <div class="blog-wrapper relative mb-[30px]">
+                        <div class="blog-thumb ">
+                           <a [routerLink]="['/blog-details']"><img src="assets/img/blog/blog-02.jpg"
+                                 alt="blog-img"></a>
+                        </div>
+                        <a [routerLink]="['/blog']" class="blog-tag">
+                           <i class="fal fa-folder-open"></i>
+                           Business
+                        </a>
+                        <div class="blog-content-wrapper">
+                           <div class="blog-meta">
+                              <div class="blog-date">
+                                 <i class="flaticon-calendar"></i>
+                                 <span>20 Jan 2023</span>
+                              </div>
+                              <div class="blog-user">
+                                 <i class="flaticon-avatar"></i>
+                                 <span>Mark Hanry</span>
+                              </div>
+                           </div>
+                           <div class="blog-content">
+                              <a [routerLink]="['/blog-details']">
+                                 <h3>Stop Redesigning And Start Your Tuning Your Site</h3>
+                              </a>
+                              <p>Entrepreneurs and go-getters often feel as if they carry the weight of an entire
+                                 organization on their
+                                 backs, and therefore could always use a little extra motivation. Everyone must
+                                 work, but for many of us that job isn’t just a paycheck, it’s an opportunity to
+                                 express ourselves and make ... </p>
+                              <a class="blog-btn" [routerLink]="['/blog-details']">Read more</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="col-span-12 xl:col-span-12 lg:col-span-6">
+                     <div class="blog-wrapper relative mb-[30px]">
+                        <div class="blog-thumb ">
+                           <a [routerLink]="['/blog-details']"><img src="assets/img/blog/blog-03.jpg"
+                                 alt="blog-img"></a>
+                        </div>
+                        <a [routerLink]="['/blog']" class="blog-tag">
+                           <i class="fal fa-folder-open"></i>
+                           Web Design
+                        </a>
+                        <div class="blog-content-wrapper">
+                           <div class="blog-meta">
+                              <div class="blog-date">
+                                 <i class="flaticon-calendar"></i>
+                                 <span>18 Jan 2023</span>
+                              </div>
+                              <div class="blog-user">
+                                 <i class="flaticon-avatar"></i>
+                                 <span>Accolade-Ascend-LearnHub</span>
+                              </div>
+                           </div>
+                           <div class="blog-content">
+                              <a [routerLink]="['/blog-details']">
+                                 <h3>How To Teach Web Design to the New Students</h3>
+                              </a>
+                              <p>There are so many websites out there that have not considered the overall
+                                 usability of their visually impaired users.
+                                 When it comes to designing better links and sending better emails, Slava
+                                 Shestopalov has a few tips on how to improve
+                                 your website’s experience while accessibility in mind. The participants ...</p>
+                              <a class="blog-btn" [routerLink]="['/blog-details']">Read more</a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <app-pagination></app-pagination>
+            </div>
+         </div>
+         <div class="col-span-12 md:col-span-8 xl:col-span-4">
+            <div class="sidebar-widget-wrapper">
+               <app-blogsearch></app-blogsearch>
+               <app-blogrecentpost></app-blogrecentpost>
+               <app-blogcategory></app-blogcategory>
+               <app-blogtags></app-blogtags>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- blog-area-start -->
+
+<app-footerone></app-footerone>

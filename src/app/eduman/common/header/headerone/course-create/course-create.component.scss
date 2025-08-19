@@ -1,0 +1,89 @@
+.actives {
+    // background-color: #f1cb80;
+    // color: black;
+    // box-shadow:none !important;
+  
+    background-color: transparent !important;
+    border-left: 8px solid #ffb013 !important;
+    color: black !important;
+    font-weight: 600;
+    box-shadow: none !important;
+    border-radius: 0px;
+  }
+  
+  .nav-pills .nav-link.active {
+    color: #566a7f !important;
+    background: transparent !important;
+    box-shadow: none !important;
+  }
+  
+  .actives i {
+    color: red;
+    font-weight: 900;
+  }
+  
+  .nav .nav-link:hover {
+    color: black !important;
+  }
+  
+  .nav .nav-link:focus {
+    color: #fff;
+  }
+  
+  h4 {
+    font-weight: 900;
+    color: black;
+    font-family: SuisseWorks, Georgia, Times, "Times New Roman", serif,
+      "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  }
+  
+  input,
+  .input-group-text {
+    border-radius: 0px !important;
+  }
+  
+  input {
+    border-right: none;
+  }
+  
+  .prerequisites,
+  .primary-taught,
+  .price {
+    border-right: 1px solid lavender;
+  }
+  
+  .price:focus {
+    border-right: 1px solid black;
+  }
+  
+  .add-link:hover {
+    color: black !important;
+    font-weight: 600 !important;
+  }
+  
+  /* Hide additional inputs initially */
+  #additionalInputs {
+    display: none;
+  }
+  
+  /* Show additional inputs when link is clicked */
+  #addInput:target + #additionalInputs {
+    display: block;
+  }
+  
+  .blog__comment-input textarea:focus {
+    border: 1px solid black !important;
+  }
+  
+  .btn-save {
+    background-color: #616468 !important;
+    color: whitesmoke !important;
+  }
+  .border_left {
+    border-left: 8px solid green;
+  }
+  
+  .nav-pills .nav-link{
+    margin-bottom: 10px;
+    cursor: pointer;
+  }

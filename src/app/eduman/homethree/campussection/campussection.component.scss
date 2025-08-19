@@ -1,0 +1,63 @@
+// campus style
+@import '../../../../custom-palettes.scss';
+
+.shape-light {
+	@apply absolute bg-themeOrange w-[60px] h-[60px] text-center leading-[60px] rounded-[50%] -top-10 right-5;
+	animation-duration: 2.5s;
+	animation-fill-mode: both;
+	animation-iteration-count: infinite;
+	animation-name: hero-bounce;
+}
+.campus-shape-content {
+	@apply bg-white max-w-[290px] p-[25px] rounded-[5px];
+	box-shadow: 0px 40px 50px rgba(24, 44, 74, 0.16);
+	h5 {
+		@apply font-primary;
+	}
+	span {
+		@apply text-heading text-[18px] font-semibold;
+	}
+}
+
+.campus-shape-sticker {
+	@apply absolute bottom-[70px] right-[25px] z-[1];
+}
+.campus-shape-1 {
+	bottom: calc(0% - 70px);
+	@apply absolute right-[-26%];
+}
+.campus-shape-2 {
+	@apply absolute bottom-[16%] left-[-14%] maxMd:left-0;
+}
+.campus-img-wrapper {
+	@apply min-h-[495px] mt-14 maxMd:mt-[81px] maxXs:mt-[51px];
+}
+.campus-shape-3 {
+	@apply absolute top-[3%] left-[5%] maxMd:hidden;
+}
+.campus-img-1 {
+	@apply absolute top-[140px];
+}
+.campus-img-2 {
+	@apply absolute top-[-5%] left-[23%] minMaxTablet:left-[27%];
+}
+.campus-img-3 {
+	@apply absolute top-[-11%] left-[60%] minMaxTablet:left-[71%] maxXs:hidden;
+}
+.campus-img-4 {
+	@apply absolute top-[41%] left-[23%] minMaxTablet:left-[27%];
+}
+.campus-img-5 {
+	@apply absolute -right-1 top-[23%] minMaxTablet:right-[-18%];
+}
+.compus-content {
+	ul li {
+		@apply text-heading text-[16px] font-semibold mb-2.5;
+		i {
+			@apply text-themeBlue mr-2.5;
+		}
+	}
+	p {
+		@apply mb-[25px];
+	}
+}

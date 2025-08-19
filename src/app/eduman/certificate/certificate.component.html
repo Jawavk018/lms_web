@@ -1,0 +1,91 @@
+  <div class="certificate-container">
+    <div class="inner-border">
+      <div class="header">
+        <div class="logo-upload">
+          <img [src]="logoImage" alt="Default Logo" />
+          <input type="file" accept="image/*" (change)="previewLogo($event)" />
+        </div>
+        <h1
+          id="certificate-title"
+          contenteditable="true"
+          (blur)="updateTitle($event)"
+        >
+          Certificate of Achievement
+        </h1>
+      </div>
+      <div class="content">
+        <h3
+          id="certificate-content"
+          contenteditable="true"
+          (blur)="updateContent($event)"
+        >
+          This is to certify that
+        </h3>
+        <b
+          ><input
+            type="text"
+            placeholder="Recipient Name"
+            [(ngModel)]="recipientName"
+        /></b>
+        <h3
+          id="certificate-para"
+          contenteditable="true"
+          (blur)="updatePara($event)"
+        >
+          has successfully completed the course in
+        </h3>
+        <b
+          ><input
+            type="text"
+            placeholder="Course Name"
+            [(ngModel)]="courseName"
+        /></b>
+        <h3>on</h3>
+        <input type="date" [(ngModel)]="completionDate" />
+      </div>
+      <div class="signatures">
+        <div class="signature-box">
+          <span
+            class="upload-text"
+            id="certificate-instructor"
+            contenteditable="true"
+            (blur)="updateInstructor($event)"
+            >Instructor</span
+          ><br />
+          <label *ngIf="!instructorSignature"
+            >Click here to upload the Instructor Signature</label
+          >
+          <input
+            type="file"
+            accept="image/*"
+            (change)="previewImage($event, 'instructor-image')"
+          />
+          <img id="instructor-image" src="#" alt="Preview" />
+        </div>
+        <div class="signature-box">
+          <span
+            class="upload-text"
+            id="certificate-organisation"
+            contenteditable="true"
+            (blur)="updateOrganisation($event)"
+            >Organization</span
+          ><br />
+          <label *ngIf="!organizationSignature"
+            >Click here to upload the Organization Signature</label
+          >
+          <input
+            type="file"
+            accept="image/*"
+            (change)="previewImage($event, 'organization-image')"
+          />
+          <img id="organization-image" src="#" alt="Preview" />
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div style="text-align: center">
+    <button class="allocate-btn" (click)="openCertificateDialog()">
+      Allocate Certificate
+    </button>
+  </div>

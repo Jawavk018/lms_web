@@ -1,0 +1,92 @@
+<form action="" [formGroup]="courseIniateForm">
+    <mat-stepper [linear]="isLinear" #stepper style="height: 100vh !important;background: #f9f9f9;" class="mat-stepper">
+        <mat-step [stepControl]="courseIniateForm">
+            <ng-template matStepLabel>Create working title</ng-template>
+            <div style="background: #f9f9f9;" class="pt-20">
+                <div class="my-0 mx-auto form-container" style=" border-radius: 10px; background: #f5f5f5;">
+                    <div class="p-10 d-flex flex-col justify-content-center align-items-center">
+                        <div class="text-center pt-20 pe-0 pb-10 ps-0 fw-bold" style="font-size: 30px; color: #939393">
+                            <h2>How about a working title?</h2>
+                        </div>
+                        <p>It's ok if you can't think of a good title now. You can change it later.</p>
+                        <div class="p-10 d-flex flex-col justify-content-center align-items-center w-100">
+                            <div class="input-group mb-3">
+                                <input type="text" class="form-control form-control-lg" #input maxlength="60"
+                                    formControlName="title" placeholder="e.g. Learn Photoshop CS6 from scratch"
+                                    aria-label="Learn Photoshop CS6 from scratch" aria-describedby="basic-addon2"
+                                    (input)="updateInputLength(input)">
+                                <span class="input-group-text">{{input?.value?.length}}/60</span>
+                            </div>
+                            <div class="d-flex justify-content-center">
+                                <button class="btn btn-dark mb-3 mt-5" matStepperNext>
+                                    Continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step [stepControl]="courseIniateForm" label="Choose category">
+            <div style="background: #f9f9f9;" class="pt-20">
+                <div class="my-0 mx-auto form-container" style=" border-radius: 10px; background: #f5f5f5;">
+                    <div class="p-10 d-flex flex-col justify-content-center align-items-center">
+                        <div class="text-center pt-20 pe-0 pb-10 ps-0 fw-bold" style="font-size: 30px; color: #939393">
+                            <h2>What category best fits the knowledge you'll share?</h2>
+                        </div>
+                        <p>If you're not sure about the right category, you can change it later.</p>
+                        <div class="p-10 d-flex flex-col justify-content-center align-items-center w-100">
+                            <select id="cat" class="select2 form-select form-control-lg" formControlName="categorySno"
+                                placeholder="--Select Category--">
+                                <option value="" disabled selected>Choose a category</option>
+                                <option *ngFor="let category of categoryList;let i =index;"
+                                    [value]="category?.categorySno">
+                                    {{category.categoryName}}</option>
+                            </select>
+                            <div>
+                                <button mat-button matStepperPrevious class="mb-3 mt-5">Previous</button>
+                                <button class="btn btn-dark mb-3 mt-5" matStepperNext>
+                                    Continue
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+        <mat-step>
+            <ng-template matStepLabel>Time spend for course creation</ng-template>
+            <div style="background: #f9f9f9;" class="pt-8">
+                <div class="my-0 mx-auto form-container" style=" border-radius: 10px; background: #f5f5f5;">
+                    <div class="p-10 d-flex flex-col justify-content-center align-items-center">
+                        <div class="text-center pt-8 pe-0 pb-10 ps-0 fw-bold" style="font-size: 30px; color: #939393">
+                            <h2>How much time can you spend creating your course per week?</h2>
+                        </div>
+                        <p>There's no wrong answer. We can help you achieve your goals even if you don't have much
+                            time.</p>
+                        <div class="py-3 w-75">
+                            <div class="form-group">
+                                <div class="border p-3 m-1" *ngFor="let hours of spendHoursTypeList;let i = index">
+                                    <div class="form-check">
+                                        <input class="form-check-input" type="radio" [id]="hours?.codesDtlSno"
+                                            name="availableHoursTypeCd" [value]="hours?.codesDtlSno"
+                                            formControlName="availableHoursTypeCd">
+                                        <label class="form-check-label" [for]="hours?.codesDtlSno">
+                                            {{ hours?.cdValue }}
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <button mat-button matStepperPrevious class="mb-3 mt-5">Previous</button>
+                            <button class="btn btn-dark mb-3 mt-5" matStepperNext (click)="save()">
+                                Create Course
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </mat-step>
+    </mat-stepper>
+</form>

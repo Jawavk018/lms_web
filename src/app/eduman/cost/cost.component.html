@@ -1,0 +1,11 @@
+<div class="course-sidebar-info" [class.content-hidden]="costActive">
+    <h3 class="drop-btn" (click)="shopLanguage()">Cost</h3>
+    <ul *ngFor="let cost of costList; let i = index;">
+       <li>
+          <div class="course-sidebar-list">
+             <input class="edu-check-box"  (change)="onChange($event.target, cost)" type="checkbox" id="cost_{{i}}">
+             <label class="edu-check-label" for="cost_{{i}}">{{cost?.range}} ({{cost?.courseCount}})</label>
+          </div>
+       </li>
+    </ul>
+ </div>

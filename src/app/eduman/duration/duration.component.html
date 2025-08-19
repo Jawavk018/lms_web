@@ -1,0 +1,11 @@
+<div class="course-sidebar-info" [class.content-hidden]="durationActive">
+    <h3 class="drop-btn" (click)="showDuration()">Duration</h3>
+    <ul *ngFor="let duration of durationList; let i = index;">
+       <li>
+          <div class="course-sidebar-list">
+             <input class="edu-check-box"  (change)="onChange($event.target, duration)" type="checkbox" id="duration_{{i}}">
+             <label class="edu-check-label" for="duration_{{i}}">{{duration?.duration}} ({{duration?.courseCount}})</label>
+          </div>
+       </li>
+    </ul>
+ </div>

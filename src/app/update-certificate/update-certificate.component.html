@@ -1,0 +1,76 @@
+<mat-dialog-content class="mat-typography">
+  <h2>Edit certificate</h2>
+  <div [formGroup]="form">
+    <div class="mb-3" *ngFor="let form of data?.certificate; let i = index">
+      <label class="form-label"
+        >{{ form?.placeHolder }}
+        <span class="text-danger" *ngIf="form?.required">*</span></label
+      >
+      <ng-container [ngSwitch]="form?.type">
+        <ng-container *ngSwitchCase="'text'">
+          <input
+            [readonly]="form?.disabled || (form?.isOrg ? !appUser?.organization : false) || (form?.isTutor ? appUser?.organization : false)"
+            [type]="form?.type"
+            class="form-control"
+            formControlName="{{ form.key }}"
+            [placeholder]="form?.placeHolder"
+          />
+        </ng-container>
+        <ng-container *ngSwitchCase="'date'">
+          <input
+            [readonly]="form?.disabled"
+            [type]="form?.type"
+            class="form-control"
+            formControlName="{{ form.key }}"
+            [placeholder]="form?.placeHolder"
+          />
+        </ng-container>
+        <ng-container *ngSwitchCase="'file'">
+          <ng-container *ngIf="!form?.value">
+            <input
+              [disabled]="form?.disabled || (form?.isOrg ? !appUser?.organization : false) || (form?.isTutor ? appUser?.organization : false)"
+              [type]="form?.type"
+              class="form-control"
+              [accept]="form?.accept"
+              name="form{{ i }}"
+              (change)="changeImg($event.target, i)"
+            />
+          </ng-container>
+          <ng-container *ngIf="form?.value">
+            <img
+              [src]="form?.value"
+              class="d-flex w-[100px]"
+              role="button"
+              (click)="changeImage(i)"
+            />
+           
+            <input
+              [disabled]="form?.disabled"
+              [type]="form?.type"
+              class="d-none"
+              [accept]="form?.accept"
+              name="form{{ i }}"
+              id="file-{{ i }}"
+              (change)="changeImg($event.target, i)"
+            />
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </div>
+  </div>
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close [disabled]="isUpload">Cancel</button>
+  <button
+    class="btn btn-primary d-flex"
+    [disabled]="form.invalid || isUpload"
+    (click)="saveCertificate()"
+  >
+    <div *ngIf="form.valid && isUpload">
+      <div class="spinner-border" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+    </div>
+    <p class="m-auto ms-2">Update</p>
+  </button>
+</mat-dialog-actions>

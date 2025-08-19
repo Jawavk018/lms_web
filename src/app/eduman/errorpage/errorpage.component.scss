@@ -1,0 +1,14 @@
+// content-error style
+@import '../../../custom-palettes.scss';
+
+.content-error-area {
+	@apply border-t border-solid border-borderGray;
+}
+.error-thumb {
+	img {
+		@apply mb-10 max-w-full;
+	}
+}
+.error-btn {
+	@apply mt-[35px];
+}

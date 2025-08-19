@@ -1,0 +1,10 @@
+.course-drop-inner {
+    @apply relative;
+    &:after {
+        content: '';
+        @apply absolute w-2 h-2 right-5 top-[15px] border-b-2 border-r-2 border-solid border-borderGray rotate-45;
+    }
+     select {
+        @apply text-bodyText appearance-none relative w-[180px] h-10 bg-[#f7f7f9] border-0 py-0 px-5 rounded outline-none inline-block text-[14px];
+    }
+}

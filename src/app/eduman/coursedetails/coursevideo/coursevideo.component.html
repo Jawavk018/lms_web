@@ -1,0 +1,249 @@
+<div class="course-video-widget">
+  <div class="course-widget-wrapper mb-[30px]">
+    <div class="course-video-thumb w-img">
+      <img [src]="data?.courseImage" alt="image not found" />
+      <div class="sidber-video-btn">
+        <a class="popup-video" href="javascript:void(0)" (click)="openDialog()"><i class="fas fa-play"></i></a>
+      </div>
+    </div>
+
+    <!-- <div style="font-size: 25px; text-align: right">
+      <a class="fav" role="button" (click)="addToFavorite()" *ngIf="!data?.favoriteSno">
+        <i class="bi bi-heart"></i>
+      </a>
+      <a class="fav" role="button" (click)="removeFavorite()" *ngIf="data?.favoriteSno">
+        <i class="bi bi-heart-fill" style="color: red"></i>
+      </a>
+    </div> -->
+
+    <div class="d-flex mb-1" style="font-size: 20px;text-align: center">
+      <i class="fas fa-thumbs-up" style="color: #2467ec"></i>
+      <p style="margin-left: 10px;">{{ data?.likeCount?.count }} {{ data?.likeCount?.count > 1 ? 'likes' : 'like' }}</p>
+    </div>
+
+    <div>
+      <span>Course Fee </span>
+      <!-- <span class="price-now" style="color: #2467ec"
+          >{{ data?.currencySymbol }} {{ data?.price }}/-
+        </span> -->
+      <span *ngIf="data?.courseDiscountPrice; else noDiscount">
+        <span class="price-now" style="color: #2467ec; text-decoration: line-through;">
+          {{ data?.currencySymbol }} {{ data?.price }}/-
+        </span>&nbsp;
+        <span class="price-now" style="color: #2467ec;">
+          {{ data?.currencySymbol }} {{ data?.courseDiscountPrice }}/-
+        </span>
+      </span>
+      <ng-template #noDiscount>
+        <span class="price-now" style="color: #2467ec;" *ngIf="data?.price > 0">
+          {{ data?.currencySymbol }} {{ data?.price }}/-
+        </span>
+        <span class="price-now fw-bold" style="color: #2467ec;" *ngIf="data?.price == 0">
+          - Free
+        </span>
+      </ng-template>
+      <span *ngIf="data?.price > 0">(Including GST)</span>
+      <!-- {{favoriteList[0].courseSno | json}} -->
+      <div style="float: right; font-size: 25px;margin-left: 10px;">
+        <a class="fav" role="button" (click)="addToFavorite()" *ngIf="!data?.favoriteSno">
+          <i class="bi bi-heart"></i>
+        </a>
+        <a class="fav" role="button" (click)="removeFavorite()" *ngIf="data?.favoriteSno">
+          <i class="bi bi-heart-fill" style="color: red"></i>
+        </a>
+      </div>
+
+      <div style="float: right; font-size: 25px">
+        <a class="like" role="button" (click)="addLike()" *ngIf="!data?.courseLikeSno">
+          <i class="bi bi-hand-thumbs-up"></i>
+        </a>
+        <a class="like" role="button" (click)="removeLike()" *ngIf="data?.courseLikeSno">
+          <i class="fas fa-thumbs-up" style="color: #2467ec"></i>
+        </a>
+      </div>
+
+    </div>
+    <!-- <div>
+        <span>For Membership </span>
+        <span class="price-now" style="color: #2467ec"
+          >{{ data?.currencySymbol }} 499/-
+        </span>
+        <span>(Including GST)</span>
+      </div> -->
+    <!-- <span>{{data?.currencySymbol}}{{data?.price}}</span> -->
+    <div class="course-video-body">
+      <ul>
+        <li>
+          <div class="course-vide-icon">
+            <i class="flaticon-filter"></i>
+            <span>Level</span>
+          </div>
+          <div class="video-corse-info">
+            <span>{{ data?.experienceLevel }}</span>
+          </div>
+        </li>
+        <li>
+          <div class="course-vide-icon">
+            <i class="flaticon-computer"></i>
+            <span>Lectures</span>
+          </div>
+          <div class="video-corse-info">
+            <span>{{ data?.lectureLength }}
+              {{ data?.lectureLength === 1 ? "Lecture" : "Lectures" }}
+            </span>
+          </div>
+        </li>
+        <!-- <li>
+                    <div class="course-vide-icon">
+                        <i class="flaticon-clock"></i>
+                        <span>Duration</span>
+                    </div>
+                    <div class="video-corse-info">
+                        <span>1h 30m 12s</span>
+                    </div>
+                </li> -->
+        <li>
+          <div class="course-vide-icon">
+            <i class="flaticon-menu-2"></i>
+            <span>Category</span>
+          </div>
+          <div class="video-corse-info">
+            <span>{{ data?.categoryName }}</span>
+          </div>
+        </li>
+        <li>
+          <div class="course-vide-icon">
+            <i class="flaticon-global"></i>
+            <span>Language</span>
+          </div>
+          <div class="video-corse-info">
+            <span *ngFor="let language of data?.languageTypeList; let i = index">
+              {{ language?.languageTypeCdValue }}
+              <span *ngIf="data?.languageTypeList?.length != i + 1">,</span>
+            </span>
+          </div>
+        </li>
+        <li>
+          <div class="course-vide-icon">
+            <i class="flaticon-bookmark-white"></i>
+            <span>Access</span>
+          </div>
+          <div class="video-corse-info">
+            <span>Full Lifetime</span>
+          </div>
+        </li>
+        <!-- <li>
+                    <div class="course-vide-icon">
+                        <i class="flaticon-award"></i>
+                        <span>Certificate</span>
+                    </div>
+                    <div class="video-corse-info">
+                        <span>Yes </span>
+                    </div>
+                </li> -->
+        <li>
+          <div class="course-vide-icon">
+            <i class="flaticon-list"></i>
+            <span>Resource</span>
+          </div>
+          <div class="video-corse-info">
+            <span>{{ data?.totalResourceLength }} Downloadable Files </span>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <div class="video-wishlist">
+      <a [routerLink]="['/gotocourse']" [queryParams]="{ courseSno: data?.courseSno }" class="video-cart-btn"
+        *ngIf="data?.orderStatus?.isPurchase">
+        <!-- *ngIf="data?.orderStatus?.isPurchase" -->
+        <i class="fas fa-arrow-circle-right"></i>Go to Course
+      </a>
+      <a class="video-cart-btn" role="button" (click)="addToCart()" *ngIf="!data?.orderStatus">
+        <i class="fal fa-shopping-cart"></i>Add to cart
+      </a>
+      <a class="video-cart-btn" role="button" (click)="removeCart()"
+        *ngIf="data?.orderStatus && !data?.orderStatus?.isPurchase">
+        <i class="fal fa-shopping-cart"></i>Remove cart
+      </a>
+      <!-- <a [routerLink]="['/wishlist']" class="video-wishlist-btn" *ngIf="!data?.orderStatus?.isPurchase"><i
+                    class="far fa-heart"></i>Add to Wishlist</a> -->
+    </div>
+    <!-- <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false"
+      *ngIf="data?.myCourseCoupons != null">
+      <div class="carousel-inner">
+        <div class="carousel-item" *ngFor="let coupon of data?.myCourseCoupons; let i = index"
+          [ngClass]="{'active': i === 0}">
+          <div class="coupon">
+            <h5 class="offer text-dark" *ngIf="coupon.couponValueTypeName == 'Absolute'">{{data?.currencySymbol}} {{coupon.couponValue}} OFF YOUR PURCHASE</h5>
+            <h5 class="offer text-dark" *ngIf="coupon.couponValueTypeName == 'Flat'">{{coupon.couponValue}}% OFF YOUR PURCHASE</h5>
+            <p class="description">Use code below to get a discount on your purchase.</p>
+            <div class="code">
+              <span>CODE: </span><span class="coupon-code">{{coupon.couponCode}}</span>
+            </div>
+            <p class="expiry" *ngIf="coupon.expiryTypeName == 'Limited'">Expires on: {{coupon.expiryTime | date: 'MMM d, y'}}</p>
+            <p class="expiry" *ngIf="coupon.expiryTypeName == 'Life Time'" style="color: green;">Expires on: {{coupon.expiryTypeName}}</p>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="prev">
+        <span class="bi bi-chevron-left"></span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+        data-bs-slide="next">
+        <span class="bi bi-chevron-right"></span>
+      </button>
+    </div> -->
+    <div *ngIf="!data?.orderStatus">
+      <div id="carouselExampleControls" class="carousel slide" data-bs-interval="false"
+        *ngIf="data?.myCourseCoupons?.length > 0">
+        <div class="carousel-inner">
+          <div class="carousel-item" *ngFor="let coupon of data.myCourseCoupons; let i = index"
+            [ngClass]="{'active': i === currentIndex}">
+            <div class="coupon">
+              <h5 class="offer text-dark" *ngIf="coupon.couponValueTypeName == 'Absolute'">{{data.currencySymbol}}
+                {{coupon.couponValue}} OFF YOUR PURCHASE</h5>
+              <h5 class="offer text-dark" *ngIf="coupon.couponValueTypeName == 'Flat'">{{coupon.couponValue}}% OFF YOUR
+                PURCHASE</h5>
+              <p class="description">Use code below to get a discount on your purchase.</p>
+              <div class="code">
+                <span>CODE: </span><span class="coupon-codes">{{coupon.couponCode}}</span>
+              </div>
+              <p class="expiry" *ngIf="coupon.couponExpiryTypeName == 'Limited'">Expires on: <b
+                  style="color: black;">{{coupon.expiryTime | date: 'MMM d,
+                  y'}}</b></p>
+              <p class="expiry" *ngIf="coupon.couponExpiryTypeName == 'Life Time'">Expires on:
+                <b style="color: green;">{{coupon.couponExpiryTypeName}}</b>
+              </p>
+            </div>
+          </div>
+        </div>
+        <!-- Previous button -->
+        <button class="carousel-control-prev" type="button" (click)="showPrev()" [disabled]="currentIndex === 0">
+          <span class="bi bi-chevron-left"></span>
+        </button>
+        <!-- Next button -->
+        <button class="carousel-control-next" type="button" (click)="showNext()"
+          [disabled]="currentIndex === data.myCourseCoupons.length - 1">
+          <span class="bi bi-chevron-right"></span>
+        </button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- <div class="course-video-popup">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="https://www.youtube.com/embed/wNwrSz3HYqE" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->

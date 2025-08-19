@@ -1,0 +1,354 @@
+.student-profile-author {
+    @apply flex gap-[30px] items-center border-b border-solid border-borderGray;
+    &-img {
+        @apply w-[200px] leading-none;
+        img {
+            @apply object-cover rounded-[50%] w-full;
+        }
+    }
+    &-text {
+        span {
+            @apply text-[20px] mb-[5px] block;
+        }
+    }
+}
+.student-profile-author-name {
+    @apply text-[28px] mb-0;
+}
+.student-profile-content {
+    @apply pt-[25px] pr-0 pb-[30px] pl-3.5 maxXs:pl-0;
+    & h4 {
+        @apply text-xl;
+    }
+}
+.student-profile-info {
+    li {
+        @apply mb-[15px] flex;
+        h5 {
+            @apply text-[16px] mb-0 font-semibold min-w-[230px] maxXs:min-w-[100px] rounded-none;
+        }
+        span {
+            @apply text-base text-bodyText;
+        }
+    }
+}
+.inprogress-course {
+    @apply flex gap-[30px] rounded-[10px] overflow-hidden border border-solid border-borderGray;
+    @apply maxXs:gap-0 maxXs:flex-col;
+    &-img {
+        @apply w-[300px] maxXs:w-full;
+        img {
+            @apply w-full object-cover;
+        }
+    }
+}
+.inprogress-course-rating {
+    @apply mb-2.5;
+    a {
+        @apply mr-[3px] inline-block text-[15px] text-themeOrange;
+    }
+    span {
+        @apply text-base ml-[3px] text-bodyText;
+    }
+}
+.inprogress-course-text {
+    @apply p-5 pl-0 maxXs:pl-5;
+}
+.inprogress-course-lesson {
+    span {
+        @apply text-base text-bodyText;
+    }
+    h6 {
+        @apply text-base font-semibold inline-block pl-2.5;
+        span {
+            @apply text-base font-semibold text-heading;
+        }
+    }
+}
+.inprogress-course {
+	.progress {
+        @apply flex h-1.5 overflow-hidden text-[12px] bg-[#e9ecef] rounded;
+    }
+}
+
+.student-profile-reviews-item {
+    @apply rounded-[10px] border border-solid border-borderGray;
+}
+.student-profile-reviews-course-title {
+    @apply py-[15px] px-5 border border-solid border-borderGray;
+    h5 {
+        @apply text-base font-semibold mb-0 text-heading;
+    }
+}
+.student-profile-reviews-text {
+    @apply p-5;
+}
+.student-profile-reviews-text-wrap {
+    @apply flex gap-5 justify-between;
+    .student-profile-review-icon {
+        a {
+            @apply text-base inline-block mr-[3px] text-themeOrange;
+        }
+    }
+}
+.student-profile-review-update {
+    &-btn {
+        @apply mr-[15px] box-border;
+        i {
+            @apply mr-[3px] box-border;
+        }
+        &:last-child {
+            @apply mr-0;
+        }
+    }
+}
+.student-profile-review-content {
+    p {
+        @apply pr-[50px] mb-0 maxSm:pr-0;
+    }
+}
+.student-profile-enroll {
+    ul {
+        @apply border border-solid border-borderGray;
+        li {
+            .nav-link {
+                @apply text-base font-semibold relative text-bodyText;
+                &:before {
+                    @apply absolute;
+                    content: '';
+                    @apply h-0.5 w-[0%] left-0 bottom-0 bg-themeBlue;
+                    transition: all linear 0.3s;
+                }
+                &.active {
+                    @apply text-themeBlue;
+                    &:before {
+                        @apply w-full;
+                    }
+                }
+            }
+        }
+    }
+}
+.contact-from-input label {
+    @apply inline-block mb-[5px] font-semibold;
+}
+
+.student-profile-setting-cover-img {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 250px;
+}
+.student-profile-setting-author-img {
+    @apply rounded-[50%] ml-[30px] inline-block;
+    img {
+        @apply h-[150px] w-[150px] rounded-[50%] object-cover mt-[-75px] border-[5px] border-solid border-white;
+    }
+}
+.student-social-profile-link span {
+    @apply block font-semibold;
+}
+
+.student-profile-orders {
+    @apply border border-b-0 border-solid border-borderGray;
+}
+.student-profile-order {
+    @apply flex border-b border-solid border-borderGray;
+}
+.student-profile-order-name,
+.student-profile-order-price,
+.student-profile-order-status,
+.student-profile-order-method,
+.student-profile-order-date,
+.student-profile-order-duration,
+.student-profile-order-renew {
+    @apply pl-[15px] rounded-none;
+    h6 {
+        @apply text-base mb-0 text-heading;
+    }
+    span {
+        @apply text-base text-bodyText;
+    }
+}
+.student-profile-order-name,
+.student-profile-order-price,
+.student-profile-order-status,
+.student-profile-order-method,
+.student-profile-order-date,
+.student-profile-order-duration,
+.student-profile-order-renew {
+    @apply flex flex-col justify-center;
+}
+.custom-height-80 {
+    min-height: 80px;
+}
+.student-profile-order-name {
+    min-width: 120px;
+    width: 13%;
+}
+.student-profile-order-price {
+    min-width: 100px;
+    width: 11%;
+    @media only screen and (max-width: 1400px) {
+        min-width: 70px;
+        width: 7%;
+    }
+}
+.student-profile-order-status {
+    min-width: 125px;
+    width: 13%;
+    @media only screen and (max-width: 1400px) {
+        min-width: 100px;
+        width: 9%;
+    }
+}
+.student-profile-order-method {
+    min-width: 160px;
+    width: 17%;
+    @media only screen and (max-width: 1400px) {
+        min-width: 125px;
+        width: 13%;
+    }
+}
+.student-profile-order-duration {
+    min-width: 130px;
+    width: 14%;
+}
+.student-profile-order-date {
+    min-width: 150px;
+    width: 16%;
+    @media only screen and (max-width: 1400px) {
+        min-width: 130px;
+        width: 12%;
+    }
+}
+.student-profile-order-renew {
+    .edu-btn {
+        @apply h-[42px] leading-[42px] px-[30px] py-0;
+    }
+}
+.inprogress-course-img img {
+	@apply min-h-full;
+}
+.student-profile-orders-wrapper {
+    @media only screen and (max-width: 1400px) {
+        overflow-x: auto;
+    }
+}
+.student-profile-orders {
+    @media only screen and (max-width: 1400px) {
+        width: 817px;
+    }
+}
+
+// counter
+.counter-wrapper {
+	@apply py-[50px] px-[15px] bg-grayBg;
+}
+.count-number {
+	span {
+		@apply text-[36px] font-bold mb-2.5 inline-block text-heading;
+	}
+	p {
+        @apply text-[18px] font-semibold mb-0;
+	}
+}
+.counter-icon svg {
+	@apply mb-[30px] rounded-none;
+}
+// university-couner
+.counter-img {
+	svg {
+		@apply mb-[25px] rounded-none;
+	}
+}
+.university-couner-text {
+	span {
+        @apply text-[36px] font-bold text-white mb-[15px] inline-block;
+	}
+}
+.university-couner-text {
+	p {
+		@apply text-white text-[18px] font-semibold;
+	}
+}
+
+
+//student profile tab style start
+
+.student-profile-main {
+    .mat-mdc-tab-group {
+        @apply flex-row gap-11 maxMd:flex-col;
+    }
+    .mat-mdc-tab-header {
+        @apply bg-[#f8f8f9] p-[30px] min-w-[300px] min-h-full;
+    }
+    .mat-mdc-tab-body-wrapper {
+        @apply w-full;
+    }
+    .mat-mdc-tab-labels {
+        flex-direction: column;
+    }
+    .mdc-tab {
+        @apply p-0;
+    }
+    .mdc-tab__content {
+        @apply justify-start px-[15px] w-full;
+        button {
+            @apply block w-full text-left text-[16px] font-semibold text-bodyText border-none rounded-[5px] outline-none;
+
+            i {
+                @apply min-w-[22px] rounded-none;
+            }
+        }
+    }
+    .mdc-tab--active {
+        .mdc-tab__content {
+            @apply bg-white;
+            button {
+                @apply text-themeBlue;
+                & i {
+                    @apply text-themeBlue;
+                }
+            }
+        }
+    }
+    .mdc-tab__ripple,
+    .mdc-tab-indicator {
+        @apply hidden;
+    }
+    .student-profile-content {
+        @apply px-0;
+    }
+
+    .student-profile-content {
+        .mat-mdc-tab-header {
+            padding: 0px !important;
+        }
+        .mat-mdc-tab-group {
+            @apply flex-col gap-7;
+        }
+        .mat-mdc-tab-header {
+            @apply bg-transparent px-4 py-2 min-w-0 min-h-0;
+        }
+        .mat-mdc-tab-body-wrapper {
+            @apply w-full;
+        }
+        .mat-mdc-tab-labels {
+            @apply flex flex-row flex-wrap border-b border-solid border-borderGray;
+        }
+        .mdc-tab__ripple,
+        .mdc-tab-indicator {
+            @apply flex;
+        }
+        .mat-mdc-tab .mdc-tab-indicator__content--underline {
+            @apply border-themeBlue;
+        }
+        .mat-mdc-tab-group.mat-mdc-tab-group-stretch-tabs > .mat-mdc-tab-header .mat-mdc-tab {
+            @apply flex-grow-0;
+        }
+        .enrolled-courses {
+            @apply pb-[120px] rounded-none maxXs:pb-0;
+        }
+    }
+}

@@ -1,0 +1,77 @@
+// faq style
+@import '../../../../custom-palettes.scss';
+
+.faq-tittle-info {
+	h3 {
+		@apply text-[28px] maxXs:text-[26px];
+	}
+}
+.faq-question-item {
+	@include transition(0.3s);
+	@apply flex items-center justify-between border border-solid border-borderGray py-6 px-5 rounded gap-[5px] relative;
+	&:hover {
+		@apply bg-themeBlue text-white border-themeBlue;
+		box-shadow: 0px 40px 40px rgba(24, 44, 74, 0.1);
+	}
+	a {
+		@apply text-[18px];
+		&::before {
+			content: "";
+			@apply absolute w-full h-full top-0 left-0;
+		}
+	}
+}
+.faq-nav-tab {
+	.mat-tab-labels {
+		@apply justify-center;
+	}
+	.mat-ink-bar {
+		@apply hidden;
+	}
+	.mat-tab-nav-bar, .mat-tab-header {
+		@apply border-b-0;
+	}
+	.mat-tab-label {
+		height: inherit;
+		@apply p-0 opacity-100;
+		min-width: inherit;
+	}
+	@apply mt-[-104px] relative;
+}
+.faq-nav-tab .nav-tabs .nav-item:first-child .nav-link,
+.faq-nav-tab .nav-tabs .mat-tab-label:first-child .mat-tab-label-content {
+	border-radius: 5px 0 0 5px;
+}
+.faq-nav-tab .nav-tabs .nav-item:last-child .nav-link,
+.faq-nav-tab .nav-tabs .mat-tab-label:last-child .mat-tab-label-content {
+	border-radius: 0 5px 5px 0;
+}
+.faq-nav-tab .nav-tabs {
+	@apply bg-white border-b-0 pt-[25px] rounded-[7px];
+}
+.faq-nav-tab .nav-tabs .nav-link,
+.faq-nav-tab .nav-tabs .mat-tab-label .mat-tab-label-content {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	@apply text-heading mb-0 border-0 py-0 px-[50px] h-[55px] bg-[#f2f4f6] text-[18px] font-semibold maxXs:mx-5 maxXs:text-[16px];
+}
+.faq-nav-tab .nav-tabs .nav-link.active,
+.faq-nav-tab .nav-tabs .mat-tab-label-active .mat-tab-label-content {
+	@apply bg-themeBlue;
+	@apply text-white;
+}
+.faqicon-arrow {
+	@apply relative;
+	a {
+		content: "";
+		@apply rounded-[5px] text-[#8c929f] w-[35px] h-[35px] text-center leading-[35px] inline-block text-[15px] border border-solid border-borderGray;
+	}
+}
+.faq-wrapper:hover .faqicon-arrow a {
+	@apply bg-[#1352cf];
+	box-shadow: 0px 40px 40px rgba(24, 44, 74, 0.1);
+}
+.faq-wrapper:hover .faq-question-item a {
+	@apply border-transparent;
+	@apply text-white;
+}

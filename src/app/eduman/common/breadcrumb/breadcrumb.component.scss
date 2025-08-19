@@ -1,0 +1,21 @@
+@media(min-width:200px) and (max-width:768px){
+    .course-item-height{
+        position: relative !important;
+        z-index: 2 !important;
+        display: flex !important;
+        /* height: 21vh; */
+        background-size: cover !important;
+        min-height: 110px !important;
+        align-items: center !important;
+        background-position: right;
+
+    }
+}
+
+@media (min-width:768px) and (max-width:3000px){
+    .course-item-height{
+    height: 80px !important;
+    background-position: right !important;
+    background-size: cover !important;
+    }
+}

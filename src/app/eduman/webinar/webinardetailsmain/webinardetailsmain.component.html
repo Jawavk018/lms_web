@@ -1,0 +1,295 @@
+<app-headerfour></app-headerfour>
+
+<app-breadcrumb breadcrumbTitle="Webinar Details" breadcrumbSubTitle="Webinar Details"></app-breadcrumb>
+
+<!-- webinar-details-area-start-->
+<section class="course-detalis-area pb-70">
+    <div class="container">
+        <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+            <div class="col-span-12 xl:col-span-8">
+                <div class="mb-[30px] course-detalis-wrapper">
+                    <div class="course-webinar-video">
+                        <div class="course-video-thumb w-img">
+                            <img src="assets/img/features/features1.jpg" alt="img not found">
+                            <div class="sidber-video-btn">
+                                <a class="popup-video" href="javascript:void(0)" (click)="openDialog()"><i class="fas fa-play"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="mb-5 course-heading">
+                        <h2>WordPress Development Course for Plugins</h2>
+                    </div>
+                    <div class="pb-[30px] course-description">
+                        <p>This webinar has been designed by two professional Data Scientists so that we can
+                            share our knowledge and help you learn complex theory, algorithms, and coding
+                            libraries in a simple way. We will walk you step-by-step into the World of Machine
+                            Learning. With every tutorial, you will develop new skills and improve your
+                            understanding of this challenging yet lucrative sub-field of Data Science.</p>
+                    </div>
+                    <div class="course-learn-wrapper mb-10">
+                        <div class="course-learn">
+                            <div class="course-leranm-tittle">
+                                <h4 class="mb-[15px] rounded-none">What you'll learn</h4>
+                            </div>
+                            <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                                <div class="col-span-12 xl:col-span-6">
+                                    <div class="course-leran-text f-left">
+                                        <ul>
+                                            <li>Handle advanced techniques like Dimensionality Reduction</li>
+                                            <li>Handle specific topics like Reinforcement Learning best</li>
+                                            <li>Know which Machine Learning model to choose for each type of
+                                                problem</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 xl:col-span-6">
+                                    <div class="course-leran-text">
+                                        <ul>
+                                            <li>Reinforcement learning upper
+                                                confidence bound Thompson sampling</li>
+                                            <li>Model Selection & Boosting fold cross
+                                                validation parameter</li>
+                                            <li>Use Machine Learning for personal
+                                                purpose of machine</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="webinar-speaker mb-2.5">
+                        <h3 class="mb-[25px]">Speakers</h3>
+                        <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[30px] member-main-wrapper">
+                                    <div class="member-body text-center">
+                                        <div class="member-item">
+                                            <div class="member-thumb">
+                                                <a [routerLink]="['/instructor-profile']"><img
+                                                        src="assets/img/member/member-img-01.png"
+                                                        alt="member-img"></a>
+                                            </div>
+                                            <div class="member-content">
+                                                <h4><a [routerLink]="['/instructor-profile']">Charls David</a></h4>
+                                                <span>Data Scientist, Codexpand</span>
+                                            </div>
+                                            <div class="member-social">
+                                                <ul>
+                                                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                                    <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                    <li><a href="https://vimeo.com/" target="_blank"><i class="fab fa-vimeo-v"></i></a></li>
+                                                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-reating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.8 (54k+)</span>
+                                        </div>
+                                        <div class="member-course">
+                                            <i class="flaticon-computer"></i><a [routerLink]="['/course']"><span>12 Courses</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 md:col-span-6">
+                                <div class="mb-[30px] member-main-wrapper">
+                                    <div class="member-body text-center">
+                                        <div class="member-item">
+                                            <div class="member-thumb">
+                                                <a [routerLink]="['/instructor-profile']"><img
+                                                        src="assets/img/member/member-img-02.png"
+                                                        alt="member-img"></a>
+                                            </div>
+                                            <div class="member-content">
+                                                <h4><a [routerLink]="['/instructor-profile']">Nicholson Ocak</a></h4>
+                                                <span>UI/UX Researcher </span>
+                                            </div>
+                                            <div class="member-social">
+                                                <ul>
+                                                    <li><a href="https://www.facebook.com/" target="_blank"><i class="fab fa-facebook"></i></a></li>
+                                                    <li><a href="https://twitter.com/" target="_blank"><i class="fab fa-twitter"></i></a></li>
+                                                    <li><a href="https://vimeo.com/" target="_blank"><i class="fab fa-vimeo-v"></i></a></li>
+                                                    <li><a href="https://www.linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="member-meta">
+                                        <div class="member-reating">
+                                            <i class="fas fa-star"></i>
+                                            <span>4.8 (54k+)</span>
+                                        </div>
+                                        <div class="member-course">
+                                            <i class="flaticon-computer"></i><a [routerLink]="['/course']"><span>12 Courses</span></a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="webinar-registration">
+                        <h3 class="mb-[25px]">Free Registration</h3>
+                        <div class="webinar-registration-form">
+                            <form (ngSubmit)="onFormSubmit($event)">
+                                <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                                    <div class="col-span-12 xl:col-span-6">
+                                        <div class="contact-from-input mb-5">
+                                            <input type="text" placeholder="Name">
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 xl:col-span-6">
+                                        <div class="contact-from-input mb-5">
+                                            <input type="text" placeholder="Phone">
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 xl:col-span-6">
+                                        <div class="contact-from-input mb-5">
+                                            <input type="text" placeholder="Email">
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 xl:col-span-6">
+                                        <div class="contact-select">
+                                            <select class="mb-5">
+                                                <option value="Subject">Course</option>
+                                                <option value="Subject">Webinar</option>
+                                                <option value="Subject">Payment</option>
+                                                <option value="Subject">Information</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12">
+                                        <div class="contact-from-input mb-5">
+                                            <textarea placeholder="Message" name="message"></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-12 ">
+                                        <div class="cont-btn mb-5">
+                                            <button type="submit" class="cont-btn">Registration</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-span-12 xl:col-span-4 md:col-span-8">
+                <div class="sidebar-widget-wrapper">
+                    <div class="mb-[30px] event-speaker-wrapper">
+                       <div class="event-speaker-info">
+                          <h4>Speaker</h4>
+                       </div>
+                       <div class="event-sidebar-thumb w-img">
+                          <a href="#"><img src="assets/img/event/speaker.png" alt="Speaker"></a>
+                       </div>
+                       <div class="event-speaker-content text-center">
+                          <span><a [routerLink]="['/instructor']">Crish Denial</a> </span>
+                          <p>Motivational Speaker</p>
+                       </div>
+                    </div>
+                    <div class="mb-[30px] event-information-wrapper">
+                       <div class="event-price-info">
+                          <div class="event-ticket-cost">
+                             <span>Ticket Costs:</span>
+                          </div>
+                          <div class="event-price">
+                             <span>Free</span>
+                          </div>
+                       </div>
+                       <div class="event-information-list">
+                          <ul>
+                             <li>
+                                <div class="information-list">
+                                   <i class="flaticon-calendar"></i>
+                                   <span>Date</span>
+                                </div>
+                                <div class="information-list">
+                                   <span>10 Jan 2023</span>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="information-list">
+                                   <i class="flaticon-clock"></i>
+                                   <span>Schedule</span>
+                                </div>
+                                <div class="information-list">
+                                   <span>10 AM - 12 PM</span>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="information-list">
+                                   <i class="flaticon-place"></i>
+                                   <span>Location</span>
+                                </div>
+                                <div class="information-list">
+                                   <span>New York, TX 82760, US</span>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="information-list">
+                                   <i class="flaticon-menu-2"></i>
+                                   <span>Category</span>
+                                </div>
+                                <div class="information-list">
+                                   <span>Business</span>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="information-list">
+                                   <i class="flaticon-global"></i>
+                                   <span>Language</span>
+                                </div>
+                                <div class="information-list">
+                                   <span>English</span>
+                                </div>
+                             </li>
+                             <li>
+                                <div class="information-list">
+                                   <i class="flaticon-bookmark-white"></i>
+                                   <span>Estimated Seat</span>
+                                </div>
+                                <div class="information-list">
+                                   <span>470 Seats</span>
+                                </div>
+                             </li>
+                          </ul>
+                       </div>
+                       <button type="submit" class="event-btn">Join this Webinar</button>
+                    </div>
+                
+                    <div class="event-sponsor-wrapper mb-[30px]">
+                       <div class="sopnsor-tittle">
+                          <h4>Sponsor by</h4>
+                       </div>
+                       <div class="sponsor-thumb">
+                          <a href="#"><img src="assets/img/logo/sopnsor-logo-1.png" alt="sponsor-logo"></a>
+                          <a href="#"><img src="assets/img/logo/sopnsor-logo-2.png" alt="sponsor-logo"></a>
+                       </div>
+                    </div>
+                 </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- <div class="course-video-popup">
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <iframe src="https://www.youtube.com/embed/wNwrSz3HYqE" title="YouTube video player"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div> -->
+<!-- webinar-details-area-end-->
+
+<app-footerone></app-footerone>

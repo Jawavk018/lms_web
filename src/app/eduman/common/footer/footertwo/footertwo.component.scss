@@ -1,0 +1,131 @@
+// university-footer
+@import '../../../../../custom-palettes.scss';
+
+.university-footer-area {
+	@apply bg-grayBg;
+}
+
+.uf-w1 {
+	@apply mr-[-30px] maxMd:mr-0;
+}
+.uf-w2 {
+	@apply ml-[130px] minMaxTablet:ml-[70px] minMaxTab:ml-[50px] maxMd:ml-0;
+}
+.uf-w3 {
+	@apply ml-20 minMaxTablet:ml-10 minMaxTab:ml-10 maxMd:ml-0;
+}
+.uf-w4 {
+	@apply ml-[26px] minMaxTablet:-ml-5 minMaxTab:ml-0 maxMd:ml-0;
+}
+.university-footer-widget-body {
+	h3 {
+		@apply text-heading text-[20px] font-bold mb-5;
+	}
+}
+.university-footer-icon {
+	ul {
+		li {
+			@apply text-bodyText inline-block mr-[15px] mb-2.5;
+			@apply minMaxTab:mr-[9px];
+		}
+	}
+	a {
+		@apply bg-white text-[#a8adb7] h-10 w-10 leading-10 text-[16px] rounded-[20px] text-center inline-block;
+		&:hover {
+			@apply bg-themeBlue;
+			@apply text-white;
+		}
+	}
+}
+.university-footer-link {
+	ul {
+		li {
+			@apply mb-2.5;
+			a {
+				&:hover {
+					@apply text-heading;
+				}
+			}
+		}
+	}
+}
+.university-footer-subscribe {
+	input {
+		@apply bg-white w-full h-[50px] outline-none border-0 py-0 pr-[60px] pl-10 text-[#a5a5a5];
+	}
+	button {
+		@apply bg-themeOrange absolute top-0 right-0 h-full w-[50px];
+		@apply text-white;
+	}
+}
+.university-footer-subscribe .field::before {
+	position: absolute;
+	content: "\f0e0";
+	font-family: "Font Awesome 5 Pro";
+	color: #a2a2a2;
+	top: 50%;
+	transform: translateY(-50%);
+	left: 15px;
+}
+.app-store {
+	@apply flex gap-2.5 flex-wrap;
+}
+.footer-copyright-right {
+	ul {
+		li {
+			li {
+				@apply text-[#a2a2a2] inline-block ml-10;
+			}
+		}
+	}
+}
+.footer-bottom {
+	@apply bg-heading;
+}
+
+.footer-copyright-left {
+	@apply pl-[55px];
+	p {
+		@apply text-[#a2a2a2];
+		span {
+			@apply text-themeBlue ml-2.5 text-[18px];
+		}
+	}
+}
+
+// footer-submenu
+.university-sub-footer {
+	@apply py-[25px] px-0 bg-heading maxSm:text-center;
+}
+.sub-footer-link {
+	ul {
+		@apply flex justify-end maxSm:justify-center maxSm:mt-[15px];
+		li {
+			@apply ml-10;
+			&:first-child {
+				@apply ml-0;
+			}
+			a {
+				@apply text-[#a2a2a2] relative;
+				&::before {
+					@apply bg-bodyText absolute w-[1px] h-[15px] left-[-20px] top-[50%] translate-y-[-50%];
+					content: "";
+				}
+				&:hover {
+					@apply text-white;
+				}
+			}
+			&:first-child a::before {
+				@apply hidden;
+			}
+		}
+	}
+}
+.sub-footer-text {
+	span {
+		@apply text-[#a2a2a2] maxSm:mb-2.5 maxSm:inline-block;
+		a {
+			@apply text-themeBlue;
+		}
+	}
+}

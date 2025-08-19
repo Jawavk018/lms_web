@@ -1,0 +1,30 @@
+<section class="course-area relative pt-[110px] pb-[90px]">
+  <div class="container">
+    <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+      <div class="col-span-12 title">
+        <div class="section-title mb-[40px] text-center">
+          <h2>Organization</h2>
+        </div>
+      </div>
+      <div class="col-span-12">
+        <div class="portfolio-button">
+          <div class="portfolio-course-body">
+            <div class="grid grid-cols-12 course-main-items gap-x-[0px] sm:gap-x-[30px]">
+              <div class="col-span-12 md:col-span-6 lg:col-span-4 card mb-[30px] choose_organization" role="button"
+               *ngFor="let organization of organizationList; let i = index" (click)="viewOrg(i)">
+                <div class="position-relative h-[420px]">
+                    <img [src]="organization?.logo" class="w-100 h-100" />
+                    <div class="position-absolute bottom-0 text-center start-0 end-0 text-white p-3 org_background">
+                        <h4 style="font-weight: 800;">
+                            {{organization?.title}}
+                        </h4>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,23 @@
+// hero-3-style
+@import '../../../../custom-palettes.scss';
+
+.hero-area-3 {
+	@apply relative max-w-[1920px] my-0 mx-auto;
+	&:before {
+		content: "";
+		@apply absolute w-full h-full bg-[#010a2e] opacity-[0.45];
+	}
+}
+.hero-university-text {
+	span {
+		@apply text-[20px] font-bold uppercase text-themeOrange mb-[35px] block;
+	}
+	h2 {
+		@apply text-white text-[80px] font-black mb-[35px] leading-[1.1] uppercase minMaxTablet:text-[70px] maxLg:text-[50px] maxXs:text-[28px];
+	}
+}
+.hero-course-1-text {
+	h2 {
+		@apply text-white text-[60px] font-bold mb-[15px] minMaxTabSmall:text-[54px] maxSm:text-[35px];
+	}
+}

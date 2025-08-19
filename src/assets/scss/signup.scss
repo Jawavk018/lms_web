@@ -1,0 +1,174 @@
+// singup style
+.signin-area-wrapper {
+	@apply flex;
+}
+.sign-up-wrapper {
+	@apply flex;
+}
+.signup-wrapper {
+	input {
+		@apply flex w-full h-[55px] bg-[#f5f5f5] border-0 rounded mb-[30px] py-2.5 px-5 outline-none text-[16px] text-bodyText;
+	}
+}
+.signup-input-wrapper {
+	@apply flex justify-between gap-5 maxMd:block;
+}
+.signup-input-wrapper {
+	input {
+		@apply flex w-full h-[55px] bg-[#f5f5f5] border-0 rounded mb-[30px] py-2.5 px-5 outline-none text-[16px] text-bodyText;
+	}
+}
+.sign-check {
+	a {
+		@apply text-themeBlue font-bold underline hover:text-heading;
+	}
+}
+.signup-box {
+	@apply bg-[#f5f5f5] py-[45px] px-[30px];
+}
+.signup-thumb {
+	img {
+		@apply max-w-full;
+	}
+}
+.signup-form-wrapper {
+	@apply bg-white py-[45px] px-[30px];
+}
+.signup-action {
+	@apply mb-[25px];
+}
+.sing-buttom {
+	@apply bg-themeBlue h-[55px] text-center leading-[55px] text-white rounded text-[16px] font-semibold hover:text-heading hover:bg-themeOrange;
+	@include transition(0.3s);
+}
+.registered.wrapper {
+	@apply flex justify-around mb-5 flex-wrap;
+}
+.forget-password a {
+	&:hover {
+		@apply text-heading;
+	}
+}
+.not-register a {
+	&:hover {
+		@apply text-heading;
+	}
+}
+.acount-login {
+	@apply mb-[30px];
+	a {
+		@apply text-themeBlue font-semibold ml-[5px] underline hover:text-heading;
+	}
+}
+.sign-social {
+	@apply relative z-[2] mb-[25px];
+	span {
+		@apply bg-white inline-block py-0 px-2.5;
+	}
+	&:before {
+		content: "";
+		@apply absolute h-[1px] bg-borderGray w-full top-[15px] left-0 z-[-1];
+	}
+}
+.sign-social-icon {
+	@apply flex items-center justify-center flex-wrap gap-[19px];
+}
+.signup-text {
+	h3 {
+		@apply text-[28px] mb-[106px];
+	}
+}
+.signup-message {
+	img {
+		@apply max-w-full mb-[5px];
+	}
+}
+.not-register {
+	a {
+		@apply text-themeBlue font-semibold no-underline ml-[5px];
+	}
+}
+.sign-gmail {
+	@apply border border-solid border-borderGray py-2.5 px-5 rounded;
+	a {
+		@apply font-semibold;
+		&:hover {
+			@apply text-heading;
+		}
+	}
+    svg {
+		@apply h-5 mr-[5px] translate-y-[-2px];
+    }
+}
+.sign-facebook {
+	@apply border border-solid border-borderGray py-2.5 px-5 rounded;
+	a {
+		@apply font-semibold hover:text-heading;
+		&:hover {
+			@apply text-heading;
+		}
+	}
+    svg {
+		@apply h-5 mr-[5px] translate-y-[-2px];
+    }
+}
+.signin-area {
+	@apply fixed z-[99999] top-[60px] my-0 mx-auto left-0 right-0 hidden max-w-[900px] maxMd:max-w-[360px];
+}
+.signin-area.open {
+	@apply inline-block;
+}
+.signin-area-wrapper > :nth-child(2) {
+	flex: 0 0 calc(100% - 360px);
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.signin-area-wrapper > *:nth-child(1) {
+		flex: 0 0 360px;
+	}
+	.signin-area-wrapper > :nth-child(2) {
+		flex: 0 0 calc(100% - 360px);
+	}
+}
+@media (min-width: 768px) and (max-width: 991px) {
+	.signin-area-wrapper {
+		@apply max-w-[750px] max-h-[530px] transform-none overflow-auto overflow-y-auto inline-block;
+	}
+	.signin-area.open {
+		@apply flex justify-center;
+	}
+	.signin-area-wrapper > * {
+		flex: 0 0 100% !important;
+	}
+}
+@media (max-width: 767px) {
+	.signin-area-wrapper {
+		@apply max-w-[750px] max-h-[530px] transform-none overflow-auto overflow-y-auto inline-block;
+	}
+	.signin-area.open {
+		@apply flex justify-center;
+	}
+	.signin-area-wrapper > * {
+		flex: 0 0 100% !important;
+	}
+}
+// signup
+.signup-area {
+	@apply fixed z-[99999] top-[60px] my-0 mx-auto left-0 right-0 hidden max-w-[900px] maxMd:max-w-[360px];
+}
+.signup-area.open {
+	@apply inline-block maxMd:flex maxMd:justify-center;
+}
+.sign-up-wrapper > :nth-child(2) {
+	flex: 0 0 calc(100% - 360px);
+}
+@media (min-width: 992px) and (max-width: 1199px) {
+	.sign-up-wrapper > *:nth-child(1) {
+		flex: 0 0 360px;
+	}
+	.sign-up-wrapper > :nth-child(2) {
+		flex: 0 0 calc(100% - 360px);
+	}
+}
+.sign-up-wrapper {
+	@apply maxMd:max-w-[750px] maxMd:max-h-[530px] maxMd:transform-none maxMd:overflow-auto maxMd:overflow-y-auto maxMd:inline-block;
+}

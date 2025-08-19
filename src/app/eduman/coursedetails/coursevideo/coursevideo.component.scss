@@ -1,0 +1,102 @@
+//course video style
+@import '../../../../custom-palettes.scss';
+
+.course-video-popup {
+    .modal-header {
+        @apply p-0 border-0;
+    }
+    iframe {
+        @apply w-full h-[450px] maxMd:h-full maxMd:min-h-[300px];
+    }
+    .modal-dialog {
+        @apply max-w-[700px] maxMd:max-w-[500px] maxSm:max-w-[450px] maxXs:max-w-full;
+    }
+    .modal-body {
+        @apply p-0;
+    }
+    .modal-content {
+        @apply border-transparent border-0;
+    }
+    .modal-header .btn-close {
+        @apply bg-white m-0 ml-auto mr-[-32px] mb-[-32px] maxXs:mr-0 maxXs:mb-0;
+    }
+}
+
+
+.coupon{
+    // width: 10rem;
+    border-radius: 4px;
+    border: 1px solid #9c9898;
+    background-color: #f9f9f9;
+    // margin:10px;
+}
+ 
+.card-container {
+    display: flex;
+  }
+  
+  .card-container .card {
+    flex: 0 0 auto;
+  }
+  
+.carousel-control-prev,
+.carousel-control-next {
+  position: absolute;
+  top: 40%;
+  width: 10%; /* Adjust the width to make the buttons smaller */
+  height: 50px; /* Adjust the height as needed */
+  background-color: #ffb013;
+  border-radius: 5px;
+  color: black;
+  text-align: center;
+}
+
+/* Optional: Adjust the size of the icon inside the button */
+.carousel-control-prev::before,
+.carousel-control-next::before {
+  font-size: 1rem; /* Adjust the font size of the icon */
+}
+
+  
+  .coupon-padding{
+      padding-left: 30px;
+      padding-right: 30px;
+  }
+  
+.coupon .title {
+    font-size: 18px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.coupon .coupon-codes {
+    display: block;
+    font-size: 24px;
+    font-weight: bold;
+    color: #ff6347;
+    margin-bottom: 10px;
+}
+
+.coupon .expiry {
+    font-size: 14px;
+    color: #888;
+}
+
+
+.coupon {
+    border: 2px dashed #ccc;
+    border-radius: 10px;
+    padding: 10px;
+    max-width: 250px;
+    margin: 10px auto;
+    text-align: center;
+    background-color: #f9f9f9;
+}
+button.carousel-control-prev:disabled,
+button.carousel-control-next:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+ 

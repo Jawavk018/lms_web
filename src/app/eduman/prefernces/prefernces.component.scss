@@ -1,0 +1,31 @@
+.owl-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 50px; /* Make it oval-shaped */
+    padding: 10px 20px; /* Adjust padding for desired size */
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .owl-button:hover {
+    background-color: #0056b3;
+  }
+  
+
+  button.active {
+    background-color: #007bff;
+    color: white;
+  }
+
+  .selectbtn {
+    white-space: normal; /* Allow text to wrap */
+    word-wrap: break-word; /* Break long words */
+    overflow-wrap: break-word; /* Break long words */
+    // min-height: 80px; /* Ensure a consistent button height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center; /* Center text inside the button */
+  }

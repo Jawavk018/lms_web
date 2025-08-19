@@ -1,0 +1,484 @@
+<nav class="navbar navbar-expand-sm px-4 py-0 sticky-top" style="background: #427ef5 !important;height: 85px;">
+    <div class="header d-flex justify-content-between">
+        <button onclick="window.history.back()" class="arrow"><i class="fas fa-arrow-left"></i></button>
+        <div>
+            <h1 class="fw-bold">
+                <h3><span class="letter-style">Survey & Polls</span></h3>
+            </h1>
+        </div>
+    </div>
+</nav>
+
+
+
+<div class="container-fluid w-75 py-4 ">
+    <div class="tabs">
+        <nav class="nav nav-pills nav-justified">
+            <a *ngFor="let tab of tabs" class="flex-sm-fill nav-link text-sm-center"
+                [class.active]="tab?.id == selectedTabId" (click)="selectTab(tab.id)">
+                <h4 class="m-3"><b>{{ tab.label }}</b></h4>
+            </a>
+        </nav>
+    </div>
+
+    <div class="tab-content">
+        <div *ngIf="selectedTabId === 'tab1'">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-3 col-md-3 col-sm-12 mb-3">
+
+                        <!-- start -->
+                        <div class="card shadow-none">
+                            <div class="techques p-3 fs-4 fw-bold">
+                                Surveys
+                            </div>
+                        </div>
+    
+                        <div class="tech-feild">
+                            <!-- <div class="card" *ngIf="surveyTopics.length">
+                                <div class="nav flex-column nav-pills me-3 w-100" id="v-pills-tab" role="tablist"
+                                    aria-orientation="vertical">
+                                    <button class="nav-link text-start border-left" (click)="changeCourseCurriculam(i)"
+                                        [class]="survey?.isActive ? 'active' : 'none'" data-bs-toggle="pill"
+                                        type="button" role="tab" aria-controls="v-pills-home" aria-selected="true"
+                                        *ngFor="let survey of surveyTopics; let i = index">
+                                        {{ survey?.title }}
+                                    </button>
+                                </div>
+                            </div> -->
+    
+                            <div class="card" *ngIf="surveyTopics.length">
+                                <div class="nav flex-column nav-pills me-3 w-100" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                                    <button (click)="changeSurvey(i)" class="nav-link text-start border-left d-flex justify-content-between align-items-center" style="border-bottom: solid 3px lavender;" 
+                                            [class]="survey?.isActive ? 'active' : 'none'" 
+                                            data-bs-toggle="pill" 
+                                            type="button" 
+                                            role="tab" 
+                                            aria-controls="v-pills-home" 
+                                            aria-selected="true" 
+                                            *ngFor="let survey of surveyTopics; let i = index">
+                                        <span>{{ survey?.title }}</span>
+                                        <!-- <div>
+                                            <i class="fas fa-edit" (click)="changeCourseCurriculam(i)"></i>
+                                             <i class="fas fa-trash" (click)="deleteSurvey(survey)"></i>  
+                                        </div> -->
+                                    </button>
+                                </div>
+                            </div>
+
+                            <div *ngIf="isEdit" class="text-center">
+                                <button  class="btn btn-primary" (click)="clearForm()">CLEAR</button>
+                            </div>
+    
+                            
+                            <div *ngIf="!surveyTopics.length" class="h-50 text-center">
+                                <div class="mt-4 fs-6">
+                                    No data found
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-9 col-md-9 col-sm-12">
+
+                        <form [formGroup]="surveyForm" class="scrollbar" style="overflow-y:scroll;height:70vh;overflow-x: hidden;">
+                            <div class="form-group">
+                                <label for="title" class="fs-5 fw-bold">Survey Title<span class="text-danger">*</span></label>
+                                <input id="title" class="form-control" formControlName="title">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="description" class="fs-6">Survey Description<span class="text-danger">*</span></label>
+                                <textarea id="description" class="form-control"
+                                    formControlName="description"></textarea>
+                            </div>
+
+                            <div formArrayName="questions">
+                                <div *ngFor="let question of questions.controls; let i = index" [formGroupName]="i"
+                                    class="card mb-3">
+
+                                    <div infinite-scroll [infiniteScrollDistance]="modalScrollDistance"
+                                        [scrollWindow]="true" [infiniteScrollThrottle]="modalScrollThrottle"
+                                        (scrolled)="!isNoMoreRecord && getMoreTechQuestion()">
+
+                                        <!-- start -->
+                                        <div class="card-body">
+
+                                            <div class="form-group">
+                                                <label for="questionType" class="fw-bold">Question Type<span class="text-danger">*</span></label> 
+                                                <!-- <button type="button" title="remove" class="float-end">
+                                                <i class="fas fa-times fa-lg text-danger float-end" ></i>
+                                                </button> -->
+                                                <select id="questionType" class="form-control"
+                                                    formControlName="questionType" (change)="onQuestionTypeChange(i)">
+                                                    <option *ngFor="let type of questionTypes" [value]="type.value">{{
+                                                        type.display }}</option>
+                                                </select>
+
+
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="questionText" >Question<span class="text-danger">*</span></label>
+                                                <input id="questionText" class="form-control"
+                                                    formControlName="questionText">
+                                            </div>
+
+                                            <!-- <div formArrayName="options"
+                                            *ngIf="question.get('questionType')?.value === 'multiple-choice'">
+                                            <div *ngFor="let option of getOptions(i).controls; let j = index"
+                                                [formGroupName]="j">
+                                                <div class="form-group">
+                                                    <label for="optionText">Option {{ j + 1 }}</label>
+                                                    <input id="optionText" class="form-control"
+                                                        formControlName="optionText">
+                                                    <button class="btn btn-danger btn-sm mt-1"
+                                                        (click)="removeOption(i, j)">Remove Option</button>
+                                                </div>
+                                            </div>
+                                            <button class="btn btn-primary" (click)="addOption(i)">Add Option</button>
+                                        </div> -->
+
+
+                                            <!-- Multiple Choice Options -->
+                                            <div formArrayName="options"
+                                                *ngIf="question.get('questionType')?.value === 'multiple-choice'">
+                                                <div *ngFor="let option of getOptions(i).controls; let j = index"
+                                                    [formGroupName]="j">
+                                                    <label for="optionText-{{j}}">Option {{ j + 1 }}</label>
+                                                    <div class="input-group mb-3">
+                                                        <input id="optionText-{{j}}" class="form-control"
+                                                            formControlName="optionText">
+                                                        <button type="button" title="remove"
+                                                            class="btn btn-light border rounded-0"
+                                                            (click)="removeOption(i, j)"><i
+                                                                class="bi bi-trash-fill text-danger"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                                <button class="btn btn-secondary" (click)="addOption(i)">Add Option</button>
+                                                <button class="btn btn-danger  float-end" (click)="removeQuestion(i)">Remove Question</button>
+
+                                            </div>
+
+                                            <!-- Rating Scale -->
+
+                                            <div formGroupName="ratingScale" *ngIf="question.get('questionType')?.value === 'rating-scale' && question.get('ratingScale')">
+                                                <div class="form-group" *ngIf="question?.get('ratingScale')?.get('ratingScaleMin')">
+                                                    <label for="ratingScaleMin-{{i}}">Minimum Rating</label>
+                                                    <input id="ratingScaleMin-{{i}}" class="form-control" formControlName="ratingScaleMin" type="number">
+                                                </div>
+                                                <div class="form-group" *ngIf="question?.get('ratingScale')?.get('ratingScaleMax')">
+                                                    <label for="ratingScaleMax-{{i}}">Maximum Rating</label>
+                                                    <input id="ratingScaleMax-{{i}}" class="form-control" formControlName="ratingScaleMax" type="number">
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+                                            
+
+                                            <!-- Likert Scale -->
+
+                                            <!-- <div *ngIf="question.get('questionType')?.value === 'likert-scale'">
+                                                <div class="form-group">
+                                                    <label for="likertOptions">Likert Scale Options</label>
+                                                    <input id="likertOptions" class="form-control"
+                                                        formControlName="likertOptions">
+                                                </div>
+                                            </div> -->
+
+                                            <div formArrayName="likertOptions" *ngIf="question.get('questionType')?.value === 'likert-scale'">
+                                                <div *ngFor="let option of getLikertOptions(i).controls; let j = index" [formGroupName]="j">
+                                                  <div class="row align-items-center mb-3">
+                                                    <div class="col-auto">
+                                                      <label for="optionText-{{j}}">Option {{ j + 1 }}</label>
+                                                    </div>
+                                                    <div class="col">
+                                                      <input id="optionText-{{j}}" class="form-control" formControlName="optionText">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <label for="value-{{j}}">Value</label>
+                                                    </div>
+                                                    <div class="col">
+                                                      <input id="value-{{j}}" type="number" class="form-control" formControlName="value">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <button type="button" title="remove" class="btn btn-light border rounded-0" (click)="removeLikertOption(i, j)">
+                                                        <i class="bi bi-trash-fill text-danger"></i>
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              
+                                                <div class="d-flex justify-content-between">
+                                                  <button class="btn btn-secondary" (click)="addLikertOption(i)">Add Option</button>
+                                                  <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                              </div>
+                                              
+
+                                            <!-- Matrix -->
+                                            <div formGroupName="matrix" *ngIf="question?.get('questionType')?.value === 'matrix' && question?.get('matrix')">
+                                                <div class="row">
+                                                    <div class="col">
+                                                        <div class="form-group" *ngIf="question?.get('matrix')?.get('matrixRows')">
+                                                            <label for="matrixRows-{{i}}">Matrix Rows</label>
+                                                            <input id="matrixRows" class="form-control"
+                                                                formControlName="matrixRows">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col">
+                                                        <div class="form-group" *ngIf="question?.get('matrix')?.get('matrixCols')">
+                                                            <label for="matrixCols-{{i}}">Matrix Columns</label>
+                                                            <input id="matrixCols-{{i}}" class="form-control"
+                                                                formControlName="matrixCols">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                               
+                                               
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Dropdown -->
+                                            <!-- <div *ngIf="question.get('questionType')?.value === 'dropdown'">
+                                                <div class="form-group">
+                                                    <label for="dropdownOptions">Dropdown Options</label>
+                                                    <input id="dropdownOptions" class="form-control"
+                                                        formControlName="dropdownOptions">
+                                                </div>
+                                            </div> -->
+
+                                            <div formArrayName="dropdownOptions"
+                                                *ngIf="question.get('questionType')?.value === 'dropdown'">
+                                                <div *ngFor="let option of getdropdownOptions(i).controls; let j = index"
+                                                    [formGroupName]="j">
+                                                    <label for="optionText{{j}}">Option {{ j + 1 }}</label>
+                                                    <div class="input-group mb-3">
+                                                        <input id="optionText{{j}}" class="form-control"
+                                                            formControlName="optionText">
+                                                        <button type="button" title="remove"
+                                                            class="btn btn-light border rounded-0"
+                                                            (click)="removeDropDownOption(i, j)"><i
+                                                                class="bi bi-trash-fill text-danger"></i>
+                                                        </button>
+
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex justify-content-between">
+                                                    <button class="btn btn-secondary" (click)="addDropDownOption(i)">Add Option</button>
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Open-ended -->
+                                            <div formGroupName="openEnded" *ngIf="question.get('questionType')?.value === 'open-ended' && question?.get('openEnded')">
+                                                <div class="form-group" *ngIf="question?.get('openEnded')?.get('openEndedAnswer')">
+                                                    <label for="openEndedAnswer-{{i}}">Answer</label>
+                                                    <textarea id="openEndedAnswer-{{i}}" class="form-control"
+                                                        formControlName="openEndedAnswer"></textarea>
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Demographic -->
+                                            <div formGroupName="demographic" *ngIf="question.get('questionType')?.value === 'demographic'  && question?.get('demographic')">
+                                                <div class="form-group" *ngIf="question?.get('demographic')?.get('demographicInfo')">
+                                                    <label for="demographicInfo-{{i}}">Demographic Information</label>
+                                                    <input id="demographicInfo-{{i}}" class="form-control"
+                                                        formControlName="demographicInfo">
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Ranking -->
+                                            <!-- <div *ngIf="question.get('questionType')?.value === 'ranking'">
+                                                <div class="form-group">
+                                                    <label for="rankingOptions">Ranking Options</label>
+                                                    <input id="rankingOptions" class="form-control"
+                                                        formControlName="rankingOptions">
+                                                </div>
+                                            </div> -->
+
+                                            <div formArrayName="rankingOptions" *ngIf="question.get('questionType')?.value === 'ranking'">
+                                                <div *ngFor="let option of getRankingOptions(i).controls; let j = index" [formGroupName]="j">
+                                                  <div class="row align-items-center mb-3">
+                                                    <div class="col-auto">
+                                                      <label for="optionText-{{j}}">Option {{ j + 1 }}</label>
+                                                    </div>
+                                                    <div class="col">
+                                                      <input id="optionText-{{j}}" class="form-control" formControlName="optionText">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <label for="value-{{j}}">Rank</label>
+                                                    </div>
+                                                    <div class="col">
+                                                      <input id="value-{{j}}" type="number" class="form-control" formControlName="rank">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <button type="button" title="remove" class="btn btn-light border rounded-0" (click)="removeRankingOption(i, j)">
+                                                        <i class="bi bi-trash-fill text-danger"></i>
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              
+                                                <div class="d-flex justify-content-between">
+                                                  <button class="btn btn-secondary" (click)="addRankingOption(i)">Add Option</button>
+                                                  <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                              </div>
+
+
+
+                                            <!-- Image Choice -->
+
+                                            <!-- <div *ngIf="question.get('questionType')?.value === 'image-choice'">
+                                                <div class="form-group">
+                                                    <label for="imageChoiceUrls">Image URLs</label>
+                                                    <input id="imageChoiceUrls" class="form-control"
+                                                        formControlName="imageChoiceUrls">
+                                                </div>
+                                            </div> -->
+
+                                            <div formArrayName="imageChoiceUrls" *ngIf="question.get('questionType')?.value === 'image-choice'">
+                                                <div *ngFor="let imgOption of getImageChoiceOptions(i).controls; let j = index" [formGroupName]="j">
+                                                  <div class="row align-items-center mb-3">
+                                                    <div class="col-auto">
+                                                      <label for="imageUrl-{{i}}-{{j}}">Option {{ j + 1 }}</label>
+                                                    </div>
+                                                    <div class="col">
+                                                      <input type="file" *ngIf="!imgOption.get('imageChoiceSno')?.value" class="form-control" id="imageUrl-{{i}}-{{j}}" accept="image/*" (change)="onFileSelect($event, i, j)" />
+                                                      <div class="input-group mt-1" *ngIf="imgOption.get('imageChoiceSno')?.value">
+                                                        <input type="text" class="form-control"  [value]="imgOption.get('fileName')?.value" readonly />
+                                                        <!-- <button class="btn btn-outline-secondary"   type="button" (click)="clearFile(i, j)">
+                                                          <i class="bi bi-x"></i>
+                                                        </button> -->
+                                                      </div>
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <label for="description-{{i}}-{{j}}">Description</label>
+                                                    </div>
+                                                    <div class="col">
+                                                      <input id="description-{{i}}-{{j}}" class="form-control" formControlName="description" [readonly]="imgOption.get('imageChoiceSno')?.value">
+                                                    </div>
+                                                    <div class="col-auto">
+                                                      <button type="button" title="remove" class="btn btn-light border rounded-0" (click)="removeImageChoiceOption(i, j)">
+                                                        <i class="bi bi-trash-fill text-danger"></i>
+                                                      </button>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                              
+                                                <div class="d-flex justify-content-between">
+                                                  <button class="btn btn-secondary" (click)="addImageChoiceOption(i)">Add Option</button>
+                                                  <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                              </div>
+                                              
+
+                                            
+
+                                            <!-- Click Map -->
+                                            <div formGroupName="clickMap" *ngIf="question.get('questionType')?.value === 'click-map' && question?.get('clickMap')">
+                                                <div class="form-group" *ngIf="question?.get('clickMap')?.get('clickMapImageUrl')">
+                                                    <label for="clickMapImageUrl-{{i}}">Image URL for Click Map</label>
+                                                    <input id="clickMapImageUrl-{{i}}" class="form-control"
+                                                        formControlName="clickMapImageUrl">
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- File Upload -->
+                                            <div formGroupName="fileUpload" *ngIf="question.get('questionType')?.value === 'file-upload' && question?.get('fileUpload')">
+                                                <div class="form-group"  *ngIf="question?.get('fileUpload')?.get('fileUploadInstructions')">
+                                                    <label for="fileUploadInstructions-{{i}}">File Upload Instructions</label>
+                                                    <input id="fileUploadInstructions-{{i}}" class="form-control"
+                                                        formControlName="fileUploadInstructions">
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Slider -->
+                                            <div formGroupName="slider" *ngIf="question.get('questionType')?.value === 'slider' && question?.get('slider')">
+                                                <div class="form-group" *ngIf="question?.get('slider')?.get('sliderMin')">
+                                                    <label for="sliderMin">Slider Minimum Value</label>
+                                                    <input id="sliderMin" class="form-control"
+                                                        formControlName="sliderMin" type="number">
+                                                </div>
+                                                <div class="form-group">
+                                                    <label for="sliderMax">Slider Maximum Value</label>
+                                                    <input id="sliderMax" class="form-control"
+                                                        formControlName="sliderMax" type="number">
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                            <!-- Benchmarkable -->
+                                            <div formGroupName="benchmarkable" *ngIf="question.get('questionType')?.value === 'benchmarkable' && question?.get('benchmarkable')">
+                                                <div class="form-group" *ngIf="question.get('benchmarkable')?.get('benchmarkableCriteria')">
+                                                    <label for="benchmarkableCriteria-{{i}}">Benchmarkable Criteria</label>
+                                                    <input id="benchmarkableCriteria-{{i}}" class="form-control"
+                                                        formControlName="benchmarkableCriteria">
+                                                </div>
+                                                <div class="d-flex justify-content-end py-1">
+                                                    <button class="btn btn-danger" (click)="removeQuestion(i)">Remove Question</button>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                        <!-- End -->
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <button class="btn btn-secondary" (click)="addQuestion()">Add Question</button>
+                            <!-- <button class="btn  btn-primary" (click)="onSubmit()">Save Survey</button> -->
+
+                            <div class="row">
+                                <div class="">
+                                    <button class="btn btn-md btn-primary float-end" *ngIf="!isUpdate" (click)="saveData()"
+                                        [disabled]="surveyForm.invalid">
+                                        <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                                        Save
+                                    </button>
+                                    <button class="btn btn-md btn-primary float-end" *ngIf="isUpdate" (click)="updateData()"
+                                        [disabled]="surveyForm.invalid">
+                                        <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                                        Update
+                                    </button>
+                                </div>
+                            </div>
+
+                        </form>
+
+                     
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div *ngIf="selectedTabId === 'tab2'">
+
+            <app-polls></app-polls>
+
+        </div>
+    </div>
+</div>

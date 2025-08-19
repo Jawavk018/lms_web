@@ -1,0 +1,181 @@
+<app-headerfour></app-headerfour>
+<app-breadcrumb breadcrumbTitle="Shop details" breadcrumbSubTitle="Shop details"></app-breadcrumb>
+
+<!-- shop-details_area-start -->
+<div class="shop-details_area pt-[120px] pb-[15px]">
+   <div class="container custome-container">
+      <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+         <div class="col-span-12 lg:col-span-4">
+            <div class="product-details-img mb-[30px]">
+               <img src="assets/img/products/product-thumb-10.png" alt="product img">
+            </div>
+         </div>
+         <div class="col-span-12 lg:col-span-6">
+            <div class="product-side-info mb-[30px]">
+               <h4 class="product-name mb-2.5">The Almanack</h4>
+               <span class="product-price">$24.00</span>
+
+               <p>Matent maecenas nec massa viverra aci ute litora aliquam habitant proin commodo bibendum rutru
+                  habitant est magnis
+                  quisque aliquet congue vesti bulum suscipi erose tellus odio elite purus feugiat prim libero
+                  senes nisie gravia</p>
+               <div class="product-quantity-cart mb-[25px]">
+                  <div class="product-quantity-form">
+                     <form action="#">
+                        <button class="cart-minus" (click)="counter('count', 'subtract')"><i class="far fa-minus"></i></button>
+                        <p class="cart-input">{{ counters['count'] }}</p>
+                        <button class="cart-plus" (click)="counter('count', 'add')"><i class="far fa-plus"></i></button>
+                     </form>
+                  </div>
+               </div>
+               <a [routerLink]="['/course-details']" class="edu-border-btn">Add to Wishlist</a>
+               <div class="product__details__tag tagcloud mt-[25px] mb-2.5"><span>Tags : </span>
+                  <a [routerLink]="['/course']">App</a>
+                  <a [routerLink]="['/course']">Tips</a>
+                  <a [routerLink]="['/course']">Design</a>
+                  <a [routerLink]="['/course']">Science</a>
+               </div>
+            </div>
+         </div>
+         <div class="lg:col-span-2"></div>
+      </div>
+   </div>
+</div>
+<!-- shop-details_area-end -->
+
+<!-- product_info-faq-area-start -->
+<div class="product_info-faq-area pb-[85px]">
+   <div class="container">
+      <nav class="product-details-nav">
+         <mat-tab-group animationDuration="0ms">
+            <mat-tab label="Description">
+               <div class="tabs-wrapper mt-[35px]">
+                  <div class="product__details-des">
+                     <p>Very clean and organized with easy to follow tutorials, Exercises, and solutions. This course
+                        does start from the
+                        beginning with very little knowledge and gives a great overview of common tools used for data
+                        science and progresses
+                        into more complex concepts and ideas. This course is amazing..! I started this course as a
+                        beginner and learnt a lot. Instructors
+                        are great. Query handling
+                        can be improved.Overall very happy with the course.</p>
+                  </div>
+               </div>
+            </mat-tab>
+            <mat-tab label="Reviews">
+               <div class="tabs-wrapper mt-[35px]">
+                  <div class="course-review-item mb-[30px]">
+                     <div class="course-reviews-img">
+                        <a href="#"><img src="assets/img/course/course-reviews-1.png" alt="image not found"></a>
+                     </div>
+                     <div class="course-review-list">
+                        <h5><a href="#">Sotapdi Kunda</a></h5>
+                        <div class="course-start-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <span>55 min ago</span>
+                        </div>
+                        <p>Very clean and organized with easy to follow tutorials, Exercises, and
+                           solutions.
+                           This course does start from the beginning with very little knowledge and
+                           gives a
+                           great overview of common tools used for data science and progresses into
+                           more
+                           complex concepts and ideas.</p>
+                     </div>
+                  </div>
+                  <div class="course-review-item mb-[30px]">
+                     <div class="course-reviews-img">
+                        <a href="#"><img src="assets/img/course/course-reviews-2.png" alt="image not found"></a>
+                     </div>
+                     <div class="course-review-list">
+                        <h5><a href="#">Samantha</a></h5>
+                        <div class="course-start-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <span>45 min ago</span>
+                        </div>
+                        <p>The course is good at explaining very basic intuition of the concepts. It
+                           will get
+                           you scratching the surface so to say. where this course is unique is the
+                           implementation methods are so well defined Thank you to the team !.</p>
+                     </div>
+                  </div>
+                  <div class="course-review-item mb-[30px]">
+                     <div class="course-reviews-img">
+                        <a href="#"><img src="assets/img/course/course-reviews-3.png" alt="image not found"></a>
+                     </div>
+                     <div class="course-review-list">
+                        <h5><a href="#">Michell Mariya</a></h5>
+                        <div class="course-start-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <span>30 min ago</span>
+                        </div>
+                        <p>This course is amazing..!
+                           I started this course as a beginner and learnt a lot. Instructors are great.
+                           Query
+                           handling can be improved.Overall very happy with the course.</p>
+                     </div>
+                  </div>
+                  <div class="product__details-comment ">
+                     <div class="comment-title mb-5">
+                        <h3>Add a review</h3>
+                        <p>Your email address will not be published. Required fields are marked *</p>
+                     </div>
+                     <div class="comment-rating mb-5">
+                        <span>Overall ratings</span>
+                        <ul>
+                           <li><a href="#"><i class="fas fa-star"></i></a></li>
+                           <li><a href="#"><i class="fas fa-star"></i></a></li>
+                           <li><a href="#"><i class="fas fa-star"></i></a></li>
+                           <li><a href="#"><i class="fas fa-star"></i></a></li>
+                           <li><a href="#"><i class="fal fa-star"></i></a></li>
+                        </ul>
+                     </div>
+                     <div class="comment-input-box mb-[15px]">
+                        <form action="#">
+                           <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                              <div class="col-span-12">
+                                 <textarea placeholder="Your review"
+                                    class="comment-input comment-textarea mb-5"></textarea>
+                              </div>
+                              <div class="col-span-12 xxl:col-span-6">
+                                 <div class="comment-input mb-5">
+                                    <input type="text" placeholder="Your Name">
+                                 </div>
+                              </div>
+                              <div class="col-span-12 xxl:col-span-6">
+                                 <div class="comment-input mb-5">
+                                    <input type="email" placeholder="Your Email">
+                                 </div>
+                              </div>
+                              <div class="col-span-12">
+                                 <div class="comment-submit">
+                                    <button type="submit" class="edu-btn">Submit</button>
+                                 </div>
+                              </div>
+                           </div>
+                        </form>
+                     </div>
+                  </div>
+               </div>
+            </mat-tab>
+          </mat-tab-group>
+      </nav>
+   </div>
+</div>
+<!-- product_info-faq-area-end -->
+
+<app-relatedproduct></app-relatedproduct>
+
+<app-footerone></app-footerone>

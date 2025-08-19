@@ -1,0 +1,45 @@
+
+
+<div class="modal fade" id="pollDetailsModal" data-bs-backdrop="static" tabindex="-1" aria-labelledby="pollDetailsModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content ">
+      <div class="modal-header d-flex justify-content-between align-items-center">
+        <div>
+          <h5 class="modal-title">{{ polls?.questionText }}</h5>
+          <p class="modal-subtitle">Select any one</p>
+        </div>
+        <!-- <button type="button" class="btn-close" aria-label="Close" (click)="closeModal()"></button> -->
+        <button #closepollmodal  type="button" class="btn-close d-none" aria-label="Close" data-bs-dismiss="modal"></button>
+
+      </div>
+      <div class="modal-body">
+        <div *ngIf="polls?.options.length > 0">
+          <div *ngFor="let option of polls.options; let i = index" class="poll-option mb-3">
+            <div class="d-flex justify-content-between align-items-center">
+              <div class="form-check">
+                <input class="form-check-input" type="radio" [id]="'pollOption' + i" [value]="option.pollOptionSno"
+                       [(ngModel)]="option.selectedPollOptionSno" (change)="onPollOptionChange(option)" name="pollOption">
+                <label class="form-check-label ms-2" [for]="'pollOption' + i">{{ option?.optionText }}</label>
+              </div>
+              <div class="poll-option-percentage">{{ option?.count }}</div>
+            </div>
+            <div class="progress mt-2">
+              <div class="progress-bar bg-info" role="progressbar" [style.width.%]="calculatePercentage(option.count)"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button  class="btn btn-secondary" (click)="closeModal()">Skip</button>
+        <button class="btn btn-secondary" (click)="savePoll()" [disabled]="!isOptionSelected">Submit</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<span #pollDetailsModal  data-bs-target="#pollDetailsModal" class="d-none" data-bs-toggle="modal"></span>
+
+
+

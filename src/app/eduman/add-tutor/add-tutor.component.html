@@ -1,0 +1,75 @@
+<div class="p-5">
+  <div class="d-flex justify-content-between">
+    <h5 class="modal-title" id="exampleModalLabel">Add Tutor</h5>
+    <button type="button" class="btn" (click)="close()">
+      <i class="bi bi-x-lg"></i>
+    </button>
+  </div>
+  <div [formGroup]="loginForm">
+    <p>Search by email or mobile number</p>
+    <div class="signup-wrapper">
+      <input
+        [class]="
+          loginForm.get('userId')?.touched && loginForm.get('userId')?.invalid
+            ? 'mb-2'
+            : 'mb-3'
+        "
+        type="text"
+        formControlName="userId"
+        placeholder="Find People"
+        #userIdInput
+        (ngModelChange)="this.searchTutor.next($event)"
+      />
+      <span
+        class="text-danger"
+        *ngIf="loginForm?.get('userId')?.hasError('invalidEmailOrMobile')"
+      >
+        Please Enter a valid email address or phone number
+      </span>
+    </div>
+    <div class="py-3" *ngIf="tutorList?.length">
+      <div
+        *ngFor="let tutor of tutorList; let i = index"
+        class="d-flex p-3 card flex-row shadow position-relative"
+        [class]="i + 1 == tutorList?.length ? '' : 'mb-3'"
+        role="button"
+        (click)="!tutor?.status ? addTutor(i) : null"
+      >
+        <div
+          *ngIf="tutor?.isSelected"
+          class="position-absolute top-[-12px] right-[-8px]"
+        >
+          <img src="assets/img/check.png" class="w-[25px]" />
+        </div>
+        <img
+          [src]="
+            tutor?.photo ?? 'https://mdbcdn.b-cdn.net/img/new/avatars/2.webp'
+          "
+          class="rounded-circle shadow-4 w-[75px] h-[75px] me-3"
+          alt="Avatar"
+        />
+        <div class="d-flex flex-column flex-fill">
+          <h5 class="mt-[5px]">{{ tutor?.name }}</h5>
+          <p>{{ tutor?.userId }}</p>
+        </div>
+        <div class="d-flex align-items-center" *ngIf="tutor?.status ?? false">
+          {{tutor?.status == 'Accept' ? 'Org-User' : tutor?.status}}
+        </div>
+      </div>
+    </div>
+    <div class="py-3" *ngIf="!tutorList?.length && nodata">
+      <div class="w-100 card shadow p-4">
+        User not found...
+      </div>
+    </div>
+    <div>
+      <button
+        class="btn btn-primary w-100"
+        [disabled]="!selectedTutorList?.length"
+        (click)="inviteTutor()"
+      >
+        Select a tutor above
+      </button>
+    </div>
+  </div>
+</div>

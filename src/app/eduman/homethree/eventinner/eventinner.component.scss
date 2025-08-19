@@ -1,0 +1,33 @@
+// event-shape
+@import '../../../../custom-palettes.scss';
+
+.event-date {
+	@apply text-heading bg-themeOrange h-[60px] w-[90px] flex justify-center leading-[60px] text-[36px] font-bold;
+}
+.event-month {
+	@apply bg-white text-heading flex h-10 w-[90px] justify-center leading-10 text-[15px];
+}
+.current-event-box {
+	@apply maxXs:mb-[30px];
+}
+.current-event-date {
+	@apply gap-2.5 minMaxTab:mr-[-50px] maxXs:flex-col;
+}
+.event-tour {
+	@apply bg-white border border-solid border-[#f6f8fb] flex justify-between w-[560px] items-center flex-wrap gap-2.5 px-[30px] pt-[18px] pb-[16px];
+	@apply maxXs:px-2.5 maxXs:pt-[18px] maxXs:pb-[16px] maxXs:w-full;
+}
+.event-box-text {
+	h3 {
+		@apply text-[18px] font-bold mb-3 leading-none;
+	}
+	span {
+		@apply text-[14px] font-semibold mr-5;
+		i {
+			@apply mr-[5px];
+		}
+	}
+}
+.event-arrow {
+	@apply bg-grayBg text-center h-[45px] w-[45px] text-[#7f8a9f] leading-[45px] hover:text-white hover:bg-themeBlue;
+}

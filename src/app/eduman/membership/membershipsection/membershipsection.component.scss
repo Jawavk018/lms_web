@@ -1,0 +1,83 @@
+// price-tab
+@import '../../../../custom-palettes.scss';
+
+.membership-tittle {
+	p {
+		@apply text-heading mb-[50px];
+	}
+}
+.pricing-tab .nav-tabs {
+	.mat-tab-labels {
+		@apply justify-center mb-[60px];
+	}
+	.mat-ink-bar {
+		@apply hidden;
+	}
+	.mat-tab-nav-bar, .mat-tab-header {
+		@apply border-b-0;
+	}
+	.mat-tab-label {
+		height: inherit;
+		@apply p-0 opacity-100;
+		min-width: inherit;
+	}
+	@apply border-0;
+}
+.pricing-tab .nav-tabs .nav-item:first-child .nav-link,
+.pricing-tab .nav-tabs .mat-tab-label:first-child .mat-tab-label-content {
+	border-radius: 5px 0 0 5px;
+}
+.pricing-tab .nav-tabs .nav-item:last-child .nav-link,
+.pricing-tab .nav-tabs .mat-tab-label:last-child .mat-tab-label-content {
+	border-radius: 0 5px 5px 0;
+}
+.pricing-tab .nav-tabs {
+	@apply bg-white border-b-0 pt-[25px] rounded-[7px];
+}
+.pricing-tab .nav-tabs .nav-link,
+.pricing-tab .nav-tabs .mat-tab-label .mat-tab-label-content {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	@apply text-heading mb-0 border-0 py-0 px-[50px] h-[55px] bg-[#f2f4f6] text-[18px] font-semibold maxXs:mx-5 maxXs:text-[16px];
+}
+.pricing-tab .nav-tabs .nav-link.active,
+.pricing-tab .nav-tabs .mat-tab-label-active .mat-tab-label-content {
+	@apply bg-themeBlue;
+	@apply text-white;
+}
+.membership-box {
+	box-shadow: 0px 10px 40px rgba(12, 29, 74, 0.08);
+	@apply bg-white p-10 rounded-lg border border-solid border-borderGray overflow-hidden relative h-[480px] flex flex-col justify-between minMaxTablet:px-[30px] maxXs:px-[30px];
+}
+.membership-info {
+	h4 {
+		@apply text-[18px] font-semibold mb-[15px];
+	}
+	span {
+		@apply text-themeBlue font-black text-[28px];
+	}
+}
+.membership-price {
+	p {
+		@apply text-heading text-[15px];
+	}
+}
+.membership-list {
+	@apply py-[15px] px-0;
+	ul {
+		li {
+			@apply mb-[5px];
+			i {
+				@apply text-themeBlue mr-[15px];
+			}
+		}
+	}
+}
+.Popular-plan {
+	@apply bg-themeOrange absolute top-[-30px] right-[-84px] text-[14px] font-semibold text-heading text-center rotate-[48deg] pt-[62px] px-[72px] pb-1.5;
+}
+.Popular-plan {
+	span {
+		@apply w-[70px] inline-block text-[14px] leading-4 font-semibold font-secondary;
+	}
+}

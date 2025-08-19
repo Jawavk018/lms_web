@@ -1,0 +1,29 @@
+.text_overflow {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: 1;
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .course-area {
+    padding-top: 10px !important;
+    padding-bottom: 0px;
+  }
+
+  .title {
+    margin-bottom: -64px !important;
+  }
+}
+
+.c-share-btn:hover {
+  color: white !important;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.selected_category {
+  background: lightgray;
+}

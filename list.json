@@ -1,0 +1,245 @@
+{
+    "data": [
+        {
+            "id": 1,
+            "menuName": "Development",
+            "routerLink": [
+                "/course"
+            ],
+            "submenu": [
+                {
+                    "id": 11,
+                    "menuName": "All Development",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 12,
+                    "menuName": "Mobile App",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 13,
+                    "menuName": "Web Development",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 14,
+                    "menuName": "Development tools",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 15,
+                    "menuName": "Database",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 16,
+                    "menuName": "Programming language",
+                    "routerLink": [
+                        "/course"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "menuName": "Art & Design",
+            "routerLink": [
+                "/course"
+            ],
+            "submenu": [
+                {
+                    "id": 17,
+                    "menuName": "Web Design",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 18,
+                    "menuName": "Graphic Design",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 19,
+                    "menuName": "Design tools",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 20,
+                    "menuName": "All Art",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 21,
+                    "menuName": "Marketing",
+                    "routerLink": [
+                        "/course"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "menuName": "Business",
+            "routerLink": [
+                "/course"
+            ],
+            "submenu": [
+                {
+                    "id": 22,
+                    "menuName": "All Business",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 23,
+                    "menuName": "Communications",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 24,
+                    "menuName": "Finance",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 25,
+                    "menuName": "Management",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 26,
+                    "menuName": "Sales",
+                    "routerLink": [
+                        "/course"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "menuName": "Life Style",
+            "routerLink": [
+                "/course"
+            ],
+            "submenu": [
+                {
+                    "id": 27,
+                    "menuName": "Life Style",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 28,
+                    "menuName": "Mental Health",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 29,
+                    "menuName": "Dieting",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 30,
+                    "menuName": "All Art",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 31,
+                    "menuName": "Nutrition",
+                    "routerLink": [
+                        "/course"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "menuName": "Health & Fitness",
+            "routerLink": [
+                "/course"
+            ],
+            "submenu": [
+                {
+                    "id": 32,
+                    "menuName": "All Health & Fitness",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 33,
+                    "menuName": "Beauty & Makeup",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 34,
+                    "menuName": "Food & Beverages",
+                    "routerLink": [
+                        "/course"
+                    ]
+                },
+                {
+                    "id": 35,
+                    "menuName": "Good Food",
+                    "routerLink": [
+                        "/course"
+                    ]
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "menuName": "Data Science",
+            "routerLink": [
+                "/course"
+            ]
+        },
+        {
+            "id": 7,
+            "menuName": "Marketing",
+            "routerLink": [
+                "/course"
+            ]
+        },
+        {
+            "id": 8,
+            "menuName": "Photography",
+            "routerLink": [
+                "/course"
+            ]
+        }
+    ]
+}

@@ -1,0 +1,25 @@
+// 10. partner style
+@import '../../../../custom-palettes.scss';
+
+.patner-area {
+	@apply bg-grayBg;
+}
+.partner-wrapper {
+	@apply flex justify-center flex-wrap gap-x-[70px] gap-y-[45px] mt-2.5 minMaxTablet:gap-[45px];
+}
+.partner-box {
+	@apply relative max-w-[430px] z-[2];
+}
+.partner-thumb {
+	@apply absolute top-[-110px] left-[-250px] z-[-1];
+}
+
+.partner-text {
+	@apply mt-5;
+	p {
+		@apply text-heading font-semibold max-w-[245px];
+		span {
+			@apply text-themeBlue text-[24px] font-bold;
+		}
+	}
+}

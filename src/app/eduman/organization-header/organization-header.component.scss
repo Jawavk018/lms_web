@@ -1,0 +1,25 @@
+//header style
+
+.header {
+  position: sticky;
+  top: 0;
+  background: #fff;
+  z-index: 100;
+}
+
+.header.sticky {
+  z-index: 100;
+  background: #fff;
+  transition: background 0.3s ease;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+}
+
+::ng-deep{
+  .mat-horizontal-stepper-header-container {
+    display: none !important;
+  }
+}
+
+.orgImage:hover{
+  opacity: 0.4;
+}

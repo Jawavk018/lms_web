@@ -1,0 +1,32 @@
+// catagory-style
+@import '../../../../custom-palettes.scss';
+
+.catagory-wrapper {
+	@apply flex bg-transparent items-center border-[1px] border-borderGray rounded-[5px] py-5 px-[30px] hover:bg-themeBlue hover:border-themeBlue;
+	@include transition(0.3s);
+	&:hover {
+		box-shadow: 0px 40px 40px rgba(24, 44, 74, 0.1);
+	}
+	.catagory-thumb {
+		@apply mr-[22px];
+	}
+	.catagory-content {
+		h3 {
+			@apply text-heading text-[20px] font-bold mb-1 leading-none;
+		}
+		span {
+			@apply text-bodyText text-[14px] font-semibold xxl:text-[16px] xxl:leading-5;
+		}
+	}
+	&:hover .catagory-content :is(a, h3, span) {
+		@apply text-white;
+	}
+}
+.catagory-wrapper {
+	&:hover svg * {
+		@apply fill-white;
+	}
+}
+.catagory-wrapper {
+	min-height: calc(100% - 30px);
+}

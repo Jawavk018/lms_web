@@ -1,0 +1,34 @@
+// feedback
+@import '../../../../../custom-palettes.scss';
+
+.feedback-header {
+	@apply flex mb-10 items-center;
+}
+.feedback-icon {
+	i {
+		@apply absolute top-[30px] right-[30px] text-[72px] text-[#ced5e5] z-[-1];
+	}
+}
+.feedback-body {
+	h3 {
+		@apply text-themeBlue text-[18px] font-bold mb-5;
+	}
+}
+.feedback-content {
+	@apply maxMd:ml-0;
+}
+.feedback-items {
+	@apply bg-white z-[2] p-[30px];
+}
+
+.feedback-title {
+	@apply ml-5;
+	h4 {
+		@apply text-[18px] font-bold mb-[3px];
+	}
+}
+.testimonial-icon {
+	i {
+		@apply text-themeOrange text-[15px];
+	}
+}

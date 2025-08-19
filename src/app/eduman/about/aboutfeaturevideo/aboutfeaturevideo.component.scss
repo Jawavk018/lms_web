@@ -1,0 +1,102 @@
+// features-video-area
+@import '../../../../custom-palettes.scss';
+
+.features-video-area {
+	@apply relative mt-[-220px];
+}
+.features-shape-wrapper-1 {
+	@apply absolute bottom-[9%] left-[-14%] leading-[18px] minMaxTabSmall:left-[-20%] maxSm:hidden;
+	span {
+		@apply text-heading font-bold;
+	}
+}
+.features-shape {
+	@apply absolute top-[-94px] right-0;
+}
+.features-shape-werapper-2 {
+	@apply absolute right-[-12%] top-[25%] leading-[18px] minMaxTabSmall:right-[-20%] maxSm:hidden;
+	span {
+		@apply text-heading font-semibold;
+	}
+	img {
+		@apply absolute bottom-[-95px] right-[38px];
+	}
+}
+.features-video-wrapper {
+	box-shadow: 0px 20px 40px rgba(24, 44, 74, 0.1);
+	@apply bg-white relative rounded-[10px] p-5;
+}
+.reatures-video-thumb {
+	@apply relative;
+	img {
+		@apply w-full;
+	}
+	&::before {
+		content: "";
+		@apply absolute bg-[#020f29] opacity-60 h-full w-full;
+	}
+}
+.features-video-content {
+	transform: translate(-50%, -50%);
+	@apply inline-flex absolute top-[50%] left-[50%] right-0 items-center justify-center mr-[-50%];
+}
+.know-us-wrapper {
+	@apply relative;
+}
+.know-us-better-thumb {
+	@apply relative;
+	a {
+		&::before {
+			content: "";
+			background: linear-gradient(
+				to top,
+				#020e26 0%,
+				rgba(9, 20, 43, 0) 100%
+			);
+			@apply z-[1] absolute w-full h-full;
+		}
+	}
+}
+
+.know-us-text {
+	@apply absolute bottom-5 left-[50%] translate-x-[-50%] z-[2] mr-[-50%];
+}
+.know-us-text {
+	h3 {
+		@apply text-white text-[20px] relative z-[3];
+	}
+}
+.know-us-wrapper {
+	@apply overflow-hidden rounded-[5px];
+	img {
+		@apply w-full;
+		transition: all 1.5s cubic-bezier(0, 0, 0.2, 1);
+	}
+}
+.know-us-wrapper:hover .know-us-better-thumb img {
+	transform: scale3d(1.1, 1.1, 1.1);
+}
+
+//course video style
+
+.course-video-popup {
+    .modal-header {
+		@apply p-0 border-0;
+    }
+    iframe {
+		@apply w-full h-[450px] maxMd:h-full maxMd:min-h-[300px];
+    }
+    .modal-dialog {
+		@apply max-w-[700px] minMaxTabSmall:max-w-[500px] minMaxMobile:max-w-[450px] maxXs:max-w-full;
+    }
+    .modal-body {
+		@apply p-0;
+    }
+    .modal-content {
+        @apply border-transparent border-none;
+    }
+    .modal-header .btn-close {
+        @apply bg-white m-0 ml-auto -mr-8 -mb-8;
+		 @apply maxXs:mr-0 maxXs:mb-0;
+    }
+}

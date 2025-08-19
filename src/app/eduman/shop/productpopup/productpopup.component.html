@@ -1,0 +1,95 @@
+<mat-dialog-content>
+    <div class="popup-body">
+        <div class="eduman-popup-inner text-center">
+            <div class="modal-content">
+                <div class="product__modal-wrapper p-relative">
+                    <div class="product__modal-close p-absolute">
+                        <button type="button" mat-dialog-close><i class="fal fa-times"></i></button>
+                    </div>
+                    <div class="product__modal-inner">
+                        <div class="container">
+                            <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                                <div class="col-span-12 md:col-span-6">
+                                    <div class="product__modal-box">
+                                        <div class="product__modal-img w-img">
+                                            <img src="assets/img/products/product-thumb-01.png"
+                                                alt="img not found" />
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-span-12 md:col-span-6">
+                                    <div class="product__modal-content">
+                                        <h4><a [routerLink]="['/shop-details']" mat-dialog-close>Turn Yourself</a></h4>
+                                        <div class="product__modal-des mb-5">
+                                            <p>Typi non habent claritatem insitam, est usus legentis in iis qui facit
+                                                eorum
+                                                claritatem.
+                                                Investigationes demonstraverunt </p>
+                                        </div>
+                                        <div class="product__stock">
+                                            <span>Availability :</span>
+                                            <span>In Stock</span>
+                                        </div>
+                                        <div class="product__stock sku mb-5">
+                                            <span>SKU:</span>
+                                            <span>Juicera C49J89: £875, Debenhams Plus</span>
+                                        </div>
+                                        <div class="product__review sm:flex">
+                                            <div class="rating rating__shop mr-4 mb-4">
+                                                <ul>
+                                                    <li><a href="javascript:void(0)"><i class="fas fa-star"></i></a>
+                                                    </li>
+                                                    <li><a href="javascript:void(0)"><i class="fas fa-star"></i></a>
+                                                    </li>
+                                                    <li><a href="javascript:void(0)"><i class="fas fa-star"></i></a>
+                                                    </li>
+                                                    <li><a href="javascript:void(0)"><i class="fas fa-star"></i></a>
+                                                    </li>
+                                                    <li><a href="javascript:void(0)"><i class="fas fa-star"></i></a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="product__add-review mb-4">
+                                                <span><a [routerLink]="['/shop-details']" mat-dialog-close>1 Review</a></span>
+                                            </div>
+                                        </div>
+                                        <div class="product__price">
+                                            <span>$59.00</span>
+                                        </div>
+                                        <div class="product__modal-form">
+                                            <div class="mb-[30px] product-quantity-cart">
+                                                <div class="product-quantity-form">
+                                                    <form action="#">
+                                                        <button class="cart-minus"
+                                                            (click)="counter('count', 'subtract')"><i
+                                                                class="far fa-minus"></i></button>
+                                                        <p class="cart-input">{{ counters['count'] }}</p>
+                                                        <button class="cart-plus" (click)="counter('count', 'add')"><i
+                                                                class="far fa-plus"></i></button>
+                                                    </form>
+                                                </div>
+                                                <a [routerLink]="['/cart']" class="edu-btn" mat-dialog-close>Add to Cart</a>
+                                            </div>
+                                        </div>
+                                        <div class="product__modal-links">
+                                            <ul>
+                                                <li><a href="javascript:void(0)" title="Add to Wishlist"><i
+                                                            class="fal fa-heart"></i></a></li>
+                                                <li><a href="javascript:void(0)" title="Compare"><i
+                                                            class="far fa-sliders-h"></i></a></li>
+                                                <li><a href="javascript:void(0)" title="Print"><i
+                                                            class="fal fa-print"></i></a></li>
+                                                <li><a href="javascript:void(0)" title="Share"><i
+                                                            class="fal fa-share-alt"></i></a></li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-dialog-content>

@@ -1,0 +1,85 @@
+// instructor style
+@import '../../../../../custom-palettes.scss';
+
+.step-journey-box {
+	@apply pl-[190px] minMaxTablet:pl-[150px] minMaxTab:pl-[60px] maxMd:pl-0;
+}
+.step-journey-content {
+	h4 {
+		@apply mb-[15px] text-[18px];
+	}
+}
+.nav-tabs.step-journey {
+	.mat-tab-labels {
+		@apply justify-center;
+	}
+	.mat-tab-label {
+		height: inherit;
+		min-width: inherit;
+		@apply opacity-100 py-2 px-0;
+	}
+	@apply border-b border-solid border-borderGray;
+	.mat-ink-bar {
+		@apply hidden;
+	}
+}
+.nav-tabs.step-journey .nav-link,
+.step-journey .mat-tab-label .mat-tab-label-content {
+	@apply text-[20px] text-[#7e7e7e] pb-2.5 font-medium maxSm:mb-[15px] relative;
+}
+.nav-tabs.step-journey .nav-item.show .nav-link,
+.nav-tabs .nav-link.active,
+.step-journey .mat-tab-label-active .mat-tab-label-content {
+	@apply text-[#141517] font-medium;
+}
+.step-journey .nav-link,
+.step-journey .mat-tab-label .mat-tab-label-content {
+	border-top-left-radius: 0;
+	border-top-right-radius: 0;
+	@apply relative mb-[-1px] border-0 px-0 pb-2.5 mr-[50px];
+}
+.step-journey .mat-tab-label:last-child .mat-tab-label-content {
+	@apply mr-0;
+}
+.step-journey .nav-link:before,
+.step-journey .mat-tab-label .mat-tab-label-content:before {
+	content: "";
+	@apply bg-themeBlue absolute h-[3px] w-full left-0 opacity-0 bottom-[-7px] invisible;
+}
+.step-journey .nav-link.active::before,
+.step-journey .mat-tab-label-active .mat-tab-label-content:before {
+	@apply opacity-100 visible;
+}
+.step-journey .nav-link::after,
+.step-journey .mat-tab-label .mat-tab-label-content:after {
+	content: "";
+	clip-path: polygon(0% 0%, 100% 0%, 50% 100%);
+	@apply absolute w-[13px] h-[5px] bg-themeBlue -bottom-1 left-0 right-0 m-auto opacity-0 visible maxSm:hidden rotate-180;
+}
+.step-journey .nav-link.active::after,
+.step-journey .mat-tab-label-active .mat-tab-label-content:after {
+	@apply opacity-100 visible;
+}
+.srep-journey-content {
+	@apply mb-[25px];
+	h4 {
+		@apply text-[18px] mb-[15px];
+	}
+}
+.step-journey-thumb {
+	img {
+		@apply max-w-full;
+	}
+	@apply pl-[50px] maxMd:pl-0;
+}
+.become-intructor-area {
+	@apply bg-[#f4f6f9];
+}
+.become-intructor-text {
+	h2 {
+		@apply text-[36px] mb-[30px] maxMd:text-[32px] maxSm:text-[28px] maxXs:text-[26px];
+	}
+	p {
+		@apply mb-10;
+	}
+}

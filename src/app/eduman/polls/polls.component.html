@@ -1,0 +1,120 @@
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-xl-3 col-md-3 col-sm-12 mb-3">
+
+            <div class="card shadow-none">
+                <div class="techques p-3 fs-4 fw-bold">
+                    Polls
+                </div>
+            </div>
+
+            <div class="tech-feild">
+
+                <div class="card" *ngIf="pollTopics.length">
+                    <div class="nav flex-column nav-pills me-3 w-100" id="v-pills-tab" role="tablist"
+                        aria-orientation="vertical">
+                        <button (click)="changePolls(i)"
+                            class="nav-link text-start border-left d-flex justify-content-between align-items-center"
+                            style="border-bottom: solid 3px lavender;" [class]="poll?.isActive ? 'active' : 'none'"
+                            data-bs-toggle="pill" type="button" role="tab" aria-controls="v-pills-home"
+                            aria-selected="true" *ngFor="let poll of pollTopics; let i = index">
+                            <span>{{ poll?.title }}</span>
+                            <!-- <div (click)="changePolls(i)" >
+                                <i class="fas fa-edit"></i>
+                               <i class="fas fa-trash" (click)="deleteSurvey(survey)"></i>  
+                            </div> -->
+                        </button>
+                    </div>
+                </div>
+
+                <div *ngIf="isUpdatePoll" class="text-center">
+                    <button class="btn btn-primary" (click)="clearForm()">CLEAR</button>
+                </div>
+
+
+                <div *ngIf="!pollTopics.length" class="h-50 text-center">
+                    <div class="mt-4 fs-6">
+                        No data found
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="col-xl-9 col-md-9 col-sm-12">
+
+            <form [formGroup]="pollsForm" class="scrollbar" style="overflow-y:scroll;height:70vh;overflow-x: hidden;">
+                <div class="form-group">
+                    <label for="polltitle" class="fs-5 fw-bold">Poll Title<span class="text-danger">*</span></label>
+                    <input id="polltitle" class="form-control" formControlName="title">
+                </div>
+
+                <div class="form-group">
+                    <label for="polldescription" class="fs-6">Poll Description<span class="text-danger">*</span></label>
+                    <textarea id="polldescription" class="form-control" formControlName="description"></textarea>
+                </div>
+
+                <div formArrayName="questions">
+                    <div *ngFor="let question of getPollquestions.controls; let i = index" [formGroupName]="i"
+                        class="card mb-3">
+
+                        <div infinite-scroll [infiniteScrollDistance]="modalScrollDistancePolls" [scrollWindow]="true"
+                            [infiniteScrollThrottle]="modalScrollThrottlePolls"
+                            (scrolled)="!isNoMoreRecordPolls && getMoreTechQuestion()">
+
+                            <!-- start -->
+                            <div class="card-body">
+
+                                <div class="form-group">
+                                    <label for="questionText" class="fw-bold">Question<span class="text-danger">*</span></label>
+                                    <input id="questionText" class="form-control" formControlName="questionText">
+                                </div>
+
+                                <!-- Multiple Choice Options -->
+                                <div formArrayName="options">
+                                    <div *ngFor="let option of getPollOptions(i).controls; let j = index"
+                                        [formGroupName]="j">
+                                        <label for="optionText">Option {{ j + 1 }}</label>
+                                        <div class="input-group mb-3">
+                                            <input id="optionText" class="form-control" formControlName="optionText">
+                                            <button type="button" title="remove" class="btn btn-light border rounded-0"
+                                                (click)="removePollOption(i, j)"><i
+                                                    class="bi bi-trash-fill text-danger"></i>
+                                            </button>
+
+                                        </div>
+                                    </div>
+                                    <button class="btn btn-secondary" (click)="addPollOption(i)">Add
+                                        Option</button>
+
+                                    <button class="btn btn-danger  float-end" (click)="removePollQuestion(i)">
+                                        Remove Question</button>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <button class="btn btn-secondary" (click)="addPollQuestion()">Add Question</button>
+                <!-- <button class="btn  btn-primary" (click)="onSubmit()">Save Survey</button> -->
+
+                <div class="row">
+                    <div class="">
+                        <button class="btn btn-md btn-primary float-end" *ngIf="!isUpdatePoll" (click)="savePoll()"
+                            [disabled]="pollsForm.invalid">
+                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                            Save
+                        </button>
+                        <button class="btn btn-md btn-primary float-end" *ngIf="isUpdatePoll" (click)="updatePoll()"
+                            [disabled]="pollsForm.invalid">
+                            <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+                            Update
+                        </button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

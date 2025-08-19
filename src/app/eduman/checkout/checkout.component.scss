@@ -1,0 +1,54 @@
+.container-image {
+    width: 50px; /* Adjust the width as needed */
+    height: 30px; /* Adjust the height as needed */
+    border: 1px solid #ccc; /* Optional: Add a border for visual distinction */
+    overflow: hidden; /* Optional: Hide any overflow from the image */
+    border-radius: 5px;
+
+}
+
+.container-image img {
+    width: 100%; /* Make the image fill the container width */
+    height: auto; /* Maintain aspect ratio */
+    display: block; /* Ensure the image is displayed as a block element */
+}
+
+.list-group-item {
+    margin-bottom: 10px; /* Add margin to bottom of list items */
+}
+
+.list-group-item .container-image {
+    margin-right: 10px; /* Add margin to right of image container */
+}
+
+.list-group-item .radio-btn {
+    margin-right: 10px; /* Add margin to right of image container */
+}
+
+.borderinput{
+  background-color: transparent;
+  border-color: #958989;
+  border-radius: inherit;
+}
+
+.nav-button{
+    // border-radius: 0.375rem;
+    // background-color: #ffb013;
+}
+
+active{
+    border-radius: 0.375rem;
+    background-color: #ffb013;
+}
+.image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Set height of container to ensure vertical alignment */
+}
+
+.center-image {
+    max-width: 100%; /* Ensure image does not exceed container width */
+    max-height: 100%; /* Ensure image does not exceed container height */
+}
+ 

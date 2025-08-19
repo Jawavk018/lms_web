@@ -1,0 +1,119 @@
+<app-organization-header></app-organization-header>
+<div class="container p-2">
+  <div class="w-100 text-end my-4">
+    <button class="btn btn-primary" (click)="addTutor()">Add Tutor</button>
+  </div>
+
+  <div *ngIf="invitationSource?.data?.length">
+    <h4 class="my-3">Pending Invitation</h4>
+    <mat-table [dataSource]="invitationSource">
+      <ng-container matColumnDef="userId">
+        <mat-header-cell *matHeaderCellDef> ID </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.userId }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="createdDate">
+        <mat-header-cell *matHeaderCellDef> Created Date </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.createdDate | date : "dd-MM-yyyy" }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="expiryStatus">
+        <mat-header-cell *matHeaderCellDef> Expiry Status </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.expiryStatus }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell *matCellDef="let row; let i = index">
+          <button class="btn" data-bs-toggle="dropdown">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" role="button" (click)="deleteAlert(i)"
+              >Delete</a
+            >
+          </div>
+        </mat-cell>
+      </ng-container>
+      <mat-header-row *matHeaderRowDef="inviteTutor"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: inviteTutor"> </mat-row>
+    </mat-table>
+    <mat-paginator
+      id="inviteTutors"
+      #inviteTutors
+      [pageSizeOptions]="[5, 10, 25, 100]"
+    ></mat-paginator>
+  </div>
+  <div *ngIf="tutorSource?.data?.length">
+    <h4 class="my-3">Active Tutors</h4>
+    <mat-table [dataSource]="tutorSource">
+      <ng-container matColumnDef="photo">
+        <mat-header-cell *matHeaderCellDef> Photo </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          <img
+            [src]="
+              row?.photo ?? 'https://mdbcdn.b-cdn.net/img/new/avatars/2.webp'
+            "
+            class="rounded-circle shadow-4 w-[50px] h-[50px] me-3"
+            alt="Avatar"
+        /></mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="userId">
+        <mat-header-cell *matHeaderCellDef> User Id </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.userId }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="name">
+        <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+        <mat-cell *matCellDef="let row"> {{ row.name }} </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="publishedCourse">
+        <mat-header-cell *matHeaderCellDef>
+          Total Published Course
+        </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.totalCourseCount ?? 0 }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="totalSubcription">
+        <mat-header-cell *matHeaderCellDef> Total Subcription </mat-header-cell>
+        <mat-cell *matCellDef="let row">
+          {{ row.totalSubcription ?? 0 }}
+        </mat-cell>
+      </ng-container>
+      <ng-container matColumnDef="action">
+        <mat-header-cell *matHeaderCellDef> Action </mat-header-cell>
+        <mat-cell
+          *matCellDef="let row; let i = index"
+          [style.color]="row.color"
+        >
+          <button class="btn" data-bs-toggle="dropdown">
+            <i class="bi bi-three-dots-vertical"></i>
+          </button>
+          <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+            <a class="dropdown-item" role="button" (click)="viewTutor(i)"
+              >View</a
+            >
+            <a class="dropdown-item" role="button" (click)="viewReport(i)"
+              >Report</a
+            >
+          </div>
+        </mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="tutors"></mat-header-row>
+      <mat-row *matRowDef="let row; columns: tutors"> </mat-row>
+    </mat-table>
+
+    <mat-paginator #tutor [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+  </div>
+  <div
+    *ngIf="!invitationSource?.data?.length && !tutorSource?.data?.length"
+    class="centered text-center"
+  >
+    <i class="bi bi-search" style="font-size: 5.375rem"></i>
+    <h3 class="mt-3">No data found</h3>
+  </div>
+</div>

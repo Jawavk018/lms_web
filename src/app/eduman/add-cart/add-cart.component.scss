@@ -1,0 +1,92 @@
+
+.text-button {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  color: blue;
+  /* Default color */
+  transition: color 0.3s;
+  /* Smooth transition */
+}
+
+.text-button:hover {
+  color: red;
+  /* Color on hover */
+}
+
+.container_coupon {
+  border: 1px dashed #000;
+  /* Black border */
+  padding: 10px;
+  /* Adjust padding as needed */
+  // display: inline-block; /* Ensure container fits content */
+}
+
+.coupon-text {
+  margin: 0;
+  /* Remove default margin */
+}
+
+.no-data {
+  position: relative;
+}
+
+.centered {
+  // position: absolute;
+  // top: 30%;
+  // left: 50%;
+  // transform: translate(-50%, 15%);
+  text-align: center;
+}
+
+@media(min-width:200px) and (max-width:768px) {
+  .centered {
+    // position: absolute;
+    // top: 50%;
+    // left: 50%;
+    // transform: translate(-50%, 50%);
+    text-align: center;
+  }
+}
+
+.font-weight-bold {
+  font-weight: bold;
+}
+
+.modal-dialog {
+  position: absolute;
+  top: 50% !important;
+  left: 50% !important;
+  transform: translate(-50%, -50%) !important;
+}
+
+h2{
+  font-size: 2rem !important;
+}
+
+////////////////////////////////////
+
+.coupon-code {
+  background-color: goldenrod;
+  padding: 5px 10px;
+  border-radius: 12px;
+  color: white;
+  font-weight: bold;
+  display: inline-block;
+  transition: transform 0.2s;
+}
+
+.coupon-code:hover {
+  transform: scale(1.1);
+}
+
+.ticket-icon {
+  font-size: 1.5rem; /* Adjust the size as needed */
+  color: goldenrod;
+  transition: transform 0.2s, color 0.2s;
+}
+
+.ticket-icon:hover {
+  transform: scale(1.2);
+  color: darkorange;
+}

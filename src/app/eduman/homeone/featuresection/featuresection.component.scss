@@ -1,0 +1,26 @@
+// features-style
+@import '../../../../custom-palettes.scss';
+
+.features-area {
+	@apply bg-center bg-cover;
+}
+.features-img-bg {
+	@apply px-5 py-[25px] md:pt-[60px] md:pb-[50px] md:px-20;
+}
+.features-icon {
+	@apply text-[55px] text-white mr-[25px];
+	svg {
+		@apply mr-[27px];
+	}
+
+	
+}
+.features-content {
+	@apply max-w-[295px];
+	h3 {
+		@apply text-white text-xl xl:text-2xl;
+	}
+}
+.features-area.margin-top {
+	@apply mt-[-85px];
+}

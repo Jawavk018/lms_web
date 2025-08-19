@@ -1,0 +1,54 @@
+<app-headerone></app-headerone>
+<!-- <section class="course-area relative pt-[110px] pb-[90px]" style="background-color: #f9f9f9;">
+    <div class="container">
+        <h2 style="font-size: 24px; margin-bottom: 20px; color: #333;">Notification Details</h2>
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card p-3 mb-3" style="border: 1px solid #ddd; border-radius: 8px; background-color: #fff;"
+                    *ngFor="let notification of notificationList; let i = index;">
+                    <h3 style="font-size: 16px; color: #333; margin-bottom: 5px;">{{notification.title}}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <p style="font-size: 14px; color: #555; margin-bottom: 0;">{{notification.message}}</p>
+                        <div>
+                            <span style="font-size: 14px; color: #777;">{{notification.createdOn | date : "MMM d, y"}}</span>
+                            <button type="button" class="btn btn-light" (click)="confirmation(i)">
+                                <span class="menu-icon tf-icons iconify text-danger"
+                                    data-icon="bx:trash"></span>
+                            </button>
+                        </div>
+                    </div>  
+                    
+                </div>
+            </div>
+        </div>
+    </div>
+</section> -->
+<section class="course-area relative pt-[110px] pb-[90px]" style="background-color: #f9f9f9;">
+    <div class="container">
+        <h2 style="font-size: 24px; margin-bottom: 20px; color: #333;">Notification Details</h2>
+        <div *ngIf="notificationList?.length == 0 || notificationList == null" class="no-data">
+            <div class="centered">
+                <img src="assets/img/norecord.png" style="width: auto;" />
+                <p class="fs-5">No Notification</p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-12">
+                <div *ngFor="let notification of notificationList; let i = index;"
+                    [ngClass]="{'card-unread': notification.notificationStatus === 'Un Read', 'card-read': notification.notificationStatus !== 'Un Read'}"
+                    class="card p-3 mb-3" style="border: 1px solid #ddd; border-radius: 8px;" (click)="notification.notificationStatus == 'Un Read' && checkStatus(i)">
+                    <h3 style="font-size: 16px; color: #333; margin-bottom: 5px;">{{notification.title}}</h3>
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div [innerHTML]="getSanitizedHtml(notification.message)"></div>
+                        <div class="d-flex justify-content-between align-items-center mt-2">
+                            <span style="font-size: 14px; color: #777;">{{notification.createdOn | date : "MMM d, y"}}</span>
+                             <div><span style="margin-left: 20px;"><i class="bi bi-trash-fill text-danger" (click)="confirmation($event, i)"></i></span></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<app-footerone></app-footerone>

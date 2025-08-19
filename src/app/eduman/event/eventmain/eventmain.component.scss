@@ -1,0 +1,119 @@
+// event-inner style
+@import '../../../../custom-palettes.scss';
+
+.event_date_inner {
+	@apply table-cell align-middle w-full;
+}
+.event_date {
+	@apply w-[120px] h-[120px] bg-[#f8f8f9] text-center table rounded-[5px] py-0 px-2.5 minMaxTablet:w-[100px] minMaxTablet:h-[100px] minMaxTab:w-[100px] minMaxTab:h-[100px];
+}
+.aduence-thumb {
+	@apply mr-8;
+	img {
+		box-shadow: 0px 0px 10px rgba(17, 32, 80, 0.14);
+		@apply rounded-[50%] -mr-4 border-4 border-solid border-white;
+	}
+}
+.event_date_inner {
+	h4 {
+		@apply font-black;
+		@apply text-themeBlue text-[24px] font-primary;
+	}
+	span {
+		@apply text-[#171717];
+	}
+}
+.event_info h3 {
+	@apply text-[20px];
+}
+
+.event-time {
+	i {
+		@apply mr-2.5 leading-none;
+	}
+}
+.event-location {
+	i {
+		@apply mr-2.5;
+	}
+}
+.event-detalis {
+	@apply mb-2.5 flex-wrap;
+}
+.event-aduence {
+	@apply flex-wrap;
+}
+.event_info {
+	@apply flex-grow minMaxTab:max-w-[375px] minMaxTabSmall:max-w-[350px];
+}
+.get-ticket-btn {
+	@apply mr-[15px];
+}
+.single-item {
+	@apply bg-white flex items-center justify-between flex-wrap gap-[30px] p-[15px] rounded-[3px] border border-solid border-borderGray maxXl:gap-5;
+	@include transition(0.3s);
+	&:hover {
+		box-shadow: 0px 30px 40px rgba(28, 51, 84, 0.07);
+	}
+}
+.single-item .event_info {
+	@apply maxSm:order-2;
+}
+// event-meta
+.event-meta-thumb {
+	@apply flex items-center;
+}
+.event-wrapper {
+	@apply p-[30px] bg-[#f8f8f9] h-[110px] w-full rounded;
+}
+.event-select .nice-select {
+	&::after {
+		@apply text-heading right-5 h-2 w-2;
+	}
+	@apply h-[60px] w-full leading-[60px] relative mt-[-5px] border-0 py-0 px-5;
+	span {
+		@apply text-heading text-[16px] font-bold;
+	}
+}
+.nice-select.open .list {
+	@apply text-heading w-full text-[16px];
+}
+// event-inner
+.find-event-info {
+	h4 {
+		@apply mb-[35px];
+	}
+}
+.find-event-input {
+	i {
+		@apply text-themeBlue;
+	}
+}
+.find-event-wrapper {
+	@apply relative
+}
+.find-event-input {
+	i {
+		@apply absolute top-[50%] right-5 translate-y-[-50%];
+	}
+}
+.find-event-input input,
+.event-select select {
+	@apply bg-white rounded w-full h-[55px] py-0 px-5 outline-none border-0;
+}
+.event-select {
+    @apply relative;
+    &:after {
+        content: '';
+		@apply absolute w-2 h-2 right-[22px] top-[22px] rotate-45 border-b-2 border-r-2 border-solid text-heading;
+    }
+    select {
+        -webkit-appearance: none;
+        -moz-appearance: none;
+        @apply relative appearance-none pl-[15px];
+    }
+}
+.event-sidebar {
+	@apply bg-[#f8f8f9] p-[30px] rounded-[5px];
+}
+// @include inventualCalenderFieldStyle;

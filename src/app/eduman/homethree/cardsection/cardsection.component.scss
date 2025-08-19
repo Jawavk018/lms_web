@@ -1,0 +1,50 @@
+// eduman-card style
+@import '../../../../custom-palettes.scss';
+
+.university-main-wraper {
+	@media (min-width: 576px) and (max-width: 991px) { 
+		flex-wrap: wrap;
+		> * {
+			flex: 0 0 50%;
+		}
+	}
+	@apply maxXs:flex-wrap;
+}
+.university-card {
+	@apply mt-[-140px];
+}
+.university-course-box {
+	@apply bg-themeBlue py-[42px] px-12 h-full minMaxTablet:px-12 minMaxTablet:pt-[35px] minMaxTablet:pb-10 minMaxTab:px-5 minMaxTab:pt-7 minMaxTab:pb-10 maxSm:pt-[35px] maxSm:pr-5 maxSm:pb-10 maxSm:pl-[19px] maxXs:w-full maxXs:py-[42px] maxXs:px-[30px];
+}
+.university-main-wraper {
+	@apply relative z-[5];
+}
+.university-card-wrapper {
+	@apply py-[45px] px-[40px] bg-[#f6f8fb] minMaxTab:pt-[40px] minMaxTab:mb-[35px] minMaxTab:px-5 maxXs:py-[45px] maxXs:px-[30px] maxXs:w-full;
+}
+.university-card-text {
+	p {
+		@apply text-white font-bold mb-[15px] block leading-none;
+	}
+	span {
+		@apply font-black;
+	}
+	h3 {
+		@apply text-white leading-[1.3] mb-8 font-medium text-[28px];
+	}
+}
+.university-card-icon {
+	@apply bg-white h-[65px] w-[65px] leading-[65px] text-center rounded-[50%] mb-[30px];
+	@include transition(0.3s);
+}
+.university-card-wrapper:hover .university-card-icon {
+	@apply translate-y-[-10px]
+}
+.university-card-content {
+	h3 {
+		@apply text-[18px] mb-[15px] leading-none;
+	}
+	p {
+		@apply mb-0;
+	}
+}

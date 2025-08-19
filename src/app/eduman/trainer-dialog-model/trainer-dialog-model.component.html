@@ -1,0 +1,130 @@
+<!-- <p>trainer-dialog-model works!</p> -->
+
+<div class="modal fade" id="trainerValue" tabindex="-1" aria-hidden="true" data-bs-backdrop="static">
+    <div class="modal-dialog modal-dialog-centered">
+       <div class="modal-content">  
+          <!-- *ngIf="appUser?.isTrainer == false" -->
+          <div class="float-end ms-auto">
+             <button type="button" data-bs-dismiss="modal" class="p-3"
+                *ngIf="appUser?.role?.length && appUser?.role[0]?.roleValue == 'Learner' && !appUser?.isTrainer"
+                aria-label="Close"><i class="bi bi-x-lg"></i></button>
+          </div>
+          <div class="modal-body">
+             <form [formGroup]="onboardingForm">
+                <div *ngIf="!showContent">
+                   <div class="text-center">
+                      <div>
+                         <h2 style="font-size: 2rem !important;"> Come teach with us</h2>
+                         <p class="text-secondary">Become an instructor and change lives — including your own</p>
+                      </div>
+                      <div class="text-center pt-4">
+                         <button class="btn btn-save" (click)="toggleContent()">Get started</button>
+                      </div>
+                   </div>
+                </div>
+                <mat-stepper #stepper [linear]="isLinear" id="contentDiv" *ngIf="showContent">
+                   <mat-step [stepControl]="firstStep" [formGroup]="onboardingForm">
+                      <div>
+                         <ng-template matStepLabel>Step-1</ng-template>
+                         <div class="pt-5">
+                            <h2 style="font-size: 2rem !important;"> Share your knowledge</h2>
+                            <p class="text-secondary">Our courses are video-based experiences that give students the
+                               chance to learn actionable skills. Whether you have experience teaching, or it’s your
+                               first
+                               time, we’ll help you package your knowledge into an online course that improves student
+                               lives.</p>
+                            <div class="py-3">
+                               <h6 class="fw-bold">What kind of teaching have you done before?</h6>
+                               <div class="form-group">
+                                  <div class="border p-3 m-1" *ngFor="let teach of teachingTypeList;let i = index">
+                                     <div class="form-check">
+                                        <input class="form-check-input" type="radio" [id]="teach?.codesDtlSno"
+                                           name="teachingTypeCd" [value]="teach?.codesDtlSno"
+                                           formControlName="teachingTypeCd">
+                                        <label class="form-check-label" [for]="teach?.codesDtlSno">
+                                           {{ teach?.cdValue }}
+                                        </label>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="text-center pt-3">
+                               <button matStepperNext class="btn btn-save"
+                                  [disabled]="!isTeachTypeSelected()">Continue</button>
+                            </div>
+                         </div>
+                      </div>
+                   </mat-step>
+                   <mat-step [stepControl]="secondStep" [formGroup]="onboardingForm">
+                      <div>
+                         <ng-template matStepLabel>Step-2</ng-template>
+                         <div class="pt-5">
+                            <h2 style="font-size: 2rem !important;"> Create a course</h2>
+                            <p class="text-secondary">Over the years we’ve helped thousands of instructors learn how to
+                               record at home. No matter your experience level, you can become a video pro too. We’ll
+                               equip
+                               you with the latest resources, tips, and support to help you succeed.</p>
+                            <div class="py-3">
+                               <h6 class="fw-bold">How much of a video “pro” are you?</h6>
+                               <div class="form-group">
+                                  <div class="border p-3 m-1" *ngFor="let edit of editingLevelTypeList;let i = index">
+                                     <div class="form-check">
+                                        <input class="form-check-input" type="radio" [id]="edit?.codesDtlSno"
+                                           name="videoEditingLevelTypeCd" [value]="edit?.codesDtlSno"
+                                           formControlName="videoEditingLevelTypeCd">
+                                        <label class="form-check-label" [for]="edit?.codesDtlSno">
+                                           {{ edit?.cdValue }}
+                                        </label>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="text-center pt-4">
+                               <button mat-button matStepperPrevious class="me-2">Previous</button>
+                               <button matStepperNext class="btn btn-save"
+                                  [disabled]="!isEditTypeSelected()">Continue</button>
+                            </div>
+                         </div>
+                      </div>
+                   </mat-step>
+                   <mat-step [stepControl]="thirdStep" [formGroup]="onboardingForm">
+                      <div>
+                         <ng-template matStepLabel>Step-3</ng-template>
+                         <div class="pt-5">
+                            <h2 style="font-size: 2rem !important;"> Expand your reach</h2>
+                            <p class="text-secondary">Once you publish your course, you can grow your student audience
+                               and
+                               make an impact with the support of Udemy's marketplace promotions and also through your
+                               own
+                               marketing efforts. Together, we’ll help the right students discover your course.</p>
+                            <div class="py-3">
+                               <h6 class="fw-bold">Do you have an audience to share your course with?</h6>
+                               <div class="form-group">
+                                  <div class="border p-3 m-1" *ngFor="let audience of reachTypeList;let i = index">
+                                     <div class="form-check">
+                                        <input class="form-check-input" type="radio" [id]="audience?.codesDtlSno"
+                                           name="audienceLevelTypeCd" [value]="audience?.codesDtlSno"
+                                           formControlName="audienceLevelTypeCd">
+                                        <label class="form-check-label" [for]="audience?.codesDtlSno">
+                                           {{ audience?.cdValue }}
+                                        </label>
+                                     </div>
+                                  </div>
+                               </div>
+                            </div>
+                            <div class="text-center pt-4">
+                               <button mat-button matStepperPrevious class="me-2">Previous</button>
+                               <button (click)="save()" class="btn btn-save" data-bs-dismiss="modal"
+                                  [disabled]="!isAudienceTypeSelected()">Finish</button>
+                            </div>
+                         </div>
+                      </div>
+                   </mat-step>
+                </mat-stepper>
+             </form>
+          </div>
+       </div>
+    </div>
+ </div>
+ 
+ <span #trainerTips id="trainerTips" data-bs-target="#trainerValue" class="d-none" data-bs-toggle="modal"></span>

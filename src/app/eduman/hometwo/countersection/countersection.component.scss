@@ -1,0 +1,19 @@
+// counter
+@import '../../../../custom-palettes.scss';
+
+.counter-wrapper {
+	@apply bg-grayBg px-[30px] py-[50px];
+}
+
+// homepage-2
+.count-number {
+	span {
+		@apply text-heading inline-block mb-2.5 font-bold text-[36px];
+	}
+	p {
+		@apply mb-0 text-[18px] font-semibold;
+	}
+}
+.counter-icon svg {
+	@apply mb-[30px];
+}

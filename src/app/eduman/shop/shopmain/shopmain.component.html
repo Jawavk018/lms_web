@@ -1,0 +1,616 @@
+<app-headerfour></app-headerfour>
+<app-breadcrumb breadcrumbTitle="Shop" breadcrumbSubTitle="Shop"></app-breadcrumb>
+
+<!-- shop-area-strar -->
+<section class="shop-area pt-[120px] pb-[100px]">
+   <div class="container">
+      <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+         <div class="col-span-12 lg:col-span-4 xl:col-span-3">
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shopcat></app-shopcat>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shoprating></app-shoprating>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shopprice></app-shopprice>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shoplevel></app-shoplevel>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <app-shoplanguage></app-shoplanguage>
+            </div>
+            <div class="course-sidebar-widget mb-[20px]">
+               <!-- <app-shopduration></app-shopduration> -->
+            </div>
+         </div>
+         <div class="col-span-12 lg:col-span-8 xl:col-span-9">
+            <div class="products-wrapper">
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-01.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Turn Yourself</a></h4>
+                     <span>$24.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-02.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Art of Not Giving</a></h4>
+                     <span>$12.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-03.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Attract Women</a></h4>
+                     <span>$24.00</span>
+                     <del class="shop-old-price">$75.50</del>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-04.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Think and Grow Rich</a></h4>
+                     <span>$16.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-05.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Best Inspirational</a></h4>
+                     <span>$22.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-06.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">The Power of Evil</a></h4>
+                     <span>$17.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-07.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Turn Yourself</a></h4>
+                     <span>$24.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-08.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Memoirs of a Geisha</a></h4>
+                     <span>$13.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-09.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Very First Sight</a></h4>
+                     <span>$22.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-10.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">The Almanack</a></h4>
+                     <span>$24.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-11.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Wealth & Happiness</a></h4>
+                     <span>$24.00</span>
+                     <del class="shop-old-price">$75.50</del>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-12.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Rabbit drawing book</a></h4>
+                     <span>$23.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-13.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Time Management</a></h4>
+                     <span>$32.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-14.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Startup Dream</a></h4>
+                     <span>$21.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-15.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Positive Attitude</a></h4>
+                     <span>$75.00</span>
+                     <del class="shop-old-price">$75.50</del>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+               <div class="product-items text-center">
+                  <div class="product-img">
+                     <a [routerLink]="['/shop-details']"><img src="assets/img/products/product-thumb-01.png"
+                           alt="product-img"></a>
+                     <div class="shop-quick-view">
+                        <ul>
+                           <li>
+                              <a [routerLink]="['/cart']">
+                                 <i class="fal fa-cart-arrow-down"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a href="javascript:void(0)" (click)="productPopup()">
+                                 <i class="fal fa-eye"></i>
+                              </a>
+                           </li>
+                           <li>
+                              <a [routerLink]="['/wishlist']">
+                                 <i class="fal fa-heart"></i>
+                              </a>
+                           </li>
+                        </ul>
+                     </div>
+                  </div>
+                  <div class="product-content">
+                     <h4><a [routerLink]="['/shop-details']">Options Handboo</a></h4>
+                     <span>$11.00</span>
+                     <div class="course-icon">
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fas fa-star"></i>
+                        <i class="fal fa-star"></i>
+                     </div>
+                  </div>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</section>
+<!-- shop-area-end-->
+
+<app-footerone></app-footerone>

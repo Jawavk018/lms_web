@@ -1,0 +1,40 @@
+/* Modal Content */
+.modal-content {
+    background-color: #f0f0f0; /* WhatsApp-like background color */
+    border: none; /* Remove default border */
+    border-radius: 10px; /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  }
+  
+  /* Modal Header */
+  .modal-header {
+    padding: 1rem; /* Padding around header */
+    border-bottom: none; /* Remove bottom border */
+  }
+  
+  /* Modal Title */
+  .modal-title {
+    font-size: 1.25rem; /* Larger font size */
+  }
+  
+  /* Modal Body */
+  .modal-body {
+    padding: 1rem; /* Padding around body content */
+  }
+  
+  
+  /* Progress Bar */
+  .progress-bar {
+    background-color: #128c7e; /* WhatsApp-like progress bar color */
+  }
+  
+  /* Modal Footer */
+  .modal-footer {
+    padding: 1rem; /* Padding around footer */
+    border-top: none; /* Remove top border */
+  }
+  
+  /* Close Button */
+  .btn-close {
+    color: #fff; /* White color for close button */
+  }

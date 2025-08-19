@@ -1,0 +1,111 @@
+<app-headerone></app-headerone>
+
+<app-breadcrumb breadcrumbTitle="Tutor"
+   breadcrumbSubTitle="{{courseDetails?.firstName}} {{courseDetails?.lastName}}"></app-breadcrumb>
+
+<!-- course-detailes-area-start -->
+<div class="course-detalies-area pt-[120px] pb-[100px]">
+   <div>
+      <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]" *ngIf="courseDetails">
+         <div class="col-span-12 lg:col-span-3 xl:col-span-3 text-end text-right">
+            <div class="course-instructors-img mb-[30px]">
+               <img
+                  [src]="courseDetails?.media != null ? courseDetails?.media?.mediaUrl : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrq8a6plyTZvi2bjCyHBnNKwahQzDOCze830QtQGD6jw&s'"
+                  alt="instructors-img">
+            </div>
+         </div>
+         <div class="col-span-12 lg:col-span-9 xl:col-span-9">
+            <div class="course-detelies-wrapper">
+               <div class="course-detiles-tittle mb-[30px]">
+                  <h3>{{courseDetails?.firstName}} {{courseDetails?.lastName}}</h3>
+                  <!-- <span>Software Developer</span> -->
+               </div>
+               <div class="course-detiles-meta d-flex">
+                  <div class="total-course">
+                     <span>Total Courses</span>
+                     <label>{{courseDetails?.count}}</label>
+                     <!-- {{courseDetails?.myCourses[0]?.allCourseDetails?.length ? courseDetails?.myCourses[0]?.allCourseDetails?.length:'--'}} -->
+                  </div>
+                  <div class="student course ms-3">
+                     <span>Subscriptions</span>
+                     <label class="subscriptions">{{courseDetails?.totalSubcription ? courseDetails?.totalSubcription : 0}}</label>
+                  </div>
+               </div>
+               <hr class="d-none line">
+               <div class="course-bio-text pt-[45px] pb-5 ">
+                  <h3>Biography</h3>
+                  <p style="overflow: hidden;width: 50vw;line-break: anywhere;">{{courseDetails?.about ?
+                     courseDetails?.about :'--'}}</p>
+               </div>
+
+               <div class="my-course-info">
+                  <h3>Courses</h3>
+               </div>
+               <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]" *ngIf="courseDetails?.myCourses?.length">
+                  <div class="col-span-12 md:col-span-5"
+                     *ngFor="let courses of courseDetails?.myCourses;let i = index;">
+                     <div class="eduman-course-main-wrapper mb-[30px]">
+                        <div class="eduman-course-img w-img">
+                           <a [routerLink]="appUser?.appUserSno ? ['/course-details'] : ['/signin'] "
+                           [queryParams]="{courseSno:courses?.courseSno}"><img style="height: 350px;"
+                                 [src]="courses?.courseImage ? courses?.courseImage:'assets/img/portfilo/course-img-01.jpg'"
+                                 alt="course-img"></a>
+                        </div>
+                        <div class="eduman-course-wraper">
+                           <div class="eduman-course-text">
+                              <h3 style="white-space: nowrap; overflow: hidden; text-overflow: ellipsis;"><a
+                                 [routerLink]="appUser?.appUserSno ? ['/course-details'] : ['/signin'] "
+                                 [queryParams]="{courseSno:courses?.courseSno}">{{courses?.title}}</a></h3>
+                           </div>
+                           <div class="eduman-course-meta">
+                              <div>
+                                 <span>Course Fee </span>
+                                 <span class="price-now " style="color: #2467ec;" *ngIf="courses?.price >0">{{ courses?.currencySymbol }}
+                                    {{courses?.price}}/- </span>
+                                 <span class="price-now " style="color: #2467ec;" *ngIf="courses?.price ==0">{{ courses?.currencySymbol }}
+                                       {{courses?.price}}/- </span>
+                                 <span *ngIf="courses?.price >0">(Including GST)</span>
+                              </div>
+                              <!-- <div>
+                                 <span>For Membership </span>
+                                 <span class="price-now " style="color: #2467ec;">{{ courses?.currencySymbol }} 499/-
+                                 </span>
+                                 <span>(Including GST)</span>
+                              </div> -->
+                           </div>
+                        </div>
+                        <div class="eduman-course-footer">
+                           <div class="course-lessson-svg">
+                              <svg xmlns="http://www.w3.org/2000/svg" width="16.471" height="16.471"
+                                 viewBox="0 0 16.471 16.471">
+                                 <g id="blackboard-52441" transform="translate(-0.008)">
+                                    <path id="Path_101-65441" data-name="Path 101"
+                                       d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                                       fill="#575757" />
+                                 </g>
+                              </svg>
+                              <span class="ms-2">{{courses.lectureCount}} {{courses.lectureCount === 1 ?
+                                 'lecture':'lectures'}} </span>
+                           </div>
+                           <div class="course-deteals-btn">
+                              <a [routerLink]="appUser?.appUserSno ? ['/course-details'] : ['/signin'] "
+                                 [queryParams]="{courseSno:courses?.courseSno}"><span class="me-2">View Details</span><i
+                                    class="far fa-arrow-right"></i></a>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+                  <div class="text-center my-4" *ngIf="!courseDetails?.myCourses?.length">
+                     <div>
+                       <img src="assets/img/norecord.png" class="w-[300px]" />
+                       <h4>No course found</h4>
+                     </div>
+                   </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</div>
+
+<app-footerone></app-footerone>

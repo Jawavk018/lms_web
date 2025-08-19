@@ -1,0 +1,73 @@
+<app-common-header *ngIf="!appUser?.organization"></app-common-header>
+<app-organization-header *ngIf="appUser?.organization"></app-organization-header>
+<div class="container">
+  <div class="w-100 text-end mt-4">
+    <button class="btn btn-primary" (click)="createCertificate()">
+      Add
+    </button>
+  </div>
+  <div class="row my-4" *ngIf="myCertificateList?.length || orgCertificateList?.length">
+    <div class="col-md-4 col-sm-12">
+      <h3 *ngIf="myCertificateList?.length">My Certificate</h3>
+      <ul class="card" *ngIf="myCertificateList?.length">
+        <li
+          *ngFor="let certificate of myCertificateList; let i = index"
+          class="d-flex p-3"
+          [ngClass]="
+            certificate?.tutorCertificateSno ==
+            selectedCertificate?.tutorCertificateSno
+              ? 'selectedCertificate'
+              : ''
+          "
+          role="button"
+          (click)="selectCertificate(i)"
+        >
+          <img [src]="certificate?.certificateImage" class="w-[50px]" /> &nbsp;
+          <h3>{{ certificate?.certificateName }}</h3>
+        </li>
+      </ul>
+      <h3 *ngIf="orgCertificateList?.length" class="mt-3">Organization Certificate</h3>
+      <ul class="card" *ngIf="orgCertificateList?.length">
+        <li
+          *ngFor="let certificate of orgCertificateList; let i = index"
+          class="d-flex p-3"
+          [ngClass]="
+            certificate?.tutorCertificateSno ==
+            selectedCertificate?.tutorCertificateSno
+              ? 'selectedCertificate'
+              : ''
+          "
+          role="button"
+          (click)="selectOrgCertificate(i)"
+        >
+          <img [src]="certificate?.certificateImage" class="w-[50px]" /> &nbsp;
+          <h3>{{ certificate?.certificateName }}</h3>
+        </li>
+      </ul>
+    </div>
+
+    <div class="col-md-8 col-sm-12" *ngIf="selectedCertificate">
+        <div class="h-[650px] position-relative">
+          <iframe [src]="sanitizerUrl(selectedCertificate?.certificatePdf)" *ngIf="selectedCertificate?.certificatePdf"
+          width="100%" height="100%"></iframe>
+          <img [src]="selectedCertificate?.certificateImage" *ngIf="!selectedCertificate?.certificatePdf" class="position-relative"  />
+          <div class="position-absolute end-0 top-0">
+            <div class="btn-group bg-secondary" role="group" aria-label="Basic outlined example">
+              <button type="button" class="btn btn-outline-primary text-white" (click)="editCertificate()">
+                <i class="bi bi-pencil-fill"></i>
+              </button>
+              <button type="button" class="btn btn-outline-primary text-white" (click)="deleteAlert()">
+                <i class="bi bi-trash-fill"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+    </div>
+  </div>
+  <div class="grid grid-cols-12" *ngIf="!myCertificateList?.length && !orgCertificateList?.length">
+    <div class="col-span-12 text-center my-5">
+      <img src="assets/img/nodata.jpeg" />
+      <p class="fs-5 text-secondary pt-2">No Certificate Found</p>
+    </div>
+  </div>
+</div>

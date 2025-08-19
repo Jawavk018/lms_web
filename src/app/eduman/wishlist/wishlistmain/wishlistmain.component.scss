@@ -1,0 +1,96 @@
+// cart style
+@import '../../../../custom-palettes.scss';
+
+.cart-area {
+	.table-content table {
+		@apply bg-white border-borderGray rounded-none border-solid border-t border-l text-center w-full mb-0;
+	}
+	.table-content .product-quantity {
+		@apply float-none;
+	}
+	.table-content table td.product-name {
+		@apply text-[16px] font-normal capitalize;
+	}
+	.table > :not(:last-child) > :last-child > * {
+		@apply border-b-borderGray;
+	}
+	.table-content table td.product-name a:hover {
+		@apply text-black;
+	}
+	.table-content table td {
+		@apply border-t-0 py-5 px-2.5 align-middle text-[16px];
+	}
+	.table-content table th,
+	.table-content table td {
+		@apply border-b border-r border-solid border-borderGray;
+	}
+	.table td,
+	.table th {
+		@apply border-t border-solid border-borderGray;
+	}
+	.table-content table td.product-subtotal {
+		@apply text-[16px];
+	}
+	.table-content table td .cart-plus-minus {
+		@apply float-none my-0 mx-auto;;
+	}
+	.coupon-all {
+		@apply mt-[50px];
+	}
+	.coupon {
+		@apply float-left gap-[15px] flex-wrap maxSm:float-none;
+	}
+	#coupon_code {
+		@apply h-[50px] border border-solid border-borderGray py-0 px-[15px] outline-none focus:border-black shadow-none;
+	}
+	.coupon2 {
+		@apply float-right maxSm:float-none maxSm:mt-[15px];
+	}
+	.cart-page-total {
+		@apply pt-[50px];
+	}
+	.cart-page-total > h2 {
+		@apply text-[20px] mb-5 capitalize;
+	}
+	.cart-page-total > ul {
+		@apply border border-solid border-borderGray;
+	}
+	.cart-page-total > ul > li {
+		@apply border-b border-solid border-borderGray font-normal py-3.5 px-[30px] text-bodyText text-[15px] list-none;
+	}
+	.cart-page-total ul > li > span {
+		@apply float-right;
+	}
+	.cart-page-total li:last-child {
+		@apply border-b-0;
+	}
+	td.product-thumbnail img {
+		@apply w-[125px];
+	}
+	& .product-quantity-form {
+		@include transition(0.3s);
+		@apply m-auto w-[122px] h-[58px] text-center relative border-b border-solid border-borderGray hover:border-black;
+	}
+	& .cart-plus,
+	& .cart-minus {
+		@apply absolute top-[50%] left-0 translate-y-[-50%] w-[45px] h-10 inline-block align-middle text-center text-[14px] bg-transparent border-0 outline-none hover:cursor-pointer hover:text-black hover:bg-transparent;
+	}
+	& .cart-plus {
+		@apply left-auto right-0;
+	}
+	& .cart-input {
+		@apply h-[58px] w-8 text-center text-[14px] border-0 inline-block align-middle my-0 mx-[-3px] pb-1 bg-transparent focus:outline-none;
+	}
+}
+.cart-area .coupon .edu-btn {
+	@apply h-[50px] leading-[48px];
+}
+.cart-area .coupon2 .edu-btn {
+	@apply h-[50px] leading-[48px];
+}
+.product-quantity a {
+	@apply whitespace-nowrap;
+}
+.cart-area .table > :not(:first-child) {
+	@apply border-t-0;
+}

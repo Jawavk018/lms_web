@@ -1,0 +1,31 @@
+@import '../../../../custom-palettes.scss';
+
+.faq-topic-title {
+	h3 {
+		@apply text-[28px] maxXs:text-[26px];
+	}
+}
+.topic-items {
+	@include transition(0.3s);
+	&:hover {
+		box-shadow: 0px 40px 40px rgba(24, 44, 74, 0.07);
+	}
+	@apply bg-transparent border border-solid border-borderGray rounded-[5px] pt-[50px] pb-[35px] px-[25px];
+}
+.topic-wrapper:hover .topic-svg {
+	@apply translate-y-[-10px];
+}
+.topic-svg {
+	@include transition(0.3s);
+	svg {
+		@apply mb-[33px];
+	}
+}
+.topic-content {
+	h4 {
+		@apply text-[20px] mb-5;
+	}
+	p {
+		@apply mb-0;
+	}
+}

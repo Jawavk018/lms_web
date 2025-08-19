@@ -1,0 +1,36 @@
+// zoom style
+@import '../../../../custom-palettes.scss';
+
+.zoom-thumb {
+	@apply ml-[50px] maxLg:ml-0;
+}
+
+.zoom-shape-02 {
+	box-shadow: 0px 20px 80px rgba(28, 51, 84, 0.2);
+	@apply absolute top-0 left-0 minMaxTab:right-[11%];
+}
+
+.zoom-shape-01 {
+	-webkit-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+	-moz-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+	-o-animation: hero-thumb-sm-animation 4s linear infinite alternate;
+	animation: hero-thumb-sm-animation 4s linear infinite alternate;
+	@apply absolute top-[-60px] left-[-7%] z-[-1] maxXs:hidden;
+}
+
+.zoom-class-wrapper {
+	@apply maxMd:mb-[60px] maxMd:-top-10;
+}
+
+.zoom-thumb-main-img {
+	@apply max-w-full;
+}
+
+.section-title {
+	h2 {
+		@apply text-[36px] leading-[1.3] minMaxTab:text-[30px] minMaxTabSmall:text-[30px] maxSm:text-[28px] maxXs:text-[26px];
+		a {
+			@apply text-themeBlue;
+		}
+	}
+}

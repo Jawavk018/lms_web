@@ -1,0 +1,13 @@
+@import '../../../../custom-palettes.scss';
+
+.become-intructor-area {
+	@apply bg-[#f4f6f9];
+}
+.become-intructor-text {
+	h2 {
+		@apply text-[36px] mb-[30px] maxMd:text-[32px] maxSm:text-[28px] maxXs:text-[26px];
+	}
+	p {
+		@apply mb-10;
+	}
+}

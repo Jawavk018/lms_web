@@ -1,0 +1,13 @@
+
+<div class="course-sidebar-info" [class.content-hidden]="shopCatActive" >
+   <h3 class="drop-btn" (click)="shopCat()" >Categories</h3>
+   <p *ngIf="categoryList?.length == 0 || categoryList == null" class="text-secondary">No categories found</p>
+   <ul *ngFor="let category of categoryList; let i = index;">
+      <li>
+         <div class="course-sidebar-list">
+            <input class="edu-check-box" (change)="onChange($event.target, category)" type="checkbox" id="category_{{i}}">
+            <label class="edu-check-label" for="category_{{i}}">{{category.categoryName}} ({{category.count}})</label>
+         </div>
+      </li>
+   </ul>
+</div>

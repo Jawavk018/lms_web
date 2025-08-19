@@ -1,0 +1,56 @@
+.menu:not(.menu-no-animation) .menu-icon {
+    transition: margin-right 0.3s ease;
+  }
+  
+  .menu-vertical .menu-icon {
+    width: 1.5rem;
+  }
+  
+  .menu-icon {
+    flex-grow: 0;
+    flex-shrink: 0;
+    margin-right: 0.5rem;
+    font-size: 1.25rem;
+  }
+  
+  
+  ::ng-deep .cdk-overlay-container {
+    z-index: 9999 !important;
+  }
+  
+  .sidenav-list span {
+    padding-left: 8px;
+  }
+  
+  
+  mat-sidenav-container,
+  mat-sidenav-content,
+  mat-sidenav {
+    height: 100%;
+  }
+  
+  mat-sidenav {
+    width: 220px;
+    background-color: #f4f4f4;
+  }
+  
+  
+  
+  ::ng-deep .mat-sidenav-container {
+    height: 100%;
+  }
+  
+  ::ng-deep .mat-drawer-container {
+    position: initial !important;
+  }
+  
+  ::ng-deep .mat-sidenav {
+    position: fixed !important;
+    bottom: 0px !important;
+    left: 0px !important;
+  }
+  
+  
+  ::ng-deep .mat-drawer-backdrop {
+    position: fixed !important;
+  }

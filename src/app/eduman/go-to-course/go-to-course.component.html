@@ -1,0 +1,338 @@
+<app-headerone></app-headerone>
+<div class="container-fluid mt-2">
+  <div class="row video_header">
+    <div class="col-12 d-flex">
+      <h4 class="flex-fill">{{ courseDetails?.title }}</h4>
+      <button class="btn text-white" (click)="setRatingReview()">
+        <i class="fa fa-star"></i>&nbsp;&nbsp;{{
+          courseDetails?.myReview?.rating ? "Edit" : "Leave"
+        }}
+        a rating
+      </button>
+
+      <button
+        class="btn text-white"
+        *ngIf="courseComplete"
+        (click)="openModal()"
+      >
+        Download Certificate&nbsp;&nbsp;<i class="fa fa-download"></i>
+      </button>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-md-9" style="padding: 0px !important">
+      <div class="col-md-12">
+        <div
+          class="d-flex position-relative player"
+          [style.display]="isShowVideo ? 'block !important' : 'none !important'"
+        >
+          <div
+            class="position-absolute top-0 left-0 w-100 h-100 loading"
+            *ngIf="isBuffer"
+          >
+            <div
+              class="d-flex justify-content-center align-items-center w-100 h-100"
+            >
+              <div class="spinner-border loader" role="status">
+                <span class="visually-hidden">Loading...</span>
+              </div>
+            </div>
+          </div>
+          <div
+            class="position-absolute top-0 left-0 w-100 h-100"
+            *ngIf="!isBuffer && !isPlay"
+          >
+            <div
+              class="d-flex justify-content-center align-items-center w-100 h-100"
+            >
+              <div class="play_button" role="button" (click)="playVideo()">
+                <i class="fa fa-play" aria-hidden="true"></i>
+              </div>
+            </div>
+          </div>
+
+          <div class="position-absolute top-0 left-0 w-100 h-100">
+            <video
+              #videoPlayer
+              class="w-100 h-100 bg-white overflow-hidden"
+            ></video>
+            <div class="control-bar">
+              <div class="popover-area"></div>
+              <div class="control-bar-container">
+                <div class="progress-bar-control">
+                  <div
+                    tabindex="0"
+                    class="progress-bar--slider"
+                    role="slider"
+                    data-purpose="video-progress-bar"
+                    aria-label="Progress bar"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    (mousedown)="onProgressBarMouseDown($event)"
+                    (mouseup)="onProgressBarMouseUp()"
+                    #progressBar
+                  >
+                    <div class="progress-holder">
+                      <div
+                        class="play-progress"
+                        [style.width]="progress + '%'"
+                      ></div>
+                    </div>
+                  </div>
+                </div>
+                <div class="time-bar-control justify-content-between">
+                  <div class="d-flex">
+                    <div class="button-popper">
+                      <button>
+                        <i
+                          class="fa"
+                          [ngClass]="isPlay ? 'fa-pause' : 'fa-play'"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                    <div class="button-popper m-auto">
+                      <label class="text-white">
+                        {{ formatTime(currentTime) }} /
+                        {{ formatTime(totalDuration) }}
+                      </label>
+                    </div>
+                  </div>
+                  <div class="d-flex">
+                    <div class="button-popper">
+                      <button (click)="toggleMute()">
+                        <i
+                          class="fa"
+                          [ngClass]="isMuted ? 'fa-volume-off' : 'fa-volume-up'"
+                          aria-hidden="true"
+                        ></i>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div
+          class="article"
+          *ngIf="!isShowVideo"
+          [innerHtml]="selectedLecture?.articale"
+        ></div>
+      </div>
+      <div class="col-md-12">
+        <div class="p-2">
+          <div class="course-instructors mb-3">
+            <h3>Course Details</h3>
+            <div class="d-flex">
+              <img [src]="courseDetails?.courseImage" width="100px" />
+              <div class="ps-4">
+                <h4>{{ courseDetails?.title }}</h4>
+                <p>{{ courseDetails?.subTitle }}</p>
+                <span class="badge rounded-pill bg-primary btn-primary">{{
+                  courseDetails?.categoryName
+                }}</span>
+              </div>
+            </div>
+          </div>
+          <div>
+            <div
+              class="course-instructors"
+              role="button"
+              (click)="viewInstructors()"
+            >
+              <h3>Tutor</h3>
+              <div class="instructors-heading">
+                <div class="instructors-img w-img">
+                  <a
+                    ><img
+                      [src]="
+                        courseDetails?.instructor?.media != null
+                          ? courseDetails?.instructor?.media?.mediaUrl
+                          : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrq8a6plyTZvi2bjCyHBnNKwahQzDOCze830QtQGD6jw&s'
+                      "
+                      class="img-fluid my-2 rounded-circle"
+                      alt="Avatar"
+                      style="width: 70px; height: 70px"
+                  /></a>
+                </div>
+                <div class="instructors-body">
+                  <h5>
+                    <a
+                      >{{
+                        courseDetails?.instructor?.firstName
+                          ? courseDetails?.instructor?.firstName
+                          : "--"
+                      }}
+                      {{
+                        courseDetails?.instructor?.lastName
+                          ? courseDetails?.instructor?.lastName
+                          : "--"
+                      }}</a
+                    >
+                  </h5>
+
+                  <div class="instructors-footer">
+                    <i class="fas fa-desktop"></i>
+                    <span
+                      >{{ courseDetails?.instructor?.count ?? "--" }}
+                      {{
+                        courseDetails?.instructor?.count === 1
+                          ? "Course"
+                          : "Courses"
+                      }}
+                    </span>
+                  </div>
+                </div>
+              </div>
+              <div class="intructors-content">
+                <p
+                  style="
+                    white-space: nowrap;
+                    overflow: hidden;
+                    text-overflow: ellipsis;
+                  "
+                >
+                  {{
+                    courseDetails?.instructor?.about
+                      ? courseDetails?.instructor?.about
+                      : "--"
+                  }}
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-3 card p-3 rounded-0" style="background-color: #f7f9fa">
+      <h5>Course Content</h5>
+      <div
+        class="scroll-list"
+        style="height: 75vh !important; overflow-y: auto"
+      >
+        <hr />
+        <div
+          *ngFor="let curriculum of courseDetails?.curriculum; let i = index"
+        >
+          <ul
+            class="d-flex justify-content-between my-2 list-item-border"
+            role="button"
+            (click)="toggleSection(curriculum)"
+          >
+            <li class="fw-bold">
+              <h5>{{ curriculum.section }}</h5>
+            </li>
+            <li>
+              <i
+                [ngClass]="{
+                  'bi-chevron-up': curriculum?.isExpanded,
+                  'bi-chevron-down': !curriculum?.isExpanded
+                }"
+                class="bi"
+              ></i>
+            </li>
+          </ul>
+          <div *ngIf="curriculum?.isExpanded">
+            <ul
+              class="list-group section-lists"
+              *ngFor="let lecture of curriculum.lecture; let j = index"
+              [ngClass]="lecture?.isSelected ? 'selected_video' : ''"
+            >
+              <li
+                class="list-group-item border-top-0 border-start-0 border-end-0 border-bottom"
+              >
+                <div
+                  class="d-flex justify-content-between"
+                  (click)="selectVideo(lecture)"
+                >
+                  <span class="truncate">
+                    {{ lecture.title }}
+                  </span>
+                  <span
+                    class="truncate"
+                    *ngIf="(lecture?.completePercentage ?? 0) > 0"
+                  >
+                    <div class="badge badge-primary btn-primary">
+                      {{ lecture?.completePercentage ?? 0 }}% Completed
+                    </div>
+                  </span>
+                </div>
+                <div class="d-flex justify-content-between align-items-center">
+                  <span
+                    class="badge badge-primary badge-pill text-primary text-lowercase"
+                    role="button"
+                    (click)="selectVideo(lecture)"
+                  >
+                    <i class="bi bi-youtube"></i>
+                    {{ lecture.duration }}
+                  </span>
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary mt-2"
+                    *ngIf="lecture?.resourcesSno"
+                    (click)="downloadResources(lecture?.resourcesSno)"
+                  >
+                    <i class="fa fa-download" aria-hidden="true"></i> Resources
+                  </button>
+                </div>
+              </li>
+            </ul>
+            <ul
+              class="list-group section-lists"
+              *ngIf="curriculum?.testAvailable"
+            >
+              <li
+                class="list-group-item border-top-0 border-start-0 border-end-0 border-bottom"
+                (click)="goToTest(i)"
+              >
+                <div class="d-flex align-items-center">
+                  <span
+                    class="badge badge-primary badge-pill text-primary text-lowercase"
+                    role="button"
+                    ><i class="bi bi-card-checklist"></i
+                  ></span>
+                  <div>Take a Test</div>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="noPurchaseCourse"
+  tabindex="-1"
+  aria-hidden="true"
+  data-bs-backdrop="static"
+>
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-body">
+        <h2>You can't get into it!</h2>
+        <h6>Purchase the course and comeback!</h6>
+        <div class="text-center pt-3">
+          <button
+            class="btn btn-primary me-2 w-50 rounded-0 py-2"
+            (click)="goToPurchase()"
+          >
+            Go to purchase
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<span
+  #nopurchasedata
+  id="nopurchasedata"
+  data-bs-target="#noPurchaseCourse"
+  class="d-none"
+  data-bs-toggle="modal"
+></span>

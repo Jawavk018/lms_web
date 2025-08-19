@@ -1,0 +1,156 @@
+@import "../../../../custom-palettes.scss";
+
+.hero-arera.course-item-height {
+  @apply z-0;
+}
+
+.course-detalis-area {
+  @apply z-0;
+}
+
+.comment-title h3 {
+  @apply text-[24px] font-bold mb-[5px];
+}
+
+.comment-title p {
+  @apply text-[#454545];
+}
+
+.comment-rating span {
+  @apply text-[15px] text-[#454545] mr-[5px];
+}
+
+.comment-rating ul li {
+  @apply inline-block;
+}
+
+.comment-rating ul li a {
+  @apply text-themeOrange text-[14px];
+}
+
+.comment-rating ul {
+  @apply inline-block;
+}
+
+.comment-agree input {
+  @apply inline-block m-0 appearance-none w-[18px] h-[18px] bg-transparent rounded-sm outline-none border-2 border-solid border-borderGray;
+}
+
+.comment-agree label {
+  @apply ml-[5x] text-[15px] text-[#454545];
+}
+
+.comment-agree input::placeholder {
+  @apply text-bodyText text-[14px] opacity-100;
+}
+
+.comment-input input {
+  @apply h-[60px] w-full bg-[#f8f8f9] border-0 py-[15px] px-5 rounded outline-none;
+}
+
+.comment-input input::placeholder {
+  @apply text-bodyText text-[14px] opacity-100;
+}
+
+.comment-textarea {
+  @apply h-[170px] w-full bg-[#f8f8f9] border-0 py-[15px] px-5 rounded resize-none outline-none;
+}
+
+.comment-textarea::placeholder {
+  @apply text-bodyText text-[14px] opacity-100;
+}
+
+@media (max-width: 767px) {
+  .course-heading,
+  .course-description,
+  .course-requirements,
+  .course-curriculum {
+    padding: 20px;
+    margin-bottom: 0px !important;
+  }
+
+  .course-detalis-area {
+    padding-top: 10px;
+  }
+}
+
+.course-detail-title {
+  font-size: 1.5rem !important;
+}
+
+@media (min-width: 200px) and (max-width: 768px) {
+  .syllabus-btn {
+    text-align: left !important;
+  }
+}
+
+.rating {
+  color: #ffb013 !important;
+}
+
+.review_summary {
+  display: flex;
+  // margin-right: 0.8rem;
+  // max-width: 7.5rem;
+  // min-width: 7.5rem;
+  flex: 1;
+}
+
+.review_summary_rate {
+  background: #d1d7dc;
+  display: block;
+  height: 0.8rem;
+  width: 100%;
+}
+
+.review_summary_rate_fill {
+  background: #6a6f73;
+  display: block;
+  height: 100%;
+}
+
+.rating_progress {
+  align-items: center;
+  background-color: transparent;
+  border: 0;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  margin-bottom: 0.8rem;
+  padding: 0;
+  width: 100%;
+}
+
+.logo {
+  width: 3.5rem !important;
+  height: 3.5rem !important;
+  background: #2d2f31;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  object-fit: cover;
+  color: white;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0;
+  font-size: 1rem;
+  margin-right: 1.6rem;
+}
+
+textarea {
+  resize: none;
+}
+
+.mat-mdc-tab-body-content {
+  overflow: hidden !important;
+}
+
+.replay_comment {
+  background: lightgray;
+  border-radius: 20px;
+}
+
+.font-weight-bold{
+  font-weight: 700;
+}

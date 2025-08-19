@@ -1,0 +1,132 @@
+<header class="pt-2 header">
+    <div class="header-area">
+        <div class="container-fluid py-3">
+            <div class="header-main-wrapper">
+                <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px] items-center">
+                    <div class="col-span-8 md:col-span-8 lg:col-span-8">
+                        <div class="header-left flex items-center">
+                            <div class="header-logo" role="button" [routerLink]="['/orgDashboard']">
+                                <a><img src="assets/img/logo/image.png" alt="logo" style="height: 100px;"></a>
+                            </div>
+                            <div class="user-btn-inner relative hidden md:block">
+                                <div class="user-btn-wrapper">
+                                    <div class="user-btn-content mx">
+                                        <a class="mx-3" role="button" [routerLink]="['/orgDashboard']">Dashboard</a>
+                                        <a class="mx-3" role="button" [routerLink]="['/tutor']">Tutor</a>
+                                        <a class="mx-3" role="button" [routerLink]="['/certificateHome']">Certificate</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 md:col-span-4 lg:col-span-4">
+                        <div class="header-right flex items-center justify-end">
+                            <div class="user-btn-inner relative hidden md:block" *ngIf="!appUser?.appUserSno">
+                                <div class="user-btn-wrapper">
+                                    <div class="user-btn-content ">
+                                        <a class="user-btn-sign-in" (click)="SignIn()">Sign In</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="hidden md:block" *ngIf="!appUser?.appUserSno">
+                                <a class="user-btn-sign-up edu-btn" (click)="SignUp()">Sign Up</a>
+                            </div>
+                            <div class="user-btn-inner relative hidden md:block profile" *ngIf="appUser?.appUserSno">
+                                <div class="dropdown show">
+                                    <img class="rounded-circle" role="button" data-bs-toggle="dropdown"
+                                        data-bs-placement="bottom" data-bs-trigger="focus"
+                                        data-bs-content="Bottom dropdown" id="dropdownMenuLink" [style]="appUser?.profileImage != null ? 'width: 50px; height: 50px;border-radius:50%;margin-right: 10px;object-fit: cover;object-position: center;':'width: 50px; height: 50px'"
+                                        [src]="appUser?.profileImage != null ? appUser?.profileImage : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrq8a6plyTZvi2bjCyHBnNKwahQzDOCze830QtQGD6jw&s'" />
+                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                        <a class="dropdown-item" (click)="LoggedOut()" role="button">Logout</a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="menu-bar xl:hidden ml-5">
+                                <a class="side-toggle" href="javascript:void(0)" (click)="infoclick()">
+                                    <div class="bar-icon">
+                                        <span></span>
+                                        <span></span>
+                                        <span></span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="modal fade" id="orgReg" tabindex="-1" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
+    <div class="modal-dialog modal-lg modal-dialog-centered">
+       <div class="modal-content" *ngIf="!this.appUser?.organization && !isRegister">
+            <div class="modal-body">
+                <div *ngIf="!showContent" class="my-5">
+                    <div class="text-center">
+                        <div>
+                            <h2 style="font-size: 2rem !important;">Come teach with us</h2>
+                            <p class="text-secondary">Become an instructor and change lives — including your own</p>
+                        </div>
+                        <div class="text-center pt-4">
+                            <button class="btn btn-save" (click)="toggleContent()">Get started</button>
+                        </div>
+                    </div>
+                </div>
+                <mat-stepper #stepper [linear]="isLinear" id="contentDiv" *ngIf="showContent">
+                    <mat-step>
+                        <div class="my-5" [formGroup]="orgForm">
+                            <div class="position-relative h-[120px]">
+                                <img [src]="orgForm.value.media != null ? orgForm.value.media.mediaUrl : 'https://mdbcdn.b-cdn.net/img/new/avatars/2.webp'" role="button" 
+                                    class="rounded-circle w-[120px] h-[120px] position-absolute start-0 end-0 m-auto orgImage" 
+                                    style="z-index: 99;"
+                                    alt="Avatar" (click)="updateOrg()">
+                                <div class="position-absolute top-[40%] bottom-[40%] start-0 end-0 text-center">
+                                    <i class="bi bi-camera-fill fs-2"></i>
+                                </div>
+                            </div>
+                            <div class="my-3 mt-5">
+                                <label for="title" class="form-label">Organization Name</label>
+                                <input type="text" formControlName="title" class="form-control" id="title" placeholder="Organization Name">
+                            </div>
+                            <div class="my-3">
+                                <label for="description" class="form-label">Description</label>
+                                <div class="NgxEditor__Wrapper">
+                                    <ngx-editor-menu [editor]="editor"> </ngx-editor-menu>
+                                    <ngx-editor [editor]="editor" formControlName="description" [placeholder]="'Type here...'"></ngx-editor>
+                                </div>
+                                <!-- <textarea type="text" formControlName="description" class="form-control" id="description" placeholder="Description" rows="5"></textarea> -->
+                            </div>
+                        </div>
+                    </mat-step>
+                </mat-stepper>
+            </div>
+            <div class="modal-footer" *ngIf="showContent">
+                <button type="button" class="btn btn-primary" [disabled]="orgForm.invalid" (click)="registerOrg()">Save</button>
+            </div>
+        </div>
+        <div class="modal-content" *ngIf="this.appUser?.organization?.entityStatus == 'Review' && !isRegister">
+            <div class="modal-body">
+                <div class="my-5 text-center">
+                    <img src="assets/img/review_waiting.png" class="w-[20rem]" />
+                    <h2 class="mt-5">Waiting For Review</h2>
+                </div>
+            </div>
+        </div>
+        <div class="modal-content" *ngIf="isRegister">
+            <div class="modal-body">
+                <div class="my-5 text-center h-[400px]" >
+                    <div class="spinner-border w-[3rem] h-[3rem] mt-[175px]" role="status">
+                        <span class="visually-hidden">Loading...</span>
+                      </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<span id="orgtrigger" data-bs-target="#orgReg" class="d-none" data-bs-toggle="modal"></span>
+
+<input type="file" id="selectOrgImage" accept=".jpg,.jpeg,.png" class="d-none"
+  (change)="changeProfileImg($event.target,['jpg', 'jpeg', 'png'],'orgImage')" placeholder="Your Title" #images>

@@ -1,0 +1,461 @@
+<nav class="navbar navbar-expand-sm px-4 py-0 sticky-top" style="background: #f3e0e0 !important">
+  <!-- <div class="header">
+    <h1 class="fw-bold">
+      <h4><span class="letter-style">Q</span>uestions - <span>{{data?.title}}</span></h4>
+    </h1>
+  </div> -->
+  <div class="header d-flex justify-content-between">
+    <button onclick="window.history.back()" class="arrow"><i class="fas fa-arrow-left"></i></button>
+    <div>
+      <h1 class="fw-bold">
+        <h4><span class="letter-style">Q</span>uestions - <span>{{data?.title}}</span></h4>
+      </h1>
+    </div>
+  </div>
+</nav>
+<div class="my-0 res-container">
+  <div class="row align-items-start mt-5 justify-content-center">
+    <!-- <h2 *ngIf="!technologyList.length" class="text-center text-danger">First add your selected technologies then insert relevant Q/A ...</h2> -->
+    <div class="col-xl-2 col-md-3 col-sm-12 mb-3" *ngIf="curriculamList.length">
+      <div class="card">
+        <div class="card-header bg-white title techques">
+          <h4>Course Sections</h4>
+        </div>
+      </div>
+
+      <div class="tech-feild">
+        <div class="card">
+          <div class="nav flex-column nav-pills me-3 w-100" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+            <button class="nav-link text-start border" (click)="changeCourseCurriculam(i)"
+              [class]="curriculam?.isActive ? 'active' : 'none'" data-bs-toggle="pill" type="button" role="tab"
+              aria-controls="v-pills-home" aria-selected="true"
+              *ngFor="let curriculam of curriculamList; let i = index">
+              {{ curriculam?.section }}
+            </button>
+          </div>
+        </div>
+      </div>
+
+
+    </div>
+    <div class="col-xl-8 col-md-9 col-sm-12">
+      <div *ngIf="refresh" class="text-center mt-5">
+        <div class="spinner-border spinner-border-lg"></div>
+      </div>
+
+      <div class="sk-folding-cube" *ngIf="isShowloading && !refresh">
+        <div class="sk-cube1 sk-cube"></div>
+        <div class="sk-cube2 sk-cube"></div>
+        <div class="sk-cube4 sk-cube"></div>
+        <div class="sk-cube3 sk-cube"></div>
+        <!-- <img class="img" src="assets/favicon.ico.jpeg" /> -->
+
+      </div>
+
+      <!-- *ngIf="!isShowloading" -->
+      <div *ngIf="!refresh" class="tab-content w-100 mb-5" id="v-pills-tabContent d-sm-block d-lg-flex">
+        <div class="row" [formGroup]="question" *ngIf="curriculamList.length">
+          <div formArrayName="questions">
+            <div class="d-flex">
+              <h2 class="ps-3">Create Your Questions with Answers</h2>
+              <!-- <div class="float-end ms-auto">
+                <button class="btn btn-sm btn-primary rounded-pill" data-toggle="tooltip" data-bs-toggle="modal"
+                  href="#bulk-upload-modal" data-placement="top" (click)="setNgModelVal()">
+                  Bulk Upload
+                </button>
+              </div> -->
+            </div>
+
+
+            <div infinite-scroll [infiniteScrollDistance]="modalScrollDistance" [scrollWindow]="false"
+              [infiniteScrollThrottle]="modalScrollThrottle" (scrolled)="!isNoMoreRecord && getMoreTechQuestion()"
+              class="search-feild">
+              <div class="col-xl-11 col-md-12 card border m-md-3 m-lg-3 p-3 m-sm-0" *ngFor="
+                  let quest of question?.controls?.questions?.controls;
+                  let i = index
+                ">
+                <div class="mb-3" [formGroup]="quest">
+                  <div class="mb-3">
+                    <label for="title" class="form-label fw-bold">Question {{ i + 1 }}
+                      <span class="text-danger">*</span>
+                    </label>
+                    <div class="d-flex">
+                      <textarea formControlName="question" class="form-control"></textarea>
+                      <button class="btn text-danger" (click)="removeQuestion(i)">
+                        <i class="fas fa-times"></i>
+                      </button>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 d-flex">
+                    <label class="form-label fw-bold me-2">Question Type:
+                      <span class="text-danger">*</span>
+                    </label>
+
+                    <div>
+                      <ng-container *ngFor="let qType of questionTypeList;let k=index">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="radio" [id]="'questionsTypeCd' + i + '-' + k"
+                            [value]="qType.cdValue" formControlName="questionsTypeCd"
+                            (click)="selectedQType(qType.cdValue, i)" >
+                          <label class="form-check-label" [for]="'questionsTypeCd' + i + '-' + k">{{ qType.cdValue
+                            }}</label>
+                        </div>
+                      </ng-container>
+
+                    </div>
+                  </div>
+                </div>
+                <div *ngIf="quest?.value?.questionsTypeCd == 'Single'">
+                  <h4 class="mt-2">{{ quest?.value?.questionsTypeCd}} Questions</h4>
+                  <h4 class="fw-bold">Answers</h4>
+                  <div [formGroup]="quest">
+                    <div formArrayName="answers">
+                      <span *ngFor="let ansKey of quest?.controls?.answers?.controls;let j = index">
+                        <div class="mb-3" [formGroup]="ansKey">
+                          <label for="title" class="form-label fw-bold">Answer {{ j + 1 }}
+                            <span class="text-danger">*</span>
+                          </label>
+                          <div class="row">
+                            <div class="col-4 m-auto">
+                              <select class="form-select" aria-label="Default select example"
+                                formControlName="answerTypeCdValue">
+                                <option selected value="null" disabled>Select answer type</option>
+                                <option *ngFor="let ansType of answerTypeList" [value]="ansType.cdValue">
+                                  {{ansType.cdValue}}</option>
+                              </select>
+                            </div>
+
+                            <div class="col-4">
+                              <textarea
+                                *ngIf="!ansKey.value.answerTypeCdValue || ansKey.value.answerTypeCdValue=='Text'"
+                                formControlName="answer" placeholder="Answer key..." class="form-control"
+                                rows="1"></textarea>
+                              <input *ngIf="ansKey.value.answerTypeCdValue=='Image'" type="file" multiple
+                                (change)="onFileChange($event)" #fileInput />
+                            </div>
+
+                            <div class="col-4 m-auto">
+                              <div class="d-flex">
+                                <select class="form-select" aria-label="Default select example"
+                                  formControlName="isCorrect">
+                                  <option selected value="null" disabled>Choose Option</option>
+                                  <option value="true">Correct Answer</option>
+                                  <option value="false">Wrong Answer</option>
+                                </select>
+                                <button class="btn text-danger" (click)="removeAnswerKey(i,j)">
+                                  <i class="fas fa-times"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <button class="btn text-primary" (click)="addAnswerKey(i, show[i])">
+                      + Add Answer
+                    </button>
+                  </div>
+                </div>
+
+                <div *ngIf="quest?.value?.questionsTypeCd === 'Multiple'">
+                  <h4 class="mt-2">{{quest?.value?.questionsTypeCd}} Choice Questions</h4>
+                  <h4 class="fw-bold">Answers</h4>
+                  <div [formGroup]="quest">
+                    <div formArrayName="answers">
+                      <span *ngFor="let ansKey of quest?.controls?.answers?.controls;let j = index">
+                        <div class="mb-3" [formGroup]="ansKey">
+                          <label for="title" class="form-label fw-bold">Answer {{ j + 1 }}
+                            <span class="text-danger">*</span>
+                          </label>
+                          <div class="row">
+                            <div class="col-4 m-auto">
+                              <select class="form-select" aria-label="Default select example"
+                                formControlName="answerTypeCdValue">
+                                <option selected value="null" disabled>Select answer type</option>
+                                <option *ngFor="let ansType of answerTypeList" [value]="ansType.cdValue">
+                                  {{ansType.cdValue}}</option>
+                              </select>
+                            </div>
+
+                            <div class="col-4">
+                              <textarea
+                                *ngIf="!ansKey.value.answerTypeCdValue || ansKey.value.answerTypeCdValue=='Text'"
+                                formControlName="answer" placeholder="Multi Answer key..." class="form-control"
+                                rows="1"></textarea>
+                              <input *ngIf="ansKey.value.answerTypeCdValue=='Image'" type="file" multiple
+                                (change)="onFileChange($event)" #fileInput />
+                            </div>
+
+                            <div class="col-4 m-auto">
+                              <div class="d-flex">
+                                <select class="form-select" aria-label="Default select example"
+                                  formControlName="isCorrect">
+                                  <option selected value="null" disabled>Choose Option</option>
+                                  <option value="true">Correct Answer</option>
+                                  <option value="false">Wrong Answer</option>
+                                </select>
+                                <button class="btn text-danger" (click)="removeAnswerKey(i,j)">
+                                  <i class="fas fa-times"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <button class="btn text-primary" (click)="addAnswerKey(i, show[i])">
+                      + Add Answer
+                    </button>
+                  </div>
+                </div>
+
+                <div *ngIf="quest?.value?.questionsTypeCd === 'Fill Up'">
+                  <h4 class="mt-2">{{quest?.value?.questionsTypeCd}}s</h4>
+                  <h4 class="fw-bold">Answer</h4>
+                  <div [formGroup]="quest">
+                    <div formArrayName="answers">
+                      <span *ngFor="let ansKey of quest?.controls?.answers?.controls;let j = index">
+                        <div class="mb-3" [formGroup]="ansKey">
+                          <label for="title" class="form-label fw-bold">Answer
+                            <span class="text-danger">*</span>
+                          </label>
+                          <div class="row">
+                            <div class="col-8">
+                              <textarea formControlName="answer" placeholder="Full Answer key..." class="form-control"
+                                rows="1"></textarea>
+                            </div>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <!-- <button class="btn text-primary" (click)="addAnswerKey(i, show[i])">
+                      + Add Answer
+                    </button> -->
+                  </div>
+                </div>
+
+                <div *ngIf="quest?.value?.questionsTypeCd === 'Match'">
+                  <h4 class="mt-2">{{quest?.value?.questionsTypeCd}} The Following</h4>
+                  <h4 class="fw-bold">Pairs</h4>
+                  <div [formGroup]="quest">
+                    <div formArrayName="pairs">
+                      <span *ngFor="let ansKey of quest?.controls?.pairs?.controls;let j = index">
+                        <div class="mb-3" [formGroup]="ansKey">
+                          <label for="title" class="form-label fw-bold">Pair {{ j + 1 }}
+                            <span class="text-danger">*</span>
+                          </label>
+                          <div class="row">
+                            <div class="col-5">
+                              <input formControlName="leftItem" placeholder="Left item..." class="form-control" />
+                            </div>
+                            <div class="col-1 text-center">
+                              <span>-</span>
+                            </div>
+                            <div class="col-5">
+                              <input formControlName="rightItem" placeholder="Right item..." class="form-control" />
+                            </div>
+                            <div class="col-1 text-end mt-2">
+                              <button class="btn text-danger" (click)="removeMatchPair(i)">
+                                <i class="fas fa-times"></i>
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <button class="btn text-primary" (click)="addMatchPairs(i)">
+                      + Add Pair
+                    </button>
+                  </div>
+
+                  <h4 class="fw-bold">Answers</h4>
+                  <div [formGroup]="quest">
+                    <div formArrayName="answers">
+                      <span *ngFor="let ansKey of quest?.controls?.answers?.controls;let j = index">
+                        <div class="mb-3" [formGroup]="ansKey">
+                          <label for="title" class="form-label fw-bold">Answer {{ j + 1 }}
+                            <span class="text-danger">*</span>
+                          </label>
+                          <div class="row">
+                            <div class="col-4 m-auto">
+                              <select class="form-select" aria-label="Default select example"
+                                formControlName="answerTypeCdValue">
+                                <option selected value="null" disabled>Select answer type</option>
+                                <option *ngFor="let ansType of answerTypeList" [value]="ansType.cdValue">
+                                  {{ansType.cdValue}}</option>
+                              </select>
+                            </div>
+
+                            <div class="col-4">
+                              <textarea
+                                *ngIf="!ansKey.value.answerTypeCdValue || ansKey.value.answerTypeCdValue=='Text'"
+                                formControlName="answer" placeholder="Answer key..." class="form-control"
+                                rows="1"></textarea>
+                              <input *ngIf="ansKey.value.answerTypeCdValue=='Image'" type="file" multiple
+                                (change)="onFileChange($event)" #fileInput />
+                            </div>
+
+                            <div class="col-4 m-auto">
+                              <div class="d-flex">
+                                <select class="form-select" aria-label="Default select example"
+                                  formControlName="isCorrect">
+                                  <option selected value="null" disabled>Choose Option</option>
+                                  <option value="true">Correct Answer</option>
+                                  <option value="false">Wrong Answer</option>
+                                </select>
+                                <button class="btn text-danger" (click)="removeAnswerKey(i,j)">
+                                  <i class="fas fa-times"></i>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </span>
+                    </div>
+                    <button class="btn text-primary" (click)="addAnswerKey(i, show[i])">
+                      + Add Answer
+                    </button>
+                  </div>
+                </div>
+
+              </div>
+              <button class="btn btn-sm rounded-pill pxp-modal-cta1" (click)="addQuestion()">
+                <i class="fa-solid fa-plus text-light"></i>
+                &nbsp;Add Question
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="fixed-bottom mt-5" *ngIf="curriculamList.length">
+  <div class="row p-4" style="background: transparent !important">
+    <div class="">
+      <button class="btn btn-md btn-primary float-end" *ngIf="!isUpdate" [disabled]="question.invalid" (click)="save()">
+        <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+        Save
+      </button>
+      <button class="btn btn-md btn-primary float-end" *ngIf="isUpdate" [disabled]="question.invalid"
+        (click)="update()">
+        <span class="spinner-border spinner-border-sm" *ngIf="isLoad"></span>
+        Update
+      </button>
+    </div>
+  </div>
+</footer>
+
+<input #myInput type="file" name="fileUploader" id="customFile" (change)="
+    fileUpload(
+      $event.target,
+      [
+        'ods',
+        'vnd.oasis.opendocument.spreadsheet',
+        'vnd.openxmlformats-officedocument.spreadsheetml.sheet',
+        'vnd.ms-excel'
+      ],
+      'candidate'
+    )
+  " style="display: none"
+  accept=".ods,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel" />
+
+<!-- Bulk Upload -->
+
+<div class="modal fade pxp-user-modal" id="bulk-upload-modal" aria-hidden="true" aria-labelledby="bulkModal"
+  tabindex="-1" data-bs-backdrop="static" data-bs-keyboard="false" data-bs-backdrop="static">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button #closedialog type="button" class="btn-close" id="closeBulkUpload" data-bs-dismiss="modal"
+          aria-label="Close" (click)="closeDialogue()">
+          <i class="fas fa-times"></i></button>
+      </div>
+      <div class="modal-body w-100">
+        <h1 class="modal-title text-center mt-4 text-primary" style="font-weight: 500">
+          Bulk Upload
+        </h1>
+
+        <div class="row">
+          <div class="mb-3 col-md-6 col-lg-12">
+            <label for="status" class="form-label">Select Course Section
+              <span class="text-danger">*</span>
+            </label>
+            <select id="status" class="select2 form-select" [(ngModel)]="courseCurriculumSno">
+              <option *ngFor="let curriculam of curriculamList; let i = index"
+                [value]="curriculam?.courseCurriculumSno">
+                {{ curriculam.section }}
+              </option>
+            </select>
+          </div>
+
+          <!-- <div class="mb-3 col-md-6 col-lg-12">
+            <div class="mt-2">
+              <label for="title" class="form-label"
+                >Select Your Level
+                <span class="text-danger">*</span>
+              </label>
+            </div>
+
+            <div class="nav nav-pills me-3 w-100 question-mat-chip">
+              <mat-chip-list multiple="true">
+                <mat-chip
+                  *ngFor="let level of levelList; let j = index"
+                  [selectable]="true"
+                  [selected]="level.isSelect"
+                  (click)="selectLevelType(j)"
+                  >{{ level.levelTypeCdValue }}
+                </mat-chip>
+              </mat-chip-list>
+            </div>
+          </div> -->
+        </div>
+
+        <p class="text-center mt-4 mb-4">
+          Please upload excel file of your questions
+        </p>
+
+        <div class="uploadDiv text-center dropzone_2" style="position:relative;" id="dropzone_2"
+          (hovered)="toggleHover($event)" (dropped)="onDrop($event)" dropzone>
+          <div *ngIf="isUpload" class="text-center mt-5"
+            style="position:absolute; top: 50%;left: 50%;transform: translate(-50%, -50%);">
+            <div class="spinner-border spinner-border-lg"></div>
+          </div>
+
+          <div class="text-center mb-4">
+            <img src="assets/img/excel.png" width="80px" height="80px" />
+            <p>{{ fileName }}</p>
+          </div>
+          <button class="btn btn-gray rounded-pill ms-2 text-dark btnchange" (click)="addMedia()">
+            Browse From Computer
+          </button>
+          <p class="text-center mt-4">
+            <span class="text-danger">*</span>Drag and drop to upload excel
+            files
+          </p>
+          <p class="text-center">
+            <span class="text-danger">*</span>Maximum file size 25MB
+          </p>
+        </div>
+        <p style="font-size: 14px">
+          <img src="assets/img/excel.png" width="22px" height="22px" />
+          <!-- download(
+                'https://firebasestorage.googleapis.com/v0/b/myjobz-adeea.appspot.com/o/excel%2Fcandidate.xlsx?alt=media&token=7d4a18d2-e25d-46d3-86e5-ea876b27f34c'
+              ) -->
+          <span class="text-primary" style="margin-left: 10px" role="button" (click)="download()" translate>Click
+            here</span>
+          to download sample excel document
+        </p>
+        <div class="text-center">
+          <button class="btn btn-primary me-2 mt-2 rounded-pill pxp-section-cta ms-2"
+            [disabled]="!fileName || !courseCurriculumSno || isUpload" (click)="excelBulkUpload()">
+            Upload
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,8 @@
+.truncate {
+    display: -webkit-box;
+  max-width: 100px !important;
+  -webkit-line-clamp: 1 !important;
+  overflow: hidden;
+  text-overflow: ellipsis !important;
+}
+

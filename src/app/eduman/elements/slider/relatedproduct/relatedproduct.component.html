@@ -1,0 +1,238 @@
+<!-- related_product-start -->
+<div class="related_product pb-[115px]">
+   <div class="container custome-container">
+      <div class="section-title mb-[55px]">
+         <h2>Related Product</h2>
+      </div>
+      <div class="swiper-containers r-product-active">
+         <div class="swiper-wrappers">
+            <swiper class="mySwiper" [slidesPerView]="1" [spaceBetween]="10" [loop]="true" [autoplay]="{
+                delay: 2500,
+                disableOnInteraction: false
+            }" [breakpoints]="{
+                '320': {
+                  slidesPerView: 1,
+                  spaceBetween: 20
+                },
+                '480': {
+                    slidesPerView: 2,
+                    spaceBetween: 30
+                  },
+                '640': {
+                  slidesPerView: 2,
+                  spaceBetween: 30
+                },
+                '991': {
+                  slidesPerView: 3,
+                  spaceBetween: 30
+                },
+                '1200': {
+                  slidesPerView: 4,
+                  spaceBetween: 30
+                },
+                '1400': {
+                  slidesPerView: 5,
+                  spaceBetween: 30
+                }
+              }">
+               <ng-template swiperSlide>
+                  <div class="product-items text-center">
+                     <div class="product-img">
+                        <a [routerLink]="['/shop']"><img src="assets/img/products/product-thumb-01.png"
+                              alt="product-img"></a>
+                        <div class="shop-quick-view">
+                           <ul>
+                              <li>
+                                 <a [routerLink]="['/cart']">
+                                    <i class="fal fa-cart-arrow-down"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="javascript:void(0)" (click)="productPopup()">
+                                    <i class="fal fa-eye"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a [routerLink]="['/wishlist']">
+                                    <i class="fal fa-heart"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="product-content">
+                        <h4><a [routerLink]="['/shop']">Turn Yourself</a></h4>
+                        <span>$24.00</span>
+                        <div class="course-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fal fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </ng-template>
+
+               <ng-template swiperSlide>
+                  <div class="product-items text-center">
+                     <div class="product-img">
+                        <a [routerLink]="['/shop']"><img src="assets/img/products/product-thumb-02.png"
+                              alt="product-img"></a>
+                        <div class="shop-quick-view">
+                           <ul>
+                              <li>
+                                 <a [routerLink]="['/cart']">
+                                    <i class="fal fa-cart-arrow-down"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="javascript:void(0)" (click)="productPopup()">
+                                    <i class="fal fa-eye"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a [routerLink]="['/wishlist']">
+                                    <i class="fal fa-heart"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="product-content">
+                        <h4><a [routerLink]="['/shop']">Art of Not Giving</a></h4>
+                        <span>$12.00</span>
+                        <div class="course-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fal fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </ng-template>
+
+               <ng-template swiperSlide>
+                  <div class="product-items text-center">
+                     <div class="product-img">
+                        <a [routerLink]="['/shop']"><img src="assets/img/products/product-thumb-03.png"
+                              alt="product-img"></a>
+                        <div class="shop-quick-view">
+                           <ul>
+                              <li>
+                                 <a [routerLink]="['/cart']">
+                                    <i class="fal fa-cart-arrow-down"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="javascript:void(0)" (click)="productPopup()">
+                                    <i class="fal fa-eye"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a [routerLink]="['/wishlist']">
+                                    <i class="fal fa-heart"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="product-content">
+                        <h4><a [routerLink]="['/shop']">Attract Women</a></h4>
+                        <span>$24.00</span>
+                        <del class="shop-old-price">$75.50</del>
+                        <div class="course-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fal fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </ng-template>
+
+               <ng-template swiperSlide>
+                  <div class="product-items text-center">
+                     <div class="product-img">
+                        <a [routerLink]="['/shop']"><img src="assets/img/products/product-thumb-04.png"
+                              alt="product-img"></a>
+                        <div class="shop-quick-view">
+                           <ul>
+                              <li>
+                                 <a [routerLink]="['/cart']">
+                                    <i class="fal fa-cart-arrow-down"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="javascript:void(0)" (click)="productPopup()">
+                                    <i class="fal fa-eye"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a [routerLink]="['/wishlist']">
+                                    <i class="fal fa-heart"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="product-content">
+                        <h4><a [routerLink]="['/shop']">Think and Grow Rich</a></h4>
+                        <span>$16.00</span>
+                        <div class="course-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fal fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </ng-template>
+
+               <ng-template swiperSlide>
+                  <div class="product-items text-center">
+                     <div class="product-img">
+                        <a [routerLink]="['/shop']"><img src="assets/img/products/product-thumb-07.png"
+                              alt="product-img"></a>
+                        <div class="shop-quick-view">
+                           <ul>
+                              <li>
+                                 <a [routerLink]="['/cart']">
+                                    <i class="fal fa-cart-arrow-down"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a href="javascript:void(0)" (click)="productPopup()">
+                                    <i class="fal fa-eye"></i>
+                                 </a>
+                              </li>
+                              <li>
+                                 <a [routerLink]="['/wishlist']">
+                                    <i class="fal fa-heart"></i>
+                                 </a>
+                              </li>
+                           </ul>
+                        </div>
+                     </div>
+                     <div class="product-content">
+                        <h4><a [routerLink]="['/shop']">Turn Yourself</a></h4>
+                        <span>$24.00</span>
+                        <div class="course-icon">
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fas fa-star"></i>
+                           <i class="fal fa-star"></i>
+                        </div>
+                     </div>
+                  </div>
+               </ng-template>
+            </swiper>
+         </div>
+      </div>
+   </div>
+</div>
+<!-- related_product-end -->

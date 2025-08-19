@@ -1,0 +1,56 @@
+<app-common-header></app-common-header>
+<div class="p-20">
+  <div class="d-flex justify-content-between">
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li
+        class="nav-item"
+        role="presentation"
+        *ngFor="let language of languageList; let i = index"
+      >
+        <button
+          class="nav-link"
+          [ngClass]="selectedLanguage == language?.code ? 'active' : ''"
+          [id]="language?.code"
+          type="button"
+          role="tab"
+          (click)="selectLanguage(i)"
+        >
+          <img
+            src="assets/img/check.png"
+            *ngIf="language?.isComplete"
+            width="15px"
+          />
+          {{ language?.code }}
+        </button>
+      </li>
+    </ul>
+    <button *ngIf="isLast"
+      class="btn btn-primary"
+      [disabled]="getValidCourseForm()"
+      (click)="createCourse()"
+    >
+    <div class="spinner-border me-2" *ngIf="isLoad" role="status">
+      <span class="visually-hidden">Loading...</span>
+    </div>
+      Create Course
+    </button>
+  </div>
+
+  <div class="tab-content" id="myTabContent">
+    <div
+      [class]="selectedLanguage == language?.code ? 'd-block' : 'd-none'"
+      *ngFor="let language of languageList; let i = index"
+    >
+      <app-course-create
+        (courseMedia)="setCourseMedia($event, i)" 
+        [form]="language?.form"
+        [isLast]="(i + 1) == languageList?.length"
+        [media]="language.media"
+        [disabled]="getValidCourseForm()"
+        [isLoading]="isLoad"
+        *ngIf="selectedLanguage == language?.code"
+        (courseForms)="(i + 1) == languageList?.length ? createCourse() : setCourse($event, i)"
+      ></app-course-create>
+    </div>
+  </div>
+</div>

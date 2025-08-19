@@ -1,0 +1,30 @@
+<div class="py-4 h-100">
+  <div class="d-flex justify-content-between">
+    <div class="d-flex">
+      <div class="logo">{{ getFirstAndLastCharacters(review?.name) }}</div>
+      <div>
+        <p class="m-0">{{ review?.name }} .</p>
+        <div class="d-flex rating">
+          <span>
+            <ngx-stars
+              [initialStars]="review?.rating"
+              [size]="1"
+              [maxStars]="5"
+              color="#ffb013"
+              [readonly]="true"
+            ></ngx-stars>
+          </span>
+          <span class="ms-1">{{formatTimestamp(review?.createdOn) }}</span>
+        </div>
+      </div>
+    </div>
+    <!-- <div>
+        <button class="btn text-dark">
+            <i class="bi bi-three-dots-vertical"></i>
+        </button>
+    </div> -->
+  </div>
+  <div class="my-4">
+    <p>{{ review?.review }}</p>
+  </div>
+</div>

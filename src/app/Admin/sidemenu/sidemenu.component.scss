@@ -1,0 +1,47 @@
+.mat-sidenav-container {
+    height: 100vh;
+    /* Set the height of the container to full viewport height */
+}
+
+.mat-sidenav {
+    height: 100%;
+    /* Set the height of the sidenav to full container height */
+}
+
+mat-toolbar {
+    position: fixed;
+    top: 0;
+    z-index: 2;
+}
+
+mat-sidenav {
+    @media screen and (min-width: 600px) {
+        padding-top: 4rem;
+    }
+}
+
+// Move the content down so that it won't be hidden by the toolbar
+mat-sidenav-content {
+    padding-top: 3.5rem;
+
+    @media screen and (min-width: 600px) {
+        padding-top: 4rem;
+    }
+}
+
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .icon{
+    color: black;
+  }
+
+  .selectedTitle {
+   color: red !important;
+  }
+
+  .selectedDiv {
+    background-color: transparent !important;
+    border-right: 5px solid red;
+   }

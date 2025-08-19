@@ -1,0 +1,291 @@
+<app-headerone></app-headerone>
+<app-breadcrumb
+  breadcrumbTitle="Courses"
+  breadcrumbSubTitle="Courses"
+></app-breadcrumb>
+<section class="course-content-area pb-[90px] mt-5">
+  <div class="container-fluid">
+    <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px] mb-2.5">
+      <div class="col-span-12 lg:col-span-4 xl:col-span-3">
+        <div class="course-sidebar-widget mb-[20px]">
+          <app-shopcat
+            [selectedCategory]="categoryList"
+            (selected)="changeCategory($event)"
+          ></app-shopcat>
+        </div>
+        <div class="course-sidebar-widget mb-[20px]">
+          <app-shoplevel (selected)="changeLevel($event)"></app-shoplevel>
+        </div>
+        <div class="course-sidebar-widget mb-[20px]">
+          <app-shoplanguage
+            (selected)="changeLanguage($event)"
+          ></app-shoplanguage>
+        </div>
+        <div class="course-sidebar-widget mb-[20px]">
+          <app-cost (selected)="changeCost($event)"></app-cost>
+        </div>
+        <div class="course-sidebar-widget mb-[20px]">
+          <app-duration (selected)="changeDuration($event)"> </app-duration>
+        </div>
+        <div class="course-sidebar-widget mb-[20px]">
+          <app-rating-filter (selected)="changeRating($event)"> </app-rating-filter>
+        </div>
+      </div>
+
+      <div class="col-span-12 lg:col-span-8 xl:col-span-9">
+        <div class="portfolio-button">
+          <div class="portfolio-course-body" *ngIf="courseList?.length">
+            <div
+              infinite-scroll
+              [infiniteScrollDistance]="modalScrollDistance"
+              [scrollWindow]="false"
+              [infiniteScrollThrottle]="modalScrollThrottle"
+              (scrolled)="!isNoMoreRecord && getMoreCourse()"
+              class="search-feild"
+            >
+              <div class="grid grid-cols-12 gap-x-[0px] sm:gap-x-[30px]">
+                <div
+                  [id]="course?.courseSno"
+                  class="col-span-12 md:col-span-6 lg:col-span-4"
+                  *ngFor="let course of courseList; let i = index"
+                >
+                  <div class="eduman-course-main-wrapper mb-[30px]">
+                    <div class="course-cart">
+                      <div class="course-info-wrapper">
+                        <div class="cart-info-body">
+                          <span class="category-color category-color-1"
+                            ><a [routerLink]="['/course']">{{
+                              course?.categoryName
+                            }}</a></span
+                          >
+                          <a
+                            [routerLink]="['/course-details']"
+                            [queryParams]="{ courseSno: course?.courseSno }"
+                          >
+                            <h3 class="text_overflow">{{ course?.title }}</h3>
+                          </a>
+                          <div class="cart-lavel">
+                            <h5>
+                              Level : <span>{{ course?.experienceLevel }}</span>
+                            </h5>
+                            <p class="text_overflow">{{ course?.subTitle }}</p>
+                          </div>
+                          <div class="info-cart-text">
+                            <ul>
+                              <li
+                                *ngFor="
+                                  let intended of course?.courseIntended?.slice(
+                                    0,
+                                    3
+                                  )
+                                "
+                                class="text_overflow"
+                              >
+                                <i class="far fa-check"></i
+                                >{{ intended?.learn }}
+                              </li>
+                            </ul>
+                          </div>
+                          <div class="course-action">
+                            <a
+                              [routerLink]="
+                                appUser?.appUserSno
+                                  ? ['/course-details']
+                                  : ['/signin']
+                              "
+                              [queryParams]="{ courseSno: course?.courseSno }"
+                              class="view-details-btn"
+                              >View Details</a
+                            >
+                            <a
+                              [routerLink]="
+                                appUser?.appUserSno ? null : ['/signin']
+                              "
+                              (click)="appUser?.appUserSno && addToCart(i)"
+                              *ngIf="
+                                !course?.orderStatus?.isPurchase &&
+                                !course?.orderStatus?.cartCourseSno
+                              "
+                              [title]="
+                                !course?.cartCourseSno
+                                  ? 'addCart'
+                                  : 'deleteCart'
+                              "
+                              class="c-share-btn"
+                            >
+                              <i class="fal fa-shopping-cart"></i>
+                            </a>
+
+                            <a
+                              [routerLink]="
+                                appUser?.appUserSno ? null : ['/signin']
+                              "
+                              (click)="appUser?.appUserSno && removeCart(i)"
+                              *ngIf="
+                                !course?.orderStatus?.isPurchase &&
+                                course?.orderStatus?.cartCourseSno
+                              "
+                              [title]="
+                                !course?.cartCourseSno
+                                  ? 'addCart'
+                                  : 'deleteCart'
+                              "
+                              class="c-share-btn"
+                            >
+                              <i class="fal fa-trash-alt"></i>
+                            </a>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eduman-course-thumb w-img">
+                      <a
+                        [routerLink]="['/course-details']"
+                        [queryParams]="{ courseSno: course?.courseSno }"
+                        ><img
+                          style="height: 30vh"
+                          [src]="
+                            course?.courseImage
+                              ? course.courseImage
+                              : 'assets/img/portfilo/course-img-01.jpg'
+                          "
+                          alt="course-img"
+                      /></a>
+                    </div>
+                    <div class="eduman-course-wraper">
+                      <div class="eduman-course-text">
+                        <h3
+                          style="
+                            white-space: nowrap;
+                            overflow: hidden;
+                            text-overflow: ellipsis;
+                          "
+                        >
+                          <a
+                            [routerLink]="['/course-details']"
+                            [queryParams]="{ courseSno: course?.courseSno }"
+                            >{{ course?.title }}</a
+                          >
+                        </h3>
+                      </div>
+                      <div class="eduman-course-meta">
+                        <div>
+                          <span>Course Fee </span>
+                          <!-- <span class="price-now" style="color: #2467ec"
+                            >{{ course?.currencySymbol }} {{ course?.price }}/-
+                          </span> -->
+                          
+                          <span *ngIf="course?.courseDiscountPrice && course?.courseDiscountPrice < course?.price; else noDiscount">
+                            <span
+                              class="price-now"
+                              style="color: #2467ec;"
+                              [ngStyle]="{ 'text-decoration': course.price !== course.courseDiscountPrice ? 'line-through' : 'none' }"
+                            >
+                              {{ course?.currencySymbol }} {{ course?.price }}/-
+                            </span>&nbsp;
+                            <span class="price-now" style="color: #2467ec;">
+                              {{ course?.currencySymbol }} {{ course?.courseDiscountPrice }}/-
+                            </span>
+                          </span>
+
+                          <ng-template #noDiscount>
+                            <span class="price-now" style="color: #2467ec;" *ngIf="course?.price > 0">
+                              {{ course?.currencySymbol }} {{ course?.price }}/-
+                            </span>
+                            <span class="price-now fw-bold" style="color: #2467ec;" *ngIf="course?.price == 0">
+                              - Free
+                            </span>
+                          </ng-template>
+                          <span *ngIf="course?.price > 0">(Including GST)</span>
+                        </div>
+                        <!-- <div>
+                          <span>For Membership </span>
+                          <span class="price-now" style="color: #2467ec"
+                            >{{ course?.currencySymbol }} 499/-
+                          </span>
+                          <span>(Including GST)</span>
+                        </div> -->
+                        <div class="eduman-course-tutor">
+                          <img
+                            [src]="
+                              course?.instructor?.media != null
+                                ? course?.instructor?.media?.mediaUrl
+                                : 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrq8a6plyTZvi2bjCyHBnNKwahQzDOCze830QtQGD6jw&s'
+                            "
+                            class="img-fluid my-2 rounded-circle"
+                            alt="Avatar"
+                            style="width: 30px; height: 30px"
+                            alt="image not found"
+                          />
+                          <a
+                            [routerLink]="['/instructor-profile']"
+                            [queryParams]="{
+                              appUserSno: course?.instructor?.appUserSno
+                            }"
+                            ><span
+                              >{{ course?.instructor?.firstName }}
+                              {{ course?.instructor?.lastName }}</span
+                            ></a
+                          >
+                        </div>
+                      </div>
+                    </div>
+                    <div class="eduman-course-footer">
+                      <div class="course-lessson-svg">
+                        <svg
+                          xmlns="http://www.w3.org/2000/svg"
+                          width="16.471"
+                          height="16.471"
+                          viewBox="0 0 16.471 16.471"
+                        >
+                          <g id="blackboar09" transform="translate(-0.008)">
+                            <path
+                              id="Path_01"
+                              data-name="Path 101"
+                              d="M16,1.222H8.726V.483a.483.483,0,1,0-.965,0v.74H.491A.483.483,0,0,0,.008,1.7V13.517A.483.483,0,0,0,.491,14H5.24L4.23,15.748a.483.483,0,1,0,.836.483L6.354,14H7.761v1.99a.483.483,0,0,0,.965,0V14h1.407l1.288,2.231a.483.483,0,1,0,.836-.483L11.247,14H16a.483.483,0,0,0,.483-.483V1.7A.483.483,0,0,0,16,1.222Zm-.483.965v8.905H.973V2.187Zm0,10.847H.973v-.976H15.514Z"
+                              fill="#575757"
+                            />
+                          </g>
+                        </svg>
+                        <span class="ms-2"
+                          >{{ course?.lectureCount }}
+                          {{
+                            course?.lectureCount === 1 ? "lecture" : "lectures"
+                          }}</span
+                        >
+                      </div>
+                      <div class="course-deteals-btn">
+                        <a
+                          [routerLink]="
+                            appUser?.appUserSno
+                              ? ['/course-details']
+                              : ['/signin']
+                          "
+                          [queryParams]="{ courseSno: course?.courseSno }"
+                          ><span class="me-2">View Details</span
+                          ><i class="far fa-arrow-right"></i
+                        ></a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-12" *ngIf="!courseList?.length">
+            <div class="col-span-12 text-center my-5">
+              <img src="assets/img/nodata.jpeg" />
+              <p class="fs-5 text-secondary pt-2">No Courses Found..</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-12">
+            <div class="col-span-12"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<app-footerone></app-footerone>

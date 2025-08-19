@@ -1,0 +1,32 @@
+// intructore-features
+@import '../../../../../custom-palettes.scss';
+
+.features-box {
+	@apply py-0 px-[30px] minMaxTablet:px-[15px] minMaxTab:px-[15px] maxXs:px-[15px];
+}
+.features-svg {
+	@apply mb-[30px];
+	@include transition(0.3s);
+}
+.features-box:hover .features-svg {
+	@apply translate-y-[-10px];
+}
+.features-text {
+	h4 {
+		@apply mb-5;
+	}
+}
+.features-btn {
+	a {
+		@apply bg-white text-themeBlue h-[70px] w-[70px] leading-[70px] rounded-[50%] text-[18px] text-center inline-block;
+		animation: pulse 2s infinite;
+	}
+}
+.features-btn {
+	@apply relative mr-5;
+}
+.video-btn-text {
+	span {
+		@apply text-white text-[18px] font-semibold uppercase maxXs:text-[14px];
+	}
+}
